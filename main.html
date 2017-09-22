@@ -1,0 +1,41 @@
+<html>
+<head>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="ApoapseAPI.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).on("onReady", function ()
+        {
+            ApoapseAPI.Log("Test");
+
+            $("#blah").click(function ()
+            {
+                //ApoapseAPI.SendSignal("apoapse_log", "test", "update_ammo");
+                alert(Localization.LocalizeString("@connection_title"));
+            });
+
+            
+
+        });
+
+        $(document).on("update_ammo", function (event, data)
+        {
+            console.log(data);
+        });
+
+        $(document).on("test_received", function (event, data)
+        {
+            console.log("test_received " + data);
+        });
+
+    </script>
+
+</head>
+<body>
+    <h1>Works!</h1>
+    <h3>@connection_title</h3>
+    Yup.
+    <img src="image.jpg" id="blah">
+</body>
+</html>
