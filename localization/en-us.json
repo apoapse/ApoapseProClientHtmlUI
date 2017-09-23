@@ -1,3 +1,8 @@
 {
-"connection_title": "Connection"
+"connection_title": "Connection",
+"unconnected_status": "Unconnected",
+"login_server_address": "Server",
+"login_username": "Username",
+"login_password": "Password",
+"login_connect_button": "Login"
 }

@@ -1,7 +1,14 @@
 <html>
 <head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="ui_elements/global.css" />
+	<link rel="stylesheet" href="ui_elements/status_bar/status_bar.css" />
+    <link rel="stylesheet" href="ui_elements/login/login.css" />
+
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="ApoapseAPI.js"></script>
+
+	<script type="text/javascript" src="ui_elements/login/login_form.js"></script>
 
     <script type="text/javascript">
 
@@ -33,9 +40,31 @@
 
 </head>
 <body>
-    <h1>Works!</h1>
-    <h3>@connection_title</h3>
-    Yup.
-    <img src="image.jpg" id="blah">
+    <div id="login_container">
+		<div class="login_form">
+			<h1>@connection_title</h1>
+			<form id="login_connect_form">
+			<table>
+				<tr>
+					<td>@login_server_address</td>
+					<td><input type="text" id="login_input_server" value="127.0.0.1" required /></td>
+				</tr>
+
+				<tr>
+					<td>@login_username</td>
+					<td><input type="text" id="login_username" required /></td>
+				</tr>
+
+				<tr>
+					<td>@login_password</td>
+					<td><input type="password" id="login_password" required /></td>
+				</tr>
+			</table>
+			<input type="submit" id="login_connect_button" value="@login_connect_button" />
+			</form>
+		</div>
+    </div>
+    
+    <div id="status_bar" class="">@unconnected_status</div>
 </body>
 </html>

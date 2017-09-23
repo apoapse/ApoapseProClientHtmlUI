@@ -1,0 +1,13 @@
+#status_bar {
+    background: #24a5a0;
+	color: white;
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 32px;
+	padding-left: 9px;
+	line-height: 32px;
+	font-size: 14px;
+}
+
+.status_bar_error {
+	background: #FB483E !important;
+}

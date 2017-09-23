@@ -11,6 +11,7 @@ var ApoapseAPI =
 				type: "POST",
 				url: "http://apoapse/signal/" + name,
 				data: data,
+				//dataType: "json",
 				success: function (result)
 				{
 					if (typeof callbackEvent !== 'undefined')
@@ -34,6 +35,7 @@ var Localization =
 	{
 		localizedTextDefault: undefined,
 		localizedTextLocale: undefined,
+		localeStr: "",
 
 		ReadLocalizationFile: function (locale, isDefaultLoc)
 		{
@@ -53,7 +55,10 @@ var Localization =
 					}
 
 					if (!isDefaultLoc)	// The non-default locale is always the last to be loaded
+					{
 						Localization.OnLocalesLoaded();
+						localeStr = locale;
+					}
 				},
 				error: function ()
 				{
