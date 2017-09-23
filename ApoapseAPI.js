@@ -84,13 +84,20 @@ var Localization =
 		{
 			// Read the whole webpage to replace the localized text with the right local value
 			let webpageContent = $("body").html();
-			webpageContent = webpageContent.replace(/(@\w+)/g, function (text) { return Localization.LocalizeString(text); });
+			webpageContent = Localization.LocalizeText(webpageContent);
 			$("body").html(webpageContent);
 
 			// Trigger the main ready event (outside of this API, the $(document).ready() event should never be used)
 			$(document).trigger("onReady");
 		},
 
+		// Use to localize a text which can include unlocalized alias
+		LocalizeText: function (text)
+		{
+			return text.replace(/(@\w+)/g, function (str) { return Localization.LocalizeString(str); });
+		},
+
+		// Use to localize an alias (aliases must start with the @ character)
 		LocalizeString: function (alias)
 		{
 			var nakedAlias = alias.substring(1, alias.length);	// We remove the @ at the start
