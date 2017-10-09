@@ -14,3 +14,8 @@ $(document).on("onReady", function ()
 		return false;
 	});
 });
+
+$(document).on("login_form_enable_back", function ()
+{
+	$("#login_connect_button").prop("disabled", false);
+});

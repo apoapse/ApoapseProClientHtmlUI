@@ -1,12 +1,14 @@
-body {
+html, body {
 	background: #e2e2e2;
 	font-family: sans-serif;
 	font-size: 15px;
 	cursor: default;
 	user-select: none;
+	min-width: 100%;
+	padding: 0; margin: 0;
 }
 
-input {
+input, textarea {
 	padding: 5px;
 	border: 3px solid #fff;
 	min-width: 275px;
@@ -19,10 +21,17 @@ input[type=button], input[type=submit] {
 	font-weight: bold;
 }
 
-input:focus {
-	border: 3px solid #94fffa;
+*:focus {
+	border: 3px solid #89efea;
+	outline: none;
 }
 
 input:focus:invalid {
-	border: 3px solid #ff3939;
+	border: 3px solid #ff5050;
+}
+
+textarea {
+	width: 100%;
+	resize: vertical;
+	font-family: sans-serif;
 }

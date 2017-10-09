@@ -1,8 +1,10 @@
 #login_container {
 	background: #151515;
 	position: absolute;
-	top: 0; left: 0; right: 0; bottom: 32px;
+	top: 0; left: 0; bottom: 32px;
+	width: 100%;
 	color: white;
+	z-index: 100;
 }
 
 .login_form {

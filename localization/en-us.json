@@ -1,8 +1,20 @@
 {
 "connection_title": "Connection",
 "unconnected_status": "Unconnected",
+"disconnected_status": "Disconnected",
 "login_server_address": "Server",
 "login_username": "Username",
 "login_password": "Password",
-"login_connect_button": "Login"
+"login_connect_button": "Login",
+"password_encryption_status": "Encrypting password...",
+"connecting_status": "Connecting...",
+"connected_waiting_authentication": "Connected to the server. Awaiting authentication...",
+"rooms_title": "Rooms",
+"peoples_title": "Peoples",
+"search_default_text": "Search",
+"attachements_title": "Attachments",
+"media_title": "Media",
+"msg_send_button": "Send",
+"invalid_server_address": "Invalid server address",
+"invalid_login_input": "Invalid login identifiers"
 }
