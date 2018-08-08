@@ -22,8 +22,9 @@ input[type=button], input[type=submit] {
 }
 
 *:focus {
-	border: 3px solid #89efea;
+	border: 3px solid #89efea !important;
 	outline: none;
+	background: white !important;
 }
 
 input:focus:invalid {
@@ -34,4 +35,12 @@ textarea {
 	width: 100%;
 	resize: vertical;
 	font-family: sans-serif;
+}
+
+.hide {
+	display: none;
+}
+
+form {
+	margin: 0;
 }

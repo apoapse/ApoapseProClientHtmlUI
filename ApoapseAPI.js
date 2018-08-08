@@ -28,6 +28,15 @@ var ApoapseAPI =
 		Log: function (msg)
 		{
 			this.SendSignal("apoapse_log", msg);
+		},
+
+		UpdateStatusBar: function(msg, isError)
+		{
+			var args = {};
+			args.msg = msg;
+			args.is_error = isError === true;
+
+			$(document).trigger("update_status_bar", JSON.stringify(args));
 		}
 	};
 
@@ -69,7 +78,7 @@ var Localization =
 
 		Initialize: function (locale)
 		{
-			if (locale == "en-us")
+			if (locale === "en-us")
 			{
 				this.ReadLocalizationFile("en-us", false);
 			}
@@ -123,4 +132,33 @@ var Localization =
 $(document).ready(function ()
 {
 	Localization.Initialize("en-us");	// #TODO get the locale from user preferences
+});
+
+// Check if attribute exist/is present
+$.fn.hasAttr = function (name)
+{
+	return (this.attr(name) !== undefined);
+};
+
+$(document).on("onReady", function ()
+{
+	$("form").submit(function ()
+	{
+		if ($(this).hasAttr("data-js-event"))
+		{
+			var eventName = $(this).attr("data-js-event");
+			var data = {};
+
+			$(this).find("input[type=text], input[type=password], textarea, select").each(function ()
+			{
+				var fieldName = $(this).attr("name");
+
+				data[fieldName] = $(this).val();
+			});
+
+			$(document).trigger(eventName, data);
+
+			return false;
+		}
+	});
 });

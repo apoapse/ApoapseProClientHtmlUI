@@ -1,0 +1,65 @@
+/*---------------------------------------------*/
+.conv_message {
+	margin-bottom: 15px; margin-right: 65px;
+}
+
+.conv_message div {
+	background: #b9b9b9;
+    color: black;
+    padding: 4px;
+    margin-bottom: 3px;
+	font-weight: bold;
+}
+
+.conv_message div .msg_send_date {
+	font-weight: normal;
+	float: right;
+	font-size: 12px;
+    margin-top: 1px;
+    margin-right: 3px;
+}
+
+.conv_message table {
+	color: #4c4c4c;
+    font-size: 15px;
+}
+
+.conv_message table img {
+    content: "";
+    background-color: black;
+	background-size: cover;
+    width: 62px;
+    height: 62px;
+    display: block;
+    margin-left: -3px; margin-right: 3px;
+}
+
+/*---------------------------------------------*/
+.conv_msg_submit_form {
+	margin-right: 65px;
+}
+
+.conv_msg_submit_form textarea {
+	min-height: 100px;
+}
+
+.conv_msg_submit_form input[type=submit] {
+	float: right;
+	margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/*---------------------------------------------*/
+#create_new_conv_button {
+	background: white;
+    float: right;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 3px solid #fff;
+    border-radius: 4px;
+    color: gray;
+}
+
+#create_new_conv_button:active {
+	border: 3px solid #89efea !important;
+}

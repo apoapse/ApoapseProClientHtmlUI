@@ -1,71 +1,186 @@
-<html>
+﻿<html>
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="ui_elements/global.css" />
 	<link rel="stylesheet" href="ui_elements/status_bar/status_bar.css" />
     <link rel="stylesheet" href="ui_elements/login/login.css" />
+	<link rel="stylesheet" href="ui_elements/main_interface/main_interface.css" />
+	<link rel="stylesheet" href="ui_elements/main_interface/room.css" />
+	<link rel="stylesheet" href="ui_elements/main_interface/conversation.css" />
+	<link rel="stylesheet" href="ui_elements/main_interface/admin_tools.css" />
 
     <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="ApoapseAPI.js"></script>
-
+	<script type="text/javascript" src="ApoapseAPI.js"></script>
+	<script type="text/javascript" src="ui_elements/main_interface/main_interface.js"></script>
 	<script type="text/javascript" src="ui_elements/status_bar/status_bar.js"></script>
 	<script type="text/javascript" src="ui_elements/login/login_form.js"></script>
-
-    <script type="text/javascript">
-
-        $(document).on("onReady", function ()
-        {
-            ApoapseAPI.Log("Test");
-
-            $("#blah").click(function ()
-            {
-                //ApoapseAPI.SendSignal("apoapse_log", "test", "update_ammo");
-                alert(Localization.LocalizeString("@connection_title"));
-            });
-
-            
-
-        });
-
-        $(document).on("update_ammo", function (event, data)
-        {
-            console.log(data);
-        });
-
-        $(document).on("test_received", function (event, data)
-        {
-            console.log("test_received " + data);
-        });
-
-    </script>
+	<script type="text/javascript" src="ui_elements/admin_tools/admin_tools.js"></script>
 
 </head>
 <body>
-    <div id="login_container">
-		<div class="login_form">
+    <div id="login_container" class="">
+		<div id="login_form">
 			<h1>@connection_title</h1>
-			<form id="login_connect_form">
+			<form data-js-event="login">
 			<table>
 				<tr>
 					<td>@login_server_address</td>
-					<td><input type="text" id="login_input_server" value="127.0.0.1" required /></td>
+					<td><input type="text" value="127.0.0.1" name="server" required /></td>
 				</tr>
 
 				<tr>
 					<td>@login_username</td>
-					<td><input type="text" id="login_username" required /></td>
+					<td><input type="text" name="username" required value="Guillaume" /></td>
 				</tr>
 
 				<tr>
 					<td>@login_password</td>
-					<td><input type="password" id="login_password" required /></td>
+					<td><input id="login_form_password" type="password" name="password" required /></td>
 				</tr>
 			</table>
 			<input type="submit" id="login_connect_button" value="@login_connect_button" />
 			</form>
 		</div>
+
+		<!--<div id="setup_state_form" class="hide">
+			<h1>@admistrator_account_creation_title</h1>
+			<form id="create_admin_form" data-js-event="create_admin_form">
+				<table>
+					<tr>
+						<td>@administrator_username</td>
+						<td><input type="text" name="username" required minlength="6" /></td>
+					</tr>
+					<tr>
+						<td>@login_password</td>
+						<td><input type="password" name="password" required /></td>
+					</tr>
+					<tr>
+						<td>@login_confirm_password</td>
+						<td><input type="password" id="administrator_password_confirmation" name="password_confirmation" required /></td>
+					</tr>
+				</table>
+				<input type="submit" id="create_admin_button" value="@create_button" />
+			</form>
+		</div>-->
     </div>
+
+	<div id="left_bar">
+		<div id="left_bar_main_items">
+			<h2>@rooms_title</h2>
+			<a id="create_room_button" title="@create_room" class="dialog_button" data-dialog-to-open="create_room">+</a>
+			<div id="rooms_list">
+				<!--<div class="bar_item"><div class="vignette" style="background: #5a3dc6;"></div>Business</div>
+				<div class="bar_item bar_item_selected" style="background: #e81853;"><div class="vignette" style="background: white;"></div>Dev</div>
+				<div class="bar_item"><div class="vignette" style="background: #3cc573;"></div>Visuel</div>-->
+			</div>
+
+			<h2>@peoples_title</h2>
+		</div>
+
+		<div id="left_bar_admin_tools" class="hide">
+			<h2>@admin_tools</h2>
+			<div class="bar_item activated" id="b_tab_admin_users"><div class="vignette" style="background: #5a3dc6;"></div>@admin_users_manager_label</div>
+		</div>
+	</div>
+
+	<header>
+		<div class="nav_buttons">< ></div>
+		<div id="global_path_title"><span>Dev</span></div>
+		<a id="admin_tools_button" data-permission-any="ADMIN">@admin_tools</a>
+		<div class="search_bar_container"><form><input type="text" placeholder="@search_default_text" /></form></div>
+	</header>
+
+	<div class="right_tabs">
+		<span>@attachements_title</span>
+		<span>@media_title</span>
+	</div>
+
+	<div class="main_frame">
+		<div id="main_content">
+			<div id="create_new_conv_button" data-dialog-to-open="create_thread" class="dialog_button">@create_new_thread</div>
+			<table class="item_list">
+				<tr>
+					<td class="item_name" style="font-weight: bold;">General chat</td>
+					<td><strong>Guillaume:</strong> On utilise les 2 premiers octets du SHA-256 du raw mot de passe, on converti en signed int 16 (Int16). Si the nombre est négatif, on multiplie par -1 pour obtenir un nombre positif. Ensuite, si ce nombre positif est inférieur à minIters, on l'ajoute à minIters...</td>
+				</tr>
+			</table>
+
+		</div>
+
+		<div class="conv_msg_submit_form" style="display: none;">
+			<form id="conv_msg_submit_form">
+				<textarea id="conv_msg_form_textarea"></textarea>
+				<input type="submit" value="@msg_send_button" />
+			</form>
+		</div>
+
+		<!---<div id="tab_admin_users" class="hide">
+			<form id="admin_create_user" data-js-event="create_user_admin">
+				<table>
+					<tr>
+						<td>@administrator_username</td>
+						<td><input type="text" name="username" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>-->
+
+		<!-- Dialogs -->
+		<div class="dialog" id="dialog_create_room">
+			<h2>@create_room</h2>
+			<form data-submit-signal="create_new_room">
+				<table>
+					<tr>
+						<td>@name_label</td>
+						<td><input type="text" value="" name="name" required /></td>
+					</tr>
+
+					<tr>
+						<td><input type="submit" value="@create_button" /></td>
+						<td><input type="button" value="@cancel_button" class="close_dialog_button" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<div class="dialog" id="dialog_create_thread">
+			<h2>@create_new_thread</h2>
+			<form data-submit-signal="create_new_thread">
+				<table>
+					<tr>
+						<td>@title_label</td>
+						<td><input type="text" value="" name="title" required /></td>
+					</tr>
+
+					<tr>
+						<td><input type="submit" value="@create_button" /></td>
+						<td><input type="button" value="@cancel_button" class="close_dialog_button" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+	</div>
     
     <div id="status_bar" class="">@unconnected_status</div>
+
+	<!-- Screens -->
+	<div class="screen hide" id="register_user">
+		<h2>@register_new_user</h2>
+		<form data-js-event="register_new_user_form">
+			<table>
+				<tr>
+					<td>@administrator_username</td>
+					<td><input type="text" name="username" required /></td>
+				</tr>
+				<tr>
+					<td>@login_password</td>
+					<td><input type="password" name="password" required /></td>
+				</tr>
+			</table>
+			<input type="submit" value="@create_button" />
+		</form>
+	</div>
+
 </body>
 </html>

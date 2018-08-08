@@ -4,37 +4,37 @@
 	top: 0; left: 0; bottom: 32px;
 	width: 100%;
 	color: white;
-	z-index: 100;
+	z-index: 1;
 }
 
-.login_form {
-	width: 432px; height:199px;
+#login_form, #setup_state_form {
+	width: 430px; height:199px;
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
 }
 
-.login_form h1 {
+#login_container h1 {
 	margin: 0;
 	margin-bottom: 20px;
 }
 
-.login_form table {
+#login_container table {
 	width: 100%;
 	color: white;
 }
 
-.login_form table td
+#login_container table td
 {
 	min-width: 120px;
 }
 
-.login_form table input
+#login_container table input
 {
 	width: 100%;
 }
 
-#login_connect_button {
+#login_container input[type=submit] {
 	float: right;
 	margin-right: 3px;
 	margin-top: 3px;

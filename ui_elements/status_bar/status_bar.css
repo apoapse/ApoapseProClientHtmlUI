@@ -6,6 +6,7 @@
 	padding-left: 9px;
 	line-height: 32px;
 	font-size: 14px;
+	z-index: 10;
 }
 
 .status_bar_error {
