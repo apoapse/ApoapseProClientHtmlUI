@@ -50,7 +50,7 @@
 }
 
 /*---------------------------------------------*/
-#create_new_conv_button {
+#create_new_thread_button {
 	background: white;
     float: right;
     padding: 5px;
@@ -60,6 +60,6 @@
     color: gray;
 }
 
-#create_new_conv_button:active {
+#create_new_thread_button:active {
 	border: 3px solid #89efea !important;
 }

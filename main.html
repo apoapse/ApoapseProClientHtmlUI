@@ -97,14 +97,10 @@
 
 	<div class="main_frame">
 		<div id="main_content">
-			<div id="create_new_conv_button" data-dialog-to-open="create_thread" class="dialog_button">@create_new_thread</div>
-			<table class="item_list">
-				<tr>
-					<td class="item_name" style="font-weight: bold;">General chat</td>
-					<td><strong>Guillaume:</strong> On utilise les 2 premiers octets du SHA-256 du raw mot de passe, on converti en signed int 16 (Int16). Si the nombre est négatif, on multiplie par -1 pour obtenir un nombre positif. Ensuite, si ce nombre positif est inférieur à minIters, on l'ajoute à minIters...</td>
-				</tr>
-			</table>
+			<div id="create_new_thread_button" data-dialog-to-open="create_thread" class="dialog_button">@create_new_thread</div>
+			<div id="threads_list">
 
+			</div>
 		</div>
 
 		<div class="conv_msg_submit_form" style="display: none;">
@@ -149,7 +145,7 @@
 				<table>
 					<tr>
 						<td>@title_label</td>
-						<td><input type="text" value="" name="title" required /></td>
+						<td><input type="text" value="" name="name" required /></td>
 					</tr>
 
 					<tr>

@@ -80,5 +80,35 @@ $(document).on("onReady", function ()
 	});
 
 	/*---------------------------------------------*/
+	function GenerateThreadInListHTML(threadData)
+	{
+		var htmlContent = "";
 
+		htmlContent += '<table class="item_list"><tr>';
+		htmlContent += '<td class="item_name listed_thread" style="font-weight: bold;">' + threadData.name + '</td>';
+		htmlContent += '<td><strong>TODO username:</strong> TODO message preview</td>';
+		htmlContent += '</tr></table>';
+
+		return htmlContent;
+	}
+
+	$(document).on("on_added_new_thread", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		$("#threads_list").prepend(GenerateThreadInListHTML(data));
+	});
+
+	$(document).on("threads_list_update", function (event, data)
+	{
+		data = JSON.parse(data);
+		var htmlContent = "";
+
+		$.each(data.threads, function (key, value)
+		{
+			htmlContent += GenerateThreadInListHTML(value);
+		});
+
+		$("#threads_list").html(htmlContent);
+	});
 });
