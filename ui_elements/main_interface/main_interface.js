@@ -1,4 +1,4 @@
-﻿
+﻿rooms = {};
 
 function DrawListItem(title, description)
 {
@@ -56,6 +56,8 @@ $(document).on("onReady", function ()
 	$(document).on("rooms_update", function (event, data)
 	{
 		data = JSON.parse(data);
+		rooms = data.rooms;
+
 		var htmlContent = "";
 		
 		$.each(data.rooms, function (key, value)
@@ -66,6 +68,11 @@ $(document).on("onReady", function ()
 		});
 
 		$("#rooms_list").html(htmlContent);
+
+		if (Object.keys(rooms).length > 0)
+		{
+			$("#create_new_thread_button").show();
+		}
 
 		$("#rooms_list .bar_item").click(function()
 		{
