@@ -98,7 +98,7 @@ $(document).on("onReady", function ()
 
 		htmlContent += '<table class="item_list listed_thread" data-id=' + threadData.internal_id + '><tr>';
 		htmlContent += '<td class="item_name" style="font-weight: bold;">' + threadData.name + '</td>';
-		htmlContent += '<td><strong>TODO username:</strong> TODO message preview</td>';
+		htmlContent += '<td><strong>' + threadData.lastMsgAuthor + '</strong> ' + threadData.lastMsgText + '</td>';
 		htmlContent += '</tr></table>';
 
 		return htmlContent;
