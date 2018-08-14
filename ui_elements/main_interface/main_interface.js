@@ -1,9 +1,33 @@
 ﻿rooms = {};
 
+/*---------------------------------------------*/
+$(document).on("onReady", function ()
+{
+	$("form").submit(function()
+	{
+		var data = {};
+
+		$(this).find("input[type=text], input[type=password], textarea, select").each(function ()
+		{
+			var fieldName = $(this).attr("name");
+
+			data[fieldName] = $(this).val();
+		});
+
+		$(".dialog").fadeOut(500);
+		$(this)[0].reset();
+
+		var signalName = $(this).attr("data-submit-signal");
+		ApoapseAPI.SendSignal(signalName, JSON.stringify(data));
+
+		return false;
+	});
+});
+
+/*---------------------------------------------*/
 function DrawListItem(title, description)
 {
 	var html = '<table class="item_list"><tr><td class="item_name" style="font-weight: bold;">' + title + '</td><td>' + description + '</td></tr></table>';
-
 }
 
 $(document).on("show_setup_state", function (event, data)
@@ -32,26 +56,6 @@ $(document).on("onReady", function ()
 		$(".dialog").fadeOut(500);
 	});
 
-	$(".dialog form").submit(function()
-	{
-		var data = {};
-
-		$(this).find("input[type=text], input[type=password], textarea, select").each(function ()
-		{
-			var fieldName = $(this).attr("name");
-
-			data[fieldName] = $(this).val();
-		});
-
-		$(".dialog").fadeOut(500);
-		$(this)[0].reset();
-
-		var signalName = $(this).attr("data-submit-signal");
-		ApoapseAPI.SendSignal(signalName, JSON.stringify(data));
-
-		return false;
-	});
-
 	/*---------------------------------------------*/
 	$(document).on("rooms_update", function (event, data)
 	{
@@ -78,6 +82,7 @@ $(document).on("onReady", function ()
 		{
 			$("#rooms_list .bar_item").removeClass("selected");
 			$(this).addClass("selected");
+			$("#create_new_thread_button").show();
 
 			var signalData = {};
 			signalData.internalId = $(this).attr("data-id");
@@ -91,8 +96,8 @@ $(document).on("onReady", function ()
 	{
 		var htmlContent = "";
 
-		htmlContent += '<table class="item_list"><tr>';
-		htmlContent += '<td class="item_name listed_thread" style="font-weight: bold;">' + threadData.name + '</td>';
+		htmlContent += '<table class="item_list listed_thread" data-id=' + threadData.internal_id + '><tr>';
+		htmlContent += '<td class="item_name" style="font-weight: bold;">' + threadData.name + '</td>';
 		htmlContent += '<td><strong>TODO username:</strong> TODO message preview</td>';
 		htmlContent += '</tr></table>';
 
@@ -104,6 +109,8 @@ $(document).on("onReady", function ()
 		data = JSON.parse(data);
 
 		$("#threads_list").prepend(GenerateThreadInListHTML(data));
+
+		$(document).trigger("OnThreadListUpdate");
 	});
 
 	$(document).on("threads_list_update", function (event, data)
@@ -117,5 +124,64 @@ $(document).on("onReady", function ()
 		});
 
 		$("#threads_list").html(htmlContent);
+
+		$(document).trigger("OnThreadListUpdate");
+	});
+
+	$(document).on("OnThreadListUpdate", function (event)
+	{
+		$("#threads_list").show();
+		$("#thread_msgs").hide();
+		$("#thread_msg_submit_form").hide();
+	});
+
+	$("#threads_list").on("click", ".listed_thread", function()
+	{
+		var signalData = {};
+		signalData.internalId = $(this).attr("data-id");
+		
+		ApoapseAPI.SendSignal("loadThread", JSON.stringify(signalData));
+	});
+
+
+	/*---------------------------------------------*/
+	function GenerateMessageInListHTML(messageData)
+	{
+		var htmlContent = "";
+
+		htmlContent += '<div class="conv_message" data-id="' + messageData.internal_id + '">';
+		htmlContent += '<div> ' + messageData.author + ' <span class="msg_send_date"> PRINT - ' + messageData.sent_time + '</span ></div>';
+		htmlContent += '<table><tr><td><img style="background-image: url(ui_elements/GP_avatar.jpg);" /></td><td valign="top">' + messageData.content + '</td></tr></table>';
+		htmlContent += '</div>';
+
+		return htmlContent;
+	}
+
+	$(document).on("open_thread", function (event, data)
+	{
+		data = JSON.parse(data);
+		var htmlContent = "";
+
+		$.each(data.messages, function (key, value)
+		{
+			htmlContent += GenerateMessageInListHTML(value);
+		});
+
+		$("#thread_msgs").html(htmlContent);
+		$("#threads_list").hide();
+		$("#thread_msgs").show();
+		$("#thread_msg_submit_form").show();
+		$("#create_new_thread_button").hide();
+
+		$("#thread_msgs").scrollTop($("#thread_msgs").prop("scrollHeight"));	// Scoll to botton at load
+	});
+
+	$(document).on("added_new_message", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		$("#thread_msgs").append(GenerateMessageInListHTML(data));
+
+		$("#thread_msgs").animate({ scrollTop: $('#thread_msgs').prop("scrollHeight")}, 1000);
 	});
 });

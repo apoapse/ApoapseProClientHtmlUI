@@ -1,6 +1,7 @@
 /*---------------------------------------------*/
 .conv_message {
-	margin-bottom: 15px; margin-right: 65px;
+    margin-bottom: 15px; margin-right: 65px;
+    user-select: initial;
 }
 
 .conv_message div {
@@ -62,4 +63,24 @@
 
 #create_new_thread_button:active {
 	border: 3px solid #89efea !important;
+}
+
+#thread_msgs {
+    position: absolute;
+    bottom: 129px;
+    left: 0;
+    top: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+#thread_msg_submit_form {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 14px;
+}
+
+#thread_msg_submit_form input[type=submit] {
+    margin-top: 10px;
 }

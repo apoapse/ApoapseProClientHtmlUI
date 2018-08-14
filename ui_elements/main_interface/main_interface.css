@@ -96,7 +96,6 @@ header #admin_tools_button {
 .main_frame {
 	position: absolute;
 	left: 319px; top: 70px; right: 0; bottom: 14px;
-	overflow: scroll;
 }
 
 #main_content {

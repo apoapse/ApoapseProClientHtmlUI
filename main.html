@@ -101,11 +101,15 @@
 			<div id="threads_list">
 
 			</div>
+
+			<div id="thread_msgs" class="hide">
+
+			</div>
 		</div>
 
-		<div class="conv_msg_submit_form" style="display: none;">
-			<form id="conv_msg_submit_form">
-				<textarea id="conv_msg_form_textarea"></textarea>
+		<div class="thread_msg_submit_form" id="thread_msg_submit_form" class="hide">
+			<form data-submit-signal="send_new_message">
+				<textarea name="msg_content" spellcheck="false"></textarea>
 				<input type="submit" value="@msg_send_button" />
 			</form>
 		</div>
