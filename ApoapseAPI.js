@@ -16,10 +16,7 @@ var ApoapseAPI =
 				{
 					if (typeof callbackEvent !== 'undefined')
 					{
-						if (result !== '')
-							$(document).trigger(callbackEvent, result);
-						else
-							$(document).trigger(callbackEvent);
+						callbackEvent(null, result);
 					}
 				}
 			});
