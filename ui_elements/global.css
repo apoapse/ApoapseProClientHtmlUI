@@ -37,6 +37,11 @@ textarea {
 	font-family: sans-serif;
 }
 
+input:disabled, textarea:disabled {
+	background: white !important;
+	color: #c3c3c3 !important;
+}
+
 .hide {
 	display: none;
 }

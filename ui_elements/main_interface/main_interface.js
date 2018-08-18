@@ -30,18 +30,6 @@ function DrawListItem(title, description)
 	var html = '<table class="item_list"><tr><td class="item_name" style="font-weight: bold;">' + title + '</td><td>' + description + '</td></tr></table>';
 }
 
-$(document).on("show_setup_state", function (event, data)
-{
-	$("#register_user").fadeIn(500);
-});
-
-$(document).on("register_new_user_form", function (event, data)
-{
-	ApoapseAPI.SendSignal("register_user", JSON.stringify(data));
-
-	$("#register_user").fadeOut(500);
-});
-
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
@@ -49,11 +37,29 @@ $(document).on("onReady", function ()
 	{
 		var dialog = $(this).attr("data-dialog-to-open");
 		$("#dialog_" + dialog).fadeIn(500);
+
+		$(document).trigger("on_opened_dialog_" + dialog);
 	});
 
 	$(".close_dialog_button").click(function ()
 	{
-		$(".dialog").fadeOut(500);
+		$(".dialog").fadeOut(400);
+	});
+
+	/*---------------------------------------------*/
+	$(document).on("on_opened_dialog_invite_user", function ()
+	{
+		ApoapseAPI.SendSignal("request_random_password", "", function(event, data)
+		{
+			data = JSON.parse(data);
+
+			$("#registerUserPasswordField").val(data.randomPassword);
+		});
+	});
+
+	$(document).on("clear_temporary_password", function ()
+	{
+		$("#registerUserPasswordField").val("");	// We make sure the UI do not keep the temporary password
 	});
 
 	/*---------------------------------------------*/

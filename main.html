@@ -41,27 +41,6 @@
 			<input type="submit" id="login_connect_button" value="@login_connect_button" />
 			</form>
 		</div>
-
-		<!--<div id="setup_state_form" class="hide">
-			<h1>@admistrator_account_creation_title</h1>
-			<form id="create_admin_form" data-js-event="create_admin_form">
-				<table>
-					<tr>
-						<td>@administrator_username</td>
-						<td><input type="text" name="username" required minlength="6" /></td>
-					</tr>
-					<tr>
-						<td>@login_password</td>
-						<td><input type="password" name="password" required /></td>
-					</tr>
-					<tr>
-						<td>@login_confirm_password</td>
-						<td><input type="password" id="administrator_password_confirmation" name="password_confirmation" required /></td>
-					</tr>
-				</table>
-				<input type="submit" id="create_admin_button" value="@create_button" />
-			</form>
-		</div>-->
     </div>
 
 	<div id="left_bar">
@@ -77,16 +56,16 @@
 			<h2>@peoples_title</h2>
 		</div>
 
-		<div id="left_bar_admin_tools" class="hide">
+		<!--<div id="left_bar_admin_tools" class="hide">
 			<h2>@admin_tools</h2>
 			<div class="bar_item activated" id="b_tab_admin_users"><div class="vignette" style="background: #5a3dc6;"></div>@admin_users_manager_label</div>
-		</div>
+		</div>-->
 	</div>
 
 	<header>
 		<div class="nav_buttons">< ></div>
 		<div id="global_path_title"><span>Dev</span></div>
-		<a id="admin_tools_button" data-permission-any="ADMIN">@admin_tools</a>
+		<a id="admin_tools_button" class="dialog_button" data-permission-any="ADMIN" data-dialog-to-open="invite_user">@invite_user</a>
 		<div class="search_bar_container"><form><input type="text" placeholder="@search_default_text" /></form></div>
 	</header>
 
@@ -113,17 +92,6 @@
 				<input type="submit" value="@msg_send_button" />
 			</form>
 		</div>
-
-		<!---<div id="tab_admin_users" class="hide">
-			<form id="admin_create_user" data-js-event="create_user_admin">
-				<table>
-					<tr>
-						<td>@administrator_username</td>
-						<td><input type="text" name="username" /></td>
-					</tr>
-				</table>
-			</form>
-		</div>-->
 
 		<!-- Dialogs -->
 		<div class="dialog" id="dialog_create_room">
@@ -160,18 +128,40 @@
 			</form>
 		</div>
 
+		<div class="dialog" id="dialog_invite_user">
+			<h2>@invite_user</h2>
+			<form data-submit-signal="register_user">
+				<table>
+					<tr>
+						<td>@login_username</td>
+						<td><input type="text" value="" name="username" required /></td>
+					</tr>
+
+					<tr>
+						<td>@login_password</td>
+						<td><input id="registerUserPasswordField" type="text" value="" name="password" required disabled /></td>
+					</tr>
+
+					<tr>
+						<td><input type="submit" value="@invite_button" /></td>
+						<td><input type="button" value="@cancel_button" class="close_dialog_button" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
 	</div>
     
     <div id="status_bar" class="">@unconnected_status</div>
 
 	<!-- Screens -->
-	<div class="screen hide" id="register_user">
-		<h2>@register_new_user</h2>
-		<form data-js-event="register_new_user_form">
+	<div class="screen hide" id="install_screen">
+		<h2>@admistrator_account_creation_title</h2>
+		<form data-js-event="apoapse_install_form">
 			<table>
 				<tr>
 					<td>@administrator_username</td>
-					<td><input type="text" name="username" required /></td>
+					<td><input type="text" name="username" id="admin_create_account_username" required /></td>
 				</tr>
 				<tr>
 					<td>@login_password</td>
@@ -179,6 +169,19 @@
 				</tr>
 			</table>
 			<input type="submit" value="@create_button" />
+		</form>
+	</div>
+
+	<div class="screen hide" id="first_connection">
+		<h2>@first_user_connection_title</h2>
+		<form data-js-event="user_first_connection_form">
+			<table>
+				<tr>
+					<td>@login_password</td>
+					<td><input type="password" name="password" required /></td>
+				</tr>
+			</table>
+			<input type="submit" value="@validate_button" />
 		</form>
 	</div>
 

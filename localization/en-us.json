@@ -11,7 +11,8 @@
 "connecting_status": "Connecting...",
 "connected_waiting_authentication": "Connected to the server. Awaiting authentication...",
 "connected_and_authenticated_status": "Connected",
-"connected_in_setup_phase_status": "Connected. In setup phase.",
+"connected_in_setup_phase_status": "Connected. Apoapse install.",
+"connected_first_user_connection_status": "Connected. First connection.",
 "rooms_title": "Rooms",
 "peoples_title": "Peoples",
 "search_default_text": "Search",
@@ -24,6 +25,7 @@
 "administrator_username": "Username",
 "create_button": "Create",
 "cancel_button": "Cancel",
+"validate_button": "Validate",
 "temporary_password_title": "Temporary password",
 "generating_encryption_keys_status": "Generating encryption keys...",
 "password_does_not_match_status": "The two passwords provided are not equals",
@@ -33,5 +35,9 @@
 "create_room": "Create a room",
 "name_label": "Name",
 "title_label": "Title",
-"create_new_thread": "Create new thread"
+"create_new_thread": "Create new thread",
+"invite_user": "Invite user",
+"invite_button": "Invite",
+"apoapse_install": "Apoapse Install",
+"first_user_connection_title": "First connection"
 }
