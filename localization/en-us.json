@@ -23,6 +23,8 @@
 "invalid_login_input": "Invalid login identifiers",
 "admistrator_account_creation_title": "Administrator account creation",
 "administrator_username": "Username",
+"administrator_nickname": "Display name",
+"nickname_label": "Display name",
 "create_button": "Create",
 "cancel_button": "Cancel",
 "validate_button": "Validate",
