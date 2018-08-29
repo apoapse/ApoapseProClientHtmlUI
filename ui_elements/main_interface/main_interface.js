@@ -1,4 +1,9 @@
 ﻿rooms = {};
+selectedRoom = {};
+selectedThread = {};
+
+var ViewEnum = {"room": 1, "thread": 2 }
+currentPage = ViewEnum.room;
 
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
@@ -33,6 +38,26 @@ function DrawListItem(title, description)
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
+	function UpdateSpeedBar()
+	{
+		if (currentPage == ViewEnum.thread)
+		{
+			$("#global_path_title").html('<span id="title_room_link" data-room-id="' + selectedRoom.internal_id +'">' + selectedRoom.name + '</span> > <span class="selected_title">' + selectedThread.name + '</span>');
+		}
+		else if (currentPage == ViewEnum.room)
+		{
+			$("#global_path_title").html("<span>" + selectedRoom.name + "</span>");
+		}
+
+		$("#title_room_link").click(function()
+		{
+			var signalData = {};
+			signalData.internalId = $(this).attr("data-room-id");
+			
+			ApoapseAPI.SendSignal("loadRoomUI", JSON.stringify(signalData));
+		});
+	}
+
 	$(".dialog_button").click(function ()
 	{
 		var dialog = $(this).attr("data-dialog-to-open");
@@ -102,9 +127,9 @@ $(document).on("onReady", function ()
 	{
 		var htmlContent = "";
 
-		htmlContent += '<table class="item_list listed_thread" data-id=' + threadData.internal_id + '><tr>';
+		htmlContent += '<table class="item_list listed_thread" id="thread_dbid_' + threadData.dbid + '" data-id=' + threadData.internal_id + '><tr>';
 		htmlContent += '<td class="item_name" style="font-weight: bold;">' + threadData.name + '</td>';
-		htmlContent += '<td><strong>' + threadData.lastMsgAuthor + '</strong> ' + threadData.lastMsgText + '</td>';
+		htmlContent += '<td><strong>' + threadData.lastMsgAuthor + '</strong> <span class="thread_msg_preview_content">' + threadData.lastMsgText + '</span></td>';
 		htmlContent += '</tr></table>';
 
 		return htmlContent;
@@ -119,7 +144,7 @@ $(document).on("onReady", function ()
 		$(document).trigger("OnThreadListUpdate");
 	});
 
-	$(document).on("threads_list_update", function (event, data)
+	$(document).on("OnOpenRoom", function (event, data)
 	{
 		data = JSON.parse(data);
 		var htmlContent = "";
@@ -132,13 +157,26 @@ $(document).on("onReady", function ()
 		$("#threads_list").html(htmlContent);
 
 		$(document).trigger("OnThreadListUpdate");
+
+		selectedRoom = data.room;
+		UpdateSpeedBar();
 	});
 
 	$(document).on("OnThreadListUpdate", function (event)
 	{
+		currentPage = ViewEnum.room;
+		
 		$("#threads_list").show();
 		$("#thread_msgs").hide();
 		$("#thread_msg_submit_form").hide();
+	});
+
+	$(document).on("updateThreadMsgPreview", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		$("#thread_dbid_" + data.dbid + " strong").html(data.lastMsgAuthor);
+		$("#thread_dbid_" + data.dbid + " .thread_msg_preview_content").html(data.lastMsgText);
 	});
 
 	$("#threads_list").on("click", ".listed_thread", function()
@@ -180,6 +218,10 @@ $(document).on("onReady", function ()
 		$("#create_new_thread_button").hide();
 
 		$("#thread_msgs").scrollTop($("#thread_msgs").prop("scrollHeight"));	// Scoll to botton at load
+
+		currentPage = ViewEnum.thread;
+		selectedThread = data.info;
+		UpdateSpeedBar();
 	});
 
 	$(document).on("added_new_message", function (event, data)

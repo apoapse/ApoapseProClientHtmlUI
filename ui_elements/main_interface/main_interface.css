@@ -75,10 +75,17 @@ header #global_path_title {
 	margin-left: -10px;
 	position: absolute;
 	top: 8px; left: 101px;
+	font-size: 18px;
 }
 
-header #global_path_title span {
-	color: #e81853; font-weight: bold;
+header #global_path_title .selected_title {
+	color: #e81853;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+header #global_path_title #title_room_link:hover {
+	color: #24a5a0;
 }
 
 header .search_bar_container {
