@@ -35,6 +35,10 @@
     margin-left: -3px; margin-right: 3px;
 }
 
+.conv_message.unread {
+    background: #d0d0d0;
+}
+
 /*---------------------------------------------*/
 .conv_msg_submit_form {
 	margin-right: 65px;

@@ -30,12 +30,6 @@ $(document).on("onReady", function ()
 });
 
 /*---------------------------------------------*/
-function DrawListItem(title, description)
-{
-	var html = '<table class="item_list"><tr><td class="item_name" style="font-weight: bold;">' + title + '</td><td>' + description + '</td></tr></table>';
-}
-
-/*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
 	function UpdateSpeedBar()
@@ -72,6 +66,30 @@ $(document).on("onReady", function ()
 	});
 
 	/*---------------------------------------------*/
+	$(document).on("UpdateUnreadMessagesCount", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		if (currentPage == ViewEnum.room && selectedRoom.dbid == data.roomDbId)
+		{
+			$("#thread_dbid_" + data.threadDbId + " .thread_in_list_unread_count").html(data.threadUnreadMsgCount);
+		}
+		else if (currentPage == ViewEnum.thread && data.threadDbId == selectedThread.dbId)
+		{
+			if (data.status == "marked_as_read")
+			{
+				$("#message_" + data.messageDbId).removeClass("unread");
+			}
+			else if (data.status == "marked_as_unread")
+			{
+				$("#message_" + data.messageDbId).addClass("unread");
+			}
+		}
+
+		$("#room_in_bar_" + data.roomDbId + " .room_in_list_unread_count").html(data.roomUnreadMsgCount);
+	});
+
+	/*---------------------------------------------*/
 	$(document).on("on_opened_dialog_invite_user", function ()
 	{
 		ApoapseAPI.SendSignal("request_random_password", "", function(event, data)
@@ -99,7 +117,7 @@ $(document).on("onReady", function ()
 		{
 			var classes = (value.isSelected) ? "selected" : "";
 			
-			htmlContent += '<div class="bar_item '+ classes + '" data-id="' + value.internal_id + '"><div class="vignette" style="background: white;"></div>' + value.name + '</div>';
+			htmlContent += '<div class="bar_item '+ classes + '" data-id="' + value.internal_id + '" id="room_in_bar_' + value.dbid + '"><div class="vignette" style="background: white;"></div>' + value.name + '<div class="room_in_list_unread_count">' + value.unreadMessagesCount + '</div></div>';
 		});
 
 		$("#rooms_list").html(htmlContent);
@@ -129,7 +147,7 @@ $(document).on("onReady", function ()
 
 		htmlContent += '<table class="item_list listed_thread" id="thread_dbid_' + threadData.dbid + '" data-id=' + threadData.internal_id + '><tr>';
 		htmlContent += '<td class="item_name" style="font-weight: bold;">' + threadData.name + '</td>';
-		htmlContent += '<td><strong>' + threadData.lastMsgAuthor + '</strong> <span class="thread_msg_preview_content">' + threadData.lastMsgText + '</span></td>';
+		htmlContent += '<td><strong>' + threadData.lastMsgAuthor + '</strong> <span class="thread_msg_preview_content">' + threadData.lastMsgText + '</span><div class="thread_in_list_unread_count">' + threadData.unreadMessagesCount + '</div></td>';
 		htmlContent += '</tr></table>';
 
 		return htmlContent;
@@ -159,6 +177,7 @@ $(document).on("onReady", function ()
 		$(document).trigger("OnThreadListUpdate");
 
 		selectedRoom = data.room;
+		currentPage = ViewEnum.room;
 		UpdateSpeedBar();
 	});
 
@@ -187,13 +206,18 @@ $(document).on("onReady", function ()
 		ApoapseAPI.SendSignal("loadThread", JSON.stringify(signalData));
 	});
 
-
 	/*---------------------------------------------*/
 	function GenerateMessageInListHTML(messageData)
 	{
 		var htmlContent = "";
+		var additionalClasses = "";
 
-		htmlContent += '<div class="conv_message" data-id="' + messageData.internal_id + '">';
+		if (!messageData.isRead)
+		{
+			additionalClasses += "unread";
+		}
+
+		htmlContent += '<div class="conv_message ' + additionalClasses + '" data-id="' + messageData.internal_id + '" data-dbid="' + messageData.dbid + '" id="message_' + messageData.dbid +'">';
 		htmlContent += '<div> ' + messageData.author + ' <span class="msg_send_date"> PRINT - ' + messageData.sent_time + '</span ></div>';
 		htmlContent += '<table><tr><td><img style="background-image: url(ui_elements/GP_avatar.jpg);" /></td><td valign="top">' + messageData.content + '</td></tr></table>';
 		htmlContent += '</div>';
@@ -231,5 +255,15 @@ $(document).on("onReady", function ()
 		$("#thread_msgs").append(GenerateMessageInListHTML(data));
 
 		$("#thread_msgs").animate({ scrollTop: $('#thread_msgs').prop("scrollHeight")}, 1000);
+	});
+
+	$("#thread_msgs").on("mouseenter", ".unread", function()
+	{
+		var signalData = {};
+		signalData.dbid = $(this).attr("data-dbid");
+		
+		$("#message_" + signalData.dbid).removeClass("unread");
+		
+		ApoapseAPI.SendSignal("mark_message_as_read", JSON.stringify(signalData));
 	});
 });
