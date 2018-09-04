@@ -9,3 +9,10 @@ $(document).on("update_status_bar", function (event, data)
 	else
 		$("#status_bar").removeClass("status_bar_error");
 });
+
+$(document).on("onReady", function ()
+{
+	$("#disconnect_button").click(function(){
+		ApoapseAPI.SendSignal("disconnect", "{}");
+	});
+});
