@@ -1,0 +1,30 @@
+.listed_thread .msg_preview {
+	font-size: 12px;
+	margin-bottom: 18px;
+	text-align: justify;
+}
+
+.listed_thread h2 {
+	margin: 0;
+	margin-bottom: 2px;
+}
+
+.listed_thread .avatar_large {
+	width: 32px; height: 32px;
+}
+
+.listed_thread .unread_count {
+	display: inline-block;
+	font-size: 16px;
+	background: white;
+	width: 20px; height: 20px;
+	text-align: center;
+	border-radius: 20px;
+	line-height: 21px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.listed_thread:hover .msg_preview {
+	color: black;
+}

@@ -1,0 +1,39 @@
+#login {
+	position: fixed;
+	top: 0; bottom: 0; left: 0; right: 0;
+	background: url("../imgs/login_background.jpg");
+	background-size: cover;
+}
+
+#login form {
+	display: block;
+}
+
+.login_form_container {
+	position: fixed;
+	top: 0; bottom: 0; left: 150px;
+	width: 400px;
+	background: white;
+	font-size: 18px;
+	color: #5f5f5f;
+	padding: 20px;
+}
+
+.login_form_container label {
+	display: block;
+	margin-bottom: 15px;
+}
+
+.login_form_container input {
+	font-size: 15px;
+	border: none; border-radius: 4px;
+	background: #f2f2f2;
+	padding: 4px;
+	float: right;
+	width: 220px;
+}
+
+.login_form_container input[type=submit] {
+	color: white;
+	font-weight: bold;
+}

@@ -1,0 +1,21 @@
+#return_previous, #return_next {
+	font-size: 28px;
+	color: #a5a5a5;
+	padding-left: 3px; padding-right: 3px;
+	float: left;
+}
+
+.speedbar {
+	font-size: 19px;
+	display: inline-block;
+	margin-left: 12px;
+}
+
+.speedbar span {
+	display: inline-block;
+	margin-left: 3px; margin-right: 3px; margin-top: 1px;
+}
+
+.speedbar .current_page {
+	font-weight: bold;
+}

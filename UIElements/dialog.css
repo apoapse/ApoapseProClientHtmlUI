@@ -1,0 +1,77 @@
+.dialog {
+	position: fixed;
+	width: 1000px;
+	height: 600px;
+	background: #f1f3f4;
+	z-index: 100;
+}
+
+/************************************************/
+.dialog .top_bar {
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.dialog .top_bar label {
+	display: inline-block;
+}
+
+.dialog .top_bar input[type=reset] {
+	position: absolute;
+	right: 45px; top: 2px;
+	border: none; border-radius: 3px;
+	padding: 3px; padding-left: 14px; padding-right: 14px;
+	background: #ebebeb;
+	font-size: 15px;
+	color: #787878;
+}
+
+.dialog .top_bar .dialog_close_button {
+	position: absolute;
+	right: 0;
+	font-size: 30px;
+}
+
+/************************************************/
+.dialog .left_panel {
+	width: 265px; height: 100%;
+	background: white;
+	position: absolute;
+	top: 0; bottom: 0; left: 0;
+	overflow: auto;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+.dialog .left_panel h2 {
+	padding: 0; margin: 0;
+	font-size: 20px;
+	font-weight: normal;
+	margin-bottom: 3px;
+}
+
+/************************************************/
+.dialog .right_panel {
+	position: absolute;
+	left: 265px; right: 0; top: 0; bottom: 0;
+	padding: 15px;
+	overflow: auto;
+}
+
+.dialog .right_panel label {
+	font-size: 14px;
+}
+
+.dialog .right_panel h2, h3 {
+	color: gray;
+	margin: 0; padding: 0;
+	margin-bottom: -12px;
+}
+
+.dialog .right_panel h2 {
+	font-size: 20px;
+}
+
+.dialog .right_panel h3 {
+	font-size: 16px;
+}

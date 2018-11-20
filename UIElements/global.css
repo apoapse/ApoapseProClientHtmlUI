@@ -1,0 +1,141 @@
+html, body {
+	background: #f1f3f4;
+	color: #464646;
+	font-family: 'Inter UI', sans-serif;
+	font-size: 1em;
+	cursor: default;
+	user-select: none;
+	min-width: 100%;
+	padding: 0; margin: 0;
+}
+
+/************************************************/
+input {
+	font-family: 'Inter UI', sans-serif;
+	color: #464646;
+	outline: none;
+}
+
+textarea {
+	width: 100%;
+	resize: vertical;
+	outline: none;
+}
+
+/************************************************/
+input[type="checkbox"] {
+	-webkit-appearance: none;
+	outline: none;
+}
+
+input[type="checkbox"]::after {
+	content: '';
+	display: block;
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	font-size: 17px;
+	line-height: 18px;
+}
+
+input[type="checkbox"]:checked::after {
+	content: '';
+}
+
+/************************************************/
+input[type="radio"] {
+	-webkit-appearance: none;
+	outline: none;
+}
+
+input[type="radio"]::after {
+	content: '';
+	display: block;
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 400;
+	font-size: 17px;
+	margin-left: -2px;
+}
+
+input[type="radio"]:checked::after {
+	content: '';
+	font-weight: 900;
+}
+
+/************************************************/
+.switch::after {
+	content: '' !important;
+	font-size: 24px !important;
+}
+
+.switch:checked::after {
+	content: '' !important;
+}
+
+/************************************************/
+label input {
+	margin-right: 7px;
+	margin-bottom: -2px;
+	float: left;
+}
+
+label {
+	display: block;
+	font-size: 14px;
+	color: gray;
+	white-space: nowrap;
+	line-height: 25px;
+}
+
+/************************************************/
+form {
+	margin: 0;
+	padding: 0;
+}
+
+/************************************************/
+table {
+	border-collapse: collapse;
+}
+
+/************************************************/
+.hide {
+	display: none;
+}
+
+.globalTextColor {
+	color: #ff8989;	/* TEMP */
+}
+
+.globalTextColor:hover {
+	color: #ff8989 !important;	/* TEMP */
+}
+
+.globalTextColorHoverOnly:hover {
+	color: #ff8989 !important;	/* TEMP */
+}
+
+.globalTextColorBackground {
+	background-color: #ff8989 !important;
+}
+
+.center_vertical {
+	transform: translate(0, -50%);
+	position: relative;
+	top: 50%;
+}
+
+.center_horizontal {
+	transform: translate(-50%, 0);
+	position: relative;
+	left: 50%;
+}
+
+.center_all_axis {
+	transform: translate(-50%, -50%);
+	position: relative;
+	top: 50%; left: 50%;
+}
+
+/*.clickable {
+	background: rgb(226, 141, 141)
+}*/

@@ -1,10 +1,36 @@
+function ResetLoginScreen()
+{
+	$("#login_connect_button").prop("disabled", false);
+	$("#login_connect_button").val("Connect");
+}
+
 $(document).on("login", function (event, data)
 {
 	$("#login_connect_button").prop("disabled", true);
 	$("#login_form_password").val("");
+	$("#login_connect_button").val("Connecting...");
+
 	ApoapseAPI.SendSignal("login", JSON.stringify(data));
 });
 
+$(document).on("connected_and_authenticated", function ()
+{
+	/*$("#login").animate({ width: 0 }, 900, function ()
+	{
+		$(this).hide();
+	});*/
+
+	$("#login").fadeOut(900);
+	ResetLoginScreen();
+});
+
+$(document).on("OnDisconnect", function ()
+{
+	ResetLoginScreen();
+	$("#login").show();
+});
+
+/*
 $(document).on("create_admin_form", function (event, data)
 {
 	$("#create_admin_button").prop("disabled", true);
@@ -32,7 +58,7 @@ $(document).on("OnDisconnect", function ()
 		$(this).show();
 	});
 
-	$("#login_form").show();
+	$("#login").show();
 });
 
 $(document).on("show_setup_state", function (event, data)
@@ -49,13 +75,7 @@ $(document).on("ShowFirstUserConnection", function ()
 	$("#first_connection").fadeIn(300);
 });
 
-$(document).on("connected_and_authenticated", function ()
-{
-	$("#login_container").animate({ width: 0 }, 900, function ()
-	{
-		$(this).hide();
-	});
-});
+
 
 $(document).on("apoapse_install_form", function (event, data)
 {
@@ -70,3 +90,4 @@ $(document).on("user_first_connection_form", function (event, data)
 
 	$("#first_connection").fadeOut(500);
 });
+*/

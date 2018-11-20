@@ -157,5 +157,24 @@ $(document).on("onReady", function ()
 
 			return false;
 		}
+		else if ($(this).hasAttr("data-submit-signal"))
+		{
+			var data = {};
+
+			$(this).find("input[type=text], input[type=password], textarea, select").each(function ()
+			{
+				var fieldName = $(this).attr("name");
+	
+				data[fieldName] = $(this).val();
+			});
+	
+			$(".dialog").fadeOut(500);
+			$(this)[0].reset();
+	
+			var signalName = $(this).attr("data-submit-signal");
+			ApoapseAPI.SendSignal(signalName, JSON.stringify(data));
+	
+			return false;
+		}
 	});
 });
