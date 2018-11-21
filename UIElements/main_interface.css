@@ -85,16 +85,18 @@
 	padding-top: 12px;
 }
 
-#press_enter_to_send_checkbox {
+.press_enter_to_send_label {
 	float: right;
 	margin-bottom: 20px;
 	margin-top: 7px;
+	font-size: 12px;
 }
 
 /************************************************/
 #panel_right {
 	padding-left: 80px;
 	white-space: nowrap;
+	overflow-y: auto; height: 100%;
 }
 
 #panel_right h2 {
@@ -106,6 +108,10 @@
 
 #panel_right .attachment_file .att_size {
 	display: none;
+}
+
+#thread {
+	overflow: auto; height: 100%;
 }
 
 .apoapse_logo {

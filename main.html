@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="UIElements/global.css" />
-	<link rel="stylesheet" href="UIElements/main_page.css" />
+	<link rel="stylesheet" href="UIElements/main_interface.css" />
 	<link rel="stylesheet" href="UIElements/listed_user.css" />
 	<link rel="stylesheet" href="UIElements/listed_room.css" />
 	<link rel="stylesheet" href="UIElements/speedbar.css" />
@@ -19,8 +19,12 @@
 
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="ApoapseAPI.js"></script>
+	<script type="text/javascript" src="UIElements/main_interface.js"></script>
 	<script type="text/javascript" src="UIElements/login.js"></script>
+	<script type="text/javascript" src="UIElements/speedbar.js"></script>
 	<script type="text/javascript" src="UIElements/room.js"></script>
+	<script type="text/javascript" src="UIElements/thread.js"></script>
+
 </head>
 <body>
 	<div id="main_page" class="">
@@ -60,81 +64,85 @@
 					<div class="listed_user">Kristie Barrette</div>
 				</td>
 				<td>
-					<div id="room" class="hide">
+					<div id="room" class="">
 						<div id="create_thread_button" class="clickable"><span class="fas"></span>Create thread</div>
 						
-						<div class="listed_thread clickable">
-							<h2 class="globalTextColor">Weekly Metrics</h2>
-							<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-							<div class="msg_preview">
-								Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
-							</div>
-						</div>
-
-						<div class="listed_thread clickable">
-							<h2 class="globalTextColor">Weekly Metrics<div class="unread_count">8</div></h2>
-							<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-							<div class="msg_preview">
-								Slap kitten brother with paw. Lick arm hair really likes hummus. Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
-							</div>
-						</div>
-
+						<div id="threads_list">
 							<div class="listed_thread clickable">
 								<h2 class="globalTextColor">Weekly Metrics</h2>
 								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
 								<div class="msg_preview">
-									Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Slap kitten brother with paw. Lick arm hair really likes hummus. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
+									Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
 								</div>
 							</div>
+
+							<div class="listed_thread clickable">
+								<h2 class="globalTextColor">Weekly Metrics<div class="unread_count">8</div></h2>
+								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+								<div class="msg_preview">
+									Slap kitten brother with paw. Lick arm hair really likes hummus. Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
+								</div>
+							</div>
+
+								<div class="listed_thread clickable">
+									<h2 class="globalTextColor">Weekly Metrics</h2>
+									<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+									<div class="msg_preview">
+										Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Slap kitten brother with paw. Lick arm hair really likes hummus. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
+									</div>
+								</div>
+						</div>
 					</div>
 
-					<div id="thread" class="">
-						<article>
-							<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-							<div class="author globalTextColor">Guillaume Puyal</div>
-							<div class="datetime">Oct 28, 9:59 AM</div>
-							<div class="content">
-									Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
-							</div>
-							<div class="attachments">
-								<div class="attachments_desc globalTextColor">Attachments (4) 16 MB</div>
-								<div>
-									<div class="attachment_media clickable">
-										<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-										<img src="imgs/attachment_01.jpg">
-									</div>
-									<div class="attachment_media video clickable">
-										<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-										<img src="imgs/attachment_02.jpg">
-									</div>
-								</div>
-
-								<div class="attachment_file clickable">
-									<div class="att_icon fa4"></div>
-									<div class="att_title">Monthly Metrics.pdf</div>
-									<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
-									<span class="att_size">21 MB</span>
-								</div>
-								<div class="attachment_file clickable">
-									<div class="att_icon fa4"></div>
-									<div class="att_title">Monthly Metrics for analysis.pdf</div>
-									<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
-									<span class="att_size">4 MB</span>
-								</div>
-							</div>
-						</article>
-
-						<article>
+					<div id="thread" class="hide">
+						<div id="thread_messages">
+							<article>
 								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
 								<div class="author globalTextColor">Guillaume Puyal</div>
 								<div class="datetime">Oct 28, 9:59 AM</div>
 								<div class="content">
 										Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
 								</div>
-						</article>
+								<div class="attachments">
+									<div class="attachments_desc globalTextColor">Attachments (4) 16 MB</div>
+									<div>
+										<div class="attachment_media clickable">
+											<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+											<img src="imgs/attachment_01.jpg">
+										</div>
+										<div class="attachment_media video clickable">
+											<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+											<img src="imgs/attachment_02.jpg">
+										</div>
+									</div>
+
+									<div class="attachment_file clickable">
+										<div class="att_icon fa4"></div>
+										<div class="att_title">Monthly Metrics.pdf</div>
+										<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
+										<span class="att_size">21 MB</span>
+									</div>
+									<div class="attachment_file clickable">
+										<div class="att_icon fa4"></div>
+										<div class="att_title">Monthly Metrics for analysis.pdf</div>
+										<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
+										<span class="att_size">4 MB</span>
+									</div>
+								</div>
+							</article>
+
+							<article>
+									<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+									<div class="author globalTextColor">Guillaume Puyal</div>
+									<div class="datetime">Oct 28, 9:59 AM</div>
+									<div class="content">
+											Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
+									</div>
+							</article>
+						</div>
 
 						<textarea id="send_msg_editor" placeholder="Write something"></textarea>
-						<label class="checkbox_label" id="press_enter_to_send_checkbox"><input type="checkbox" checked class="globalTextColor">Press Enter to send</label>
+						<label class="checkbox_label press_enter_to_send_label"><input type="checkbox" id="press_enter_to_send_checkbox" checked class="globalTextColor">Press Enter to send</label>
 					</div>
 				</td>
 				<td id="panel_right">
