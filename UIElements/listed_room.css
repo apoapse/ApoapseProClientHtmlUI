@@ -23,21 +23,21 @@
 	font-weight: bold;
 }
 
-#add_new_room {
+.add_new_room {
 	color: gray;
 	font-size: 12px;
 	margin-top: 2px; margin-bottom: 5px;
 }
 
-#add_new_room div {
+.add_new_room div {
 	color: black;
 }
 
-#add_new_room:hover {
+.add_new_room:hover {
 	color: black;
 }
 
-#add_new_room div {
+.add_new_room div {
 	background: none;
 	font-size: 11px;
 }

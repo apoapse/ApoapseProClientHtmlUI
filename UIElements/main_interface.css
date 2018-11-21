@@ -18,7 +18,7 @@
 }
 
 #header_left, #panel_left {
-	min-width: 300px;
+	width: 300px;
 	white-space: nowrap;
 }
 
@@ -76,6 +76,14 @@
 	margin-bottom: 3px;
 }
 
+#create_room_name_field {
+	color: white;
+	border: none;
+	font-size: 12px;
+	padding-left: 4px; padding-right: 4px;
+	margin-bottom: 1px;
+}
+
 /************************************************/
 #send_msg_editor {
 	border: none;
@@ -94,6 +102,7 @@
 
 /************************************************/
 #panel_right {
+	width: 300px;
 	padding-left: 80px;
 	white-space: nowrap;
 	overflow-y: auto; height: 100%;

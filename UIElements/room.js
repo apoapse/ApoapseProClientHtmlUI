@@ -19,18 +19,18 @@ $(document).on("onReady", function ()
 			htmlContent += '<div class="listed_room  clickable ' + classes + '" data-id="' + value.internal_id + '" id="room_in_bar_' + value.dbid + '"><div>' + value.unreadMessagesCount + '</div>' + value.name + '</div>';
 		});
 
-		$("#panel_left").html(htmlContent);
+		$("#rooms_list").html(htmlContent);
 
 		/*if (Object.keys(rooms).length > 0)
 		{
 			$("#create_new_thread_button").show();
 		}*/
 
-		$("#panel_left .listed_room").click(function()
+		$("#rooms_list .listed_room").click(function()
 		{
-			$("#panel_left .listed_room .selected").addClass("globalTextColorHoverOnly");
-			$("#panel_left .listed_room").removeClass("selected");
-			$("#panel_left .listed_room").removeClass("globalTextColor");
+			$("#rooms_list .selected").addClass("globalTextColorHoverOnly");
+			$("#rooms_list .listed_room").removeClass("selected");
+			$("#rooms_list .listed_room").removeClass("globalTextColor");
 			$(this).addClass("selected");
 			$(this).addClass("globalTextColor");
 
@@ -39,6 +39,26 @@ $(document).on("onReady", function ()
 			
 			ApoapseAPI.SendSignal("loadRoomUI", JSON.stringify(signalData));
 		});
+	});
+
+	/*---------------------------------------------*/
+	$("#add_new_room").click(function ()
+	{
+		$(this).hide();
+		$("#add_new_room_form").show();
+		$("#create_room_name_field").focus();
+	});
+
+	$(document).on("create_new_room", function (event, data)
+	{
+		if (data.name.length > 0)
+		{
+			$("#create_room_name_field").val("");
+			ApoapseAPI.SendSignal("create_new_room", JSON.stringify(data));
+		}
+
+		$("#add_new_room_form").hide();
+		$("#add_new_room").show();
 	});
 
 	/*---------------------------------------------*/
