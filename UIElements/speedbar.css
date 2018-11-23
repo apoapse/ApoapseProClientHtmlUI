@@ -5,17 +5,17 @@
 	float: left;
 }
 
-.speedbar {
+#speedbar {
 	font-size: 19px;
 	display: inline-block;
 	margin-left: 12px;
 }
 
-.speedbar span {
+#speedbar span {
 	display: inline-block;
 	margin-left: 3px; margin-right: 3px; margin-top: 1px;
 }
 
-.speedbar .current_page {
+#speedbar .current_page {
 	font-weight: bold;
 }
