@@ -13,15 +13,16 @@ $(document).on("login", function (event, data)
 	ApoapseAPI.SendSignal("login", JSON.stringify(data));
 });
 
-$(document).on("connected_and_authenticated", function ()
+$(document).on("connected_and_authenticated", function (event, data)
 {
-	/*$("#login").animate({ width: 0 }, 900, function ()
-	{
-		$(this).hide();
-	});*/
+	data = JSON.parse(data);
 
-	$("#login").fadeOut(900);
+	localUser = data.localUser;
+
+	$("#login").fadeOut(600);
 	ResetLoginScreen();
+
+	$(".localUserNickname").html(localUser.nickname);
 });
 
 $(document).on("OnDisconnect", function ()
