@@ -102,7 +102,7 @@
 
 /************************************************/
 #panel_right {
-	width: 300px;
+	width: 219px;
 	padding-left: 80px;
 	white-space: nowrap;
 	overflow-y: auto; height: 100%;
@@ -117,10 +117,6 @@
 
 #panel_right .attachment_file .att_size {
 	display: none;
-}
-
-#thread {
-	overflow: auto; height: 100%;
 }
 
 .apoapse_logo {
@@ -139,22 +135,35 @@
 }
 
 /************************************************/
-#create_thread_button {
+.create_thread_button {
 	font-size: 14px;
 	margin-bottom: 15px;
 	line-height: 12px;
 	color: gray;
 }
 
-#create_thread_button:hover {
+.create_thread_button:hover {
 	color: black;
 }
 
-#create_thread_button span {
+.create_thread_button span {
 	font-size: 22px;
 	margin-right: 8px;
 	float: left;
 }
+
+.create_thread_button input {
+	border: none;
+	color: white;
+	margin-top: -5px;
+	padding-left: 4px; padding-right: 4px;
+	width: 75%;
+}
+
+/*#threads_list {
+	overflow: auto; height: 100%;
+	padding-right: 15px;
+}*/
 
 /************************************************/
 .dialog_mask {

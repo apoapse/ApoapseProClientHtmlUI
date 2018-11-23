@@ -1,6 +1,15 @@
+#thread {
+	overflow: auto; height: 100%;
+	padding-right: 15px;
+}
+
+.listed_thread {
+	min-height: 48px;
+}
+
 .listed_thread .msg_preview {
 	font-size: 12px;
-	margin-bottom: 18px;
+	margin-bottom: 26px;
 	text-align: justify;
 }
 

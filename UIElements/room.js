@@ -5,7 +5,7 @@ $(document).on("onReady", function ()
 		data = JSON.parse(data);
 		rooms = data.rooms;
 
-		var htmlContent = "<h2>rooms</h2>";
+		var htmlContent = "";
 		
 		$.each(data.rooms, function (key, value)
 		{

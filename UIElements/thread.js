@@ -50,6 +50,7 @@ $(document).on("onReady", function ()
 		$("#thread").animate({ scrollTop: $('#thread').prop("scrollHeight")}, 1000);
 	});
 
+	/*---------------------------------------------*/
 	$("#thread").on("mouseenter", ".unread", function()
 	{
 		var signalData = {};
@@ -60,6 +61,7 @@ $(document).on("onReady", function ()
 		ApoapseAPI.SendSignal("mark_message_as_read", JSON.stringify(signalData));
 	});
 
+	/*---------------------------------------------*/
 	function SendNewMsg()
 	{
 		var signalData = {};
@@ -78,5 +80,25 @@ $(document).on("onReady", function ()
 			SendNewMsg();
 			event.preventDefault();
 		}
-	})
+	});
+
+	/*---------------------------------------------*/
+	$("#create_thread_button").click(function ()
+	{
+		$(this).hide();
+		$("#create_thread_form").show();
+		$("#create_thread_name_field").focus();
+	});
+
+	$(document).on("create_new_thread", function (event, data)
+	{
+		if (data.name.length > 0)
+		{
+			$("#create_thread_name_field").val("");
+			ApoapseAPI.SendSignal("create_new_thread", JSON.stringify(data));
+		}
+
+		$("#create_thread_form").hide();
+		$("#create_thread_button").show();
+	});
 });
