@@ -9,18 +9,30 @@ currentPage = ViewEnum.room;
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
-	/*$(".dialog_button").click(function ()
+	$(".dialog_link").click(function ()
 	{
 		var dialog = $(this).attr("data-dialog-to-open");
-		$("#dialog_" + dialog).fadeIn(500);
+		$(".dialog").fadeOut(400);
+		$("#dialog_" + dialog).fadeIn(450);
+		$("#dialog_mask").fadeIn(450);
 
 		$(document).trigger("on_opened_dialog_" + dialog);
 	});
 
-	$(".close_dialog_button").click(function ()
+	function CloseDialog()
 	{
 		$(".dialog").fadeOut(400);
-	});*/
+		$("#dialog_mask").fadeOut(400);
+	}
+
+	$(".dialog_close_button").click(function ()
+	{
+		CloseDialog();
+	});
+
+	$("#dialog_mask").click(function(e) {
+		CloseDialog();
+	});
 
 	/*---------------------------------------------*/
 	/*$(document).on("UpdateUnreadMessagesCount", function (event, data)
