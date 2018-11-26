@@ -7,7 +7,7 @@ $(document).on("onReady", function ()
 
 		if (!messageData.isRead)
 		{
-			additionalClasses += "unread";
+			additionalClasses += " unread";
 		}
 
 		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.internal_id + '" data-dbid="' + messageData.dbid + '" id="message_' + messageData.dbid +'">';

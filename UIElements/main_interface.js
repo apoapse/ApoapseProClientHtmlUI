@@ -35,13 +35,23 @@ $(document).on("onReady", function ()
 	});
 
 	/*---------------------------------------------*/
-	/*$(document).on("UpdateUnreadMessagesCount", function (event, data)
+	$(document).on("UpdateUnreadMessagesCount", function (event, data)
 	{
 		data = JSON.parse(data);
 
 		if (currentPage == ViewEnum.room && selectedRoom.dbid == data.roomDbId)
 		{
-			$("#thread_dbid_" + data.threadDbId + " .thread_in_list_unread_count").html(data.threadUnreadMsgCount);
+			if (data.threadUnreadMsgCount > 0)
+			{
+				$("#thread_dbid_" + data.threadDbId + " .listed_thread_unread_mgs").show();
+				$("#thread_dbid_" + data.threadDbId + " .listed_thread_unread_mgs").removeClass("hide");
+			}
+			else
+			{
+				$("#thread_dbid_" + data.threadDbId + " .listed_thread_unread_mgs").hide();
+			}
+			
+			$("#thread_dbid_" + data.threadDbId + " .listed_thread_unread_mgs").html(data.threadUnreadMsgCount);
 		}
 		else if (currentPage == ViewEnum.thread && data.threadDbId == selectedThread.dbId)
 		{
@@ -56,7 +66,7 @@ $(document).on("onReady", function ()
 		}
 
 		$("#room_in_bar_" + data.roomDbId + " .room_in_list_unread_count").html(data.roomUnreadMsgCount);
-	});*/
+	});
 
 	/*---------------------------------------------*/
 	/*$(document).on("on_opened_dialog_invite_user", function ()

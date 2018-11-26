@@ -54,3 +54,8 @@ article .attachments .attachment_media img {
 article .attachments .img_desc {
 	display: none;
 }
+
+article.unread {
+	background: #ececec;
+	padding: 8px;
+}

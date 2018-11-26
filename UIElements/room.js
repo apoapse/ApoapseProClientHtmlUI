@@ -21,11 +21,6 @@ $(document).on("onReady", function ()
 
 		$("#rooms_list").html(htmlContent);
 
-		/*if (Object.keys(rooms).length > 0)
-		{
-			$("#create_new_thread_button").show();
-		}*/
-
 		$("#rooms_list .listed_room").click(function()
 		{
 			$("#rooms_list .selected").addClass("globalTextColorHoverOnly");
@@ -64,16 +59,11 @@ $(document).on("onReady", function ()
 	/*---------------------------------------------*/
 	function GenerateThreadInListHTML(threadData)
 	{
+		var unreadMsgCountClass = (threadData.unreadMessagesCount > 0) ? "" : "hide";
+
 		var htmlContent = "";
-
-		/*htmlContent += '<table class="item_list listed_thread" id="thread_dbid_' + threadData.dbid + '" data-id=' + threadData.internal_id + '><tr>';
-		htmlContent += '<td class="item_name" style="font-weight: bold;">' + threadData.name + '</td>';
-		htmlContent += '<td><strong>' + threadData.lastMsgAuthor + '</strong> <span class="thread_msg_preview_content">' + threadData.lastMsgText + '</span><div class="thread_in_list_unread_count">' + threadData.unreadMessagesCount + '</div></td>';
-		htmlContent += '</tr></table>';
-*/
-
 		htmlContent += '<div class="listed_thread clickable" id="thread_dbid_' + threadData.dbid + '" data-id=' + threadData.internal_id + '>';
-		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '</h2>';
+		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs ' + unreadMsgCountClass + '">' + threadData.unreadMessagesCount + '</span></h2>';
 		htmlContent += '<img src="imgs/avatar_dcforum.jpg" class="avatar_large">';
 		htmlContent += '<div class="msg_preview">' + threadData.lastMsgText + '</div>';
 		htmlContent += '</div>';
