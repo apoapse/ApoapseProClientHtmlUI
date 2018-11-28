@@ -1,4 +1,4 @@
-﻿<html spellcheck="false">
+<html spellcheck="false">
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="UIElements/global.css" />
@@ -226,17 +226,44 @@
 			<div class="clickable_item globalTextColorHoverOnly">Disconnect</div>
 		</div>
 		
-		<div id="dialog_mask" class="hide"></div>
+		<div id="dialog_mask" style="display: none;"></div>
 	</div>
 
-	<div id="login" class="">
-		<div class="login_form_container">
-			<form id="" data-js-event="login" class="center_vertical">
+	<div id="login">
+		<div id="login_form_container">
+			<form data-js-event="login" class="center_vertical">
 				<label>Server<input type="text" name="server" value="127.0.0.1" class="globalTextColor" required></label>
 				<label>Username<input type="text" name="username" class="globalTextColor" required value="Guillaume"></label>
 				<label>Password<input type="password" name="password" class="globalTextColor" id="login_form_password" required value="test"></label>
 				<input type="submit" value="Connect" id="login_connect_button" class="globalTextColorBackground">
-			</div>
+			</form>
+		</div>
+
+		<div id="install_form_container" class="hide">
+			<form data-js-event="validate_install_form">
+				<h1 class="globalTextColor">Installation</h1>
+				<h2>Server</h2>
+				<label>Name<input type="text" name="server_name" class="globalTextColor" required></label>
+
+				<h2>Administrator account</h2>
+				<label>Full name<input type="text" name="admin_nickname" class="globalTextColor" required></label>
+				<label>Username<input type="text" name="admin_username" class="globalTextColor" id="admin_form_username" required></label>
+				<label>Password<input type="password" name="admin_password" class="globalTextColor" required></label>
+
+				<input type="submit" value="Validate" class="globalTextColorBackground">
+			</form>
+		</div>
+
+		<div id="user_form_container" class="hide">
+			<form data-js-event="validate_first_login_form">
+				<h1 class="globalTextColor">First connection</h1>
+				<h2>Accound details</h2>
+				<label>Full name<input type="text" name="nickname" class="globalTextColor" required></label>
+				<label>Password<input type="password" name="password" class="globalTextColor" required></label>
+				<label>Confirm password<input type="password" name="password_2" class="globalTextColor" required></label>
+
+				<input type="submit" value="Validate" class="globalTextColorBackground">
+			</form>
 		</div>
 	</div>
 </body>

@@ -73,7 +73,6 @@ input[type="radio"]:checked::after {
 
 /************************************************/
 label input {
-	margin-right: 7px;
 	margin-bottom: -2px;
 	float: left;
 }

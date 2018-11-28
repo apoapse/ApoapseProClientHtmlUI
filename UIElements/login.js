@@ -31,64 +31,52 @@ $(document).on("OnDisconnect", function ()
 	$("#login").show();
 });
 
-/*
-$(document).on("create_admin_form", function (event, data)
-{
-	$("#create_admin_button").prop("disabled", true);
-
-	if (data.password !== data.password_confirmation)
-	{
-		ApoapseAPI.UpdateStatusBar("@password_does_not_match_status", true);
-
-		$("#administrator_password").val("");
-		$("#administrator_password_confirmation").val("");
-		$("#create_admin_button").prop("disabled", false);
-		return false;
-	}
-
-	ApoapseAPI.SendSignal("create_admin", JSON.stringify(data));
-});
-
-$(document).on("OnDisconnect", function ()
-{
-	$(".screen").hide();
-
-	$("#login_connect_button").prop("disabled", false);
-	$("#login_container").animate({ width: '100%' }, 900, function ()
-	{
-		$(this).show();
-	});
-
-	$("#login").show();
-});
-
-$(document).on("show_setup_state", function (event, data)
+/*---------------------------------------------*/
+$(document).on("show_install", function (event, data)
 {
 	data = JSON.parse(data);
-	$("#login_form").hide();
-	$("#install_screen").fadeIn(300);
-	//$("#admin_create_account_username").val(data.savedUsername);
+
+	$("#login_form_container").hide();
+	$("#install_form_container").show();
+	$("#install_form_container").removeClass("hide");
+
+	$("#admin_form_username").val(data.previousUsername);
 });
 
-$(document).on("ShowFirstUserConnection", function ()
+$(document).on("validate_install_form", function (event, data)
 {
-	$("#login_form").hide();
-	$("#first_connection").fadeIn(300);
-});
+	$("#login_form_container").show();
+	$("#install_form_container").hide();
 
-
-
-$(document).on("apoapse_install_form", function (event, data)
-{
 	ApoapseAPI.SendSignal("apoapse_install", JSON.stringify(data));
 
-	$("#install_screen").fadeOut(500);
+	$("#login_form_container input").val("");
 });
 
-$(document).on("user_first_connection_form", function (event, data)
+/*---------------------------------------------*/
+$(document).on("ShowFirstUserConnection", function (event, data)
 {
-	ApoapseAPI.SendSignal("user_first_connection", JSON.stringify(data));
-
-	$("#first_connection").fadeOut(500);
+	$("#login_form_container").hide();
+	$("#user_form_container").show();
+	$("#user_form_container").removeClass("hide");
 });
-*/
+
+
+$(document).on("validate_first_login_form", function (event, data)
+{
+	data = JSON.parse(data);
+
+	if (data.password == data.password_2)
+	{
+		ApoapseAPI.SendSignal("user_first_connection", JSON.stringify(data));
+
+		$("#login_form_container").show();
+		$("#user_form_container").hide();
+	}
+	else
+	{
+		// TODO: passwords do not match
+	}
+
+	$("#user_form_container input").val("");
+});

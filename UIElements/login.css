@@ -9,7 +9,7 @@
 	display: block;
 }
 
-.login_form_container {
+#login_form_container {
 	position: fixed;
 	top: 0; bottom: 0; left: 150px;
 	width: 400px;
@@ -19,21 +19,49 @@
 	padding: 20px;
 }
 
-.login_form_container label {
+#login label {
 	display: block;
 	margin-bottom: 15px;
 }
 
-.login_form_container input {
+#login input {
 	font-size: 15px;
 	border: none; border-radius: 4px;
 	background: #f2f2f2;
 	padding: 4px;
 	float: right;
-	width: 220px;
+	width: 52%;
 }
 
-.login_form_container input[type=submit] {
+#login input[type=submit] {
 	color: white;
 	font-weight: bold;
+}
+
+/************************************************/
+#install_form_container {
+	position: fixed;
+	top: 0; bottom: 0; left: 0;
+	background: white;
+	width: 600px;
+	padding: 18px;
+	box-sizing: border-box;
+}
+
+#install_form_container label {
+	font-size: 16px;
+}
+
+#install_form_container h1 {
+	text-transform: uppercase;
+	margin: 0; margin-bottom: 20px;
+	font-size: 27px;
+	font-weight: normal;
+	letter-spacing: 3.5px;
+}
+
+#install_form_container h2 {
+	text-transform: uppercase;
+	font-size: 17px;
+	margin: 0; margin-bottom: 4px;
 }
