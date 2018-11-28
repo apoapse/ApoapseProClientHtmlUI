@@ -139,14 +139,14 @@ $.fn.hasAttr = function (name)
 
 $(document).on("onReady", function ()
 {
-	$("form").submit(function ()
+	$("form").submit(function (event)
 	{
 		if ($(this).hasAttr("data-js-event"))
 		{
 			var eventName = $(this).attr("data-js-event");
 			var data = {};
 
-			$(this).find("input[type=text], input[type=password], textarea, select").each(function ()
+			$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox], input[type=radio]").each(function ()
 			{
 				var fieldName = $(this).attr("name");
 
@@ -161,7 +161,7 @@ $(document).on("onReady", function ()
 		{
 			var data = {};
 
-			$(this).find("input[type=text], input[type=password], textarea, select").each(function ()
+			$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox], input[type=radio]").each(function ()
 			{
 				var fieldName = $(this).attr("name");
 	

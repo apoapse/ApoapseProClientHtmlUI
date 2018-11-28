@@ -29,6 +29,9 @@ $(document).on("OnDisconnect", function ()
 {
 	ResetLoginScreen();
 	$("#login").show();
+	$("#login_form_container").show();
+	$("#install_form_container").hide();
+	$("#user_form_container").hide();
 });
 
 /*---------------------------------------------*/
@@ -61,22 +64,19 @@ $(document).on("ShowFirstUserConnection", function (event, data)
 	$("#user_form_container").removeClass("hide");
 });
 
-
 $(document).on("validate_first_login_form", function (event, data)
 {
-	data = JSON.parse(data);
-
 	if (data.password == data.password_2)
 	{
 		ApoapseAPI.SendSignal("user_first_connection", JSON.stringify(data));
 
-		$("#login_form_container").show();
-		$("#user_form_container").hide();
+		/*$("#login_form_container").show();
+		$("#user_form_container").hide();*/
 	}
 	else
 	{
-		// TODO: passwords do not match
+		// TODO: error passwords do not match
 	}
 
-	$("#user_form_container input").val("");
+	$("#user_form_container form").trigger("reset");
 });

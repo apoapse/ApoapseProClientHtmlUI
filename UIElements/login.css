@@ -9,7 +9,7 @@
 	display: block;
 }
 
-#login_form_container {
+#login_form_container, #user_form_container {
 	position: fixed;
 	top: 0; bottom: 0; left: 150px;
 	width: 400px;
@@ -52,7 +52,7 @@
 	font-size: 16px;
 }
 
-#install_form_container h1 {
+#login h1 {
 	text-transform: uppercase;
 	margin: 0; margin-bottom: 20px;
 	font-size: 27px;
@@ -60,7 +60,7 @@
 	letter-spacing: 3.5px;
 }
 
-#install_form_container h2 {
+#login h2 {
 	text-transform: uppercase;
 	font-size: 17px;
 	margin: 0; margin-bottom: 4px;
