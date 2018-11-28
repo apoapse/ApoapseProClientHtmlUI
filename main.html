@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="ApoapseAPI.js"></script>
 	<script type="text/javascript" src="UIElements/main_interface.js"></script>
+	<script type="text/javascript" src="UIElements/dialogs.js"></script>
 	<script type="text/javascript" src="UIElements/login.js"></script>
 	<script type="text/javascript" src="UIElements/speedbar.js"></script>
 	<script type="text/javascript" src="UIElements/room.js"></script>
@@ -204,20 +205,40 @@
 					<input type="reset" value="Discard">
 					<span class="dialog_close_button far clickable globalTextColor"></span>
 				</div>
-				<h2>Editor</h2>
-				<p>
-					<label><input type="checkbox" checked class="globalTextColor">Press Enter to send</label>
-					<label><input type="checkbox" class="globalTextColor">Press Enter to send</label>
-				</p>
-				<p>
-					<label><input type="radio" checked name="grp1" class="globalTextColor">Press Enter to send</label>
-					<label><input type="radio" name="grp1" class="globalTextColor">Press Enter to send</label>
-					<label><input type="radio" name="grp1" class="globalTextColor">Press Enter to send</label>
-				</p>
-				<h3>Messages sorting</h3>
-				<p>
-					<label><input type="checkbox" checked class="switch globalTextColor">Press Enter to send</label>
-				</p>
+
+				<div id="dialog_tab_users">
+					<h2>Add new user</h2>
+					<p>
+						<form data-js-event="validate_add_new_user" id="add_new_user_form">
+							<label>Username<input type="text" name="username" required></label>
+							<input type="submit" value="Add" class="globalColorBackgroundHoverOnly">
+						</form>
+					</p>
+					<div style="display: none;" id="new_user_info_form">
+						<h2>New user temporary credentials</h2>
+						<form><p>
+							<label>Username<input type="text" disabled id="add_new_user_tempUsernamefield"></label>
+							<label>Temporary password<input type="text" disabled id="add_new_user_temppasswordfield"></label>
+						</p></form>
+					</div>
+				</div>
+
+				<div id="dialog_tab_general" style="display: none;">
+					<h2>Editor</h2>
+					<p>
+						<label><input type="checkbox" checked class="globalTextColor">Press Enter to send</label>
+						<label><input type="checkbox" class="globalTextColor">Press Enter to send</label>
+					</p>
+					<p>
+						<label><input type="radio" checked name="grp1" class="globalTextColor">Press Enter to send</label>
+						<label><input type="radio" name="grp1" class="globalTextColor">Press Enter to send</label>
+						<label><input type="radio" name="grp1" class="globalTextColor">Press Enter to send</label>
+					</p>
+					<h3>Messages sorting</h3>
+					<p>
+						<label><input type="checkbox" checked class="switch globalTextColor">Press Enter to send</label>
+					</p>
+				</div>
 			</div>
 		</div>
 

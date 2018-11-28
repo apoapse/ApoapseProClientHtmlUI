@@ -14,12 +14,22 @@ input {
 	font-family: 'Inter UI', sans-serif;
 	color: #464646;
 	outline: none;
+	border: none; border-radius: 4px;
+}
+
+input:focus {
+	background: #e7e7e7;
 }
 
 textarea {
 	width: 100%;
 	resize: vertical;
 	outline: none;
+}
+
+input[type=submit] {
+	padding: 3px;
+	padding-left: 11px; padding-right: 11px;
 }
 
 /************************************************/
@@ -77,6 +87,11 @@ label input {
 	float: left;
 }
 
+label input[type=text], label input[type=password] {
+	float: right;
+	width: 50%;
+}
+
 label {
 	display: block;
 	font-size: 14px;
@@ -114,6 +129,10 @@ table {
 }
 
 .globalTextColorBackground {
+	background-color: #ff8989 !important;
+}
+
+.globalColorBackgroundHoverOnly:hover {
 	background-color: #ff8989 !important;
 }
 

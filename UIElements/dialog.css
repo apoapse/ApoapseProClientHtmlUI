@@ -59,7 +59,8 @@
 }
 
 .dialog .right_panel label {
-	font-size: 14px;
+	font-size: 16px;
+	margin-bottom: 6px;
 }
 
 .dialog .right_panel h2, h3 {
@@ -74,4 +75,14 @@
 
 .dialog .right_panel h3 {
 	font-size: 16px;
+}
+
+/************************************************/
+.dialog input[type=text], .dialog input[type=password] {
+	padding: 4px;
+}
+
+.dialog input[type=submit]
+{
+
 }
