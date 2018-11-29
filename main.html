@@ -54,9 +54,7 @@
 				<td id="panel_left">
 					<h2>rooms</h2>
 					<div id="rooms_list">
-						<div class="listed_room selected globalTextColor clickable"><div></div>Marketing</div>
-						<div class="listed_room clickable globalTextColorHoverOnly"><div>5</div>Development</div>
-						<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Design</div>
+						
 					</div>
 					<div class="listed_room add_new_room clickable globalTextColorHoverOnly" id="add_new_room"><div class="fas"></div>Add</div>
 					<div class="listed_room add_new_room clickable globalTextColorHoverOnly hide" id="add_new_room_form"><div class="fas"></div>
@@ -77,29 +75,6 @@
 						</div>
 						
 						<div id="threads_list">
-							<div class="listed_thread clickable">
-								<h2 class="globalTextColor">Weekly Metrics</h2>
-								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-								<div class="msg_preview">
-									Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
-								</div>
-							</div>
-
-							<div class="listed_thread clickable">
-								<h2 class="globalTextColor">Weekly Metrics<div class="unread_count">8</div></h2>
-								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-								<div class="msg_preview">
-									Slap kitten brother with paw. Lick arm hair really likes hummus. Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
-								</div>
-							</div>
-
-								<div class="listed_thread clickable">
-									<h2 class="globalTextColor">Weekly Metrics</h2>
-									<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-									<div class="msg_preview">
-										Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Slap kitten brother with paw. Lick arm hair really likes hummus. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice...
-									</div>
-								</div>
 						</div>
 					</div>
 
@@ -244,7 +219,7 @@
 
 		<div class="dialog" id="dialog_user_menu">
 			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">Preferences</div>
-			<div class="clickable_item globalTextColorHoverOnly">Disconnect</div>
+			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">Disconnect</div>
 		</div>
 		
 		<div id="dialog_mask" style="display: none;"></div>

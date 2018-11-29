@@ -10,15 +10,23 @@ $(document).on("onReady", function ()
 		$(document).trigger("on_opened_dialog_" + dialog);
 	});
 
+	$(".close_dialog_on_click").click(function ()
+	{
+		CloseDialog();
+	});
+
 	function CloseDialog(button)
 	{
 		$(".dialog").fadeOut(400);
 		$("#dialog_mask").fadeOut(400);
 		$(".dialog form").trigger("reset"); /* TODO: might cause performances issues */
 
-		var dialog = $(button).closest(".dialog").attr("id");
+		if (button !== undefined)
+		{
+			var dialog = $(button).closest(".dialog").attr("id");
 
-		$(document).trigger("on_closed_" + dialog);
+			$(document).trigger("on_closed_" + dialog);
+		}
 	}
 
 	$(".dialog_close_button").click(function ()

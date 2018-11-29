@@ -177,4 +177,10 @@ $(document).on("onReady", function ()
 			return false;
 		}
 	});
+
+	$(".simple_signal_link").click(function()
+	{
+		var signalName = $(this).attr("data-signal-to-call");
+		ApoapseAPI.SendSignal(signalName, "");
+	});
 });
