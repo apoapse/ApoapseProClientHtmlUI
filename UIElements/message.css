@@ -59,3 +59,36 @@ article.unread {
 	background: #ececec;
 	padding: 8px;
 }
+
+/*---------------------------------------------*/
+article .tag_section {
+	margin-top: 4px;
+}
+
+article .tag_section div {
+	display: inline-block;
+}
+
+article .tags div, .add_tag_button, .add_tag_field {
+	border: 1px solid #d5d5d5;
+	border-radius: 3px;
+	color: #8d8d8d;
+	font-size: 12px;
+	margin-right: 5px;
+	padding-left: 3px; padding-right: 3px;
+}
+
+article .tag_section div span, .add_tag_button span, .add_tag_field span {
+	margin-right: 2px;
+}
+
+article .tag_section .add_tag_field input {
+	background: none;
+	margin-left: 1px;
+	font-size: 12px;
+	padding: 0;
+}
+
+article .tag_section .add_tag_field input:focus {
+	background: none;
+}

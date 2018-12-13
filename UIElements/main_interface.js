@@ -3,7 +3,7 @@ rooms = {};
 selectedRoom = {};
 selectedThread = {};
 
-var ViewEnum = {"room": 1, "thread": 2 }
+var ViewEnum = {"room": 1, "thread": 2, "search": 3 }
 currentPage = ViewEnum.room;
 
 /*---------------------------------------------*/
@@ -18,7 +18,6 @@ $(document).on("onReady", function ()
 			if (data.threadUnreadMsgCount > 0)
 			{
 				$("#thread_dbid_" + data.threadDbId + " .listed_thread_unread_mgs").show();
-				$("#thread_dbid_" + data.threadDbId + " .listed_thread_unread_mgs").removeClass("hide");
 			}
 			else
 			{

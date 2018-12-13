@@ -112,9 +112,9 @@ table {
 }
 
 /************************************************/
-.hide {
+/*.hide {
 	display: none !important;
-}
+}*/
 
 .globalTextColor {
 	color: #ff8989;	/* TEMP */

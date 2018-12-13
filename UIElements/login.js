@@ -41,9 +41,7 @@ $(document).on("show_install", function (event, data)
 
 	$("#login_form_container").hide();
 	$("#install_form_container").show();
-	$("#install_form_container").removeClass("hide");
-
-	$("#admin_form_username").val(data.previousUsername);
+	$("#install_form_container").removeClass("hide");	$("#admin_form_username").val(data.previousUsername);
 });
 
 $(document).on("validate_install_form", function (event, data)
@@ -61,7 +59,6 @@ $(document).on("ShowFirstUserConnection", function (event, data)
 {
 	$("#login_form_container").hide();
 	$("#user_form_container").show();
-	$("#user_form_container").removeClass("hide");
 });
 
 $(document).on("validate_first_login_form", function (event, data)
@@ -70,8 +67,7 @@ $(document).on("validate_first_login_form", function (event, data)
 	{
 		ApoapseAPI.SendSignal("user_first_connection", JSON.stringify(data));
 
-		/*$("#login_form_container").show();
-		$("#user_form_container").hide();*/
+		/*$("#login_form_container").show();*/
 	}
 	else
 	{

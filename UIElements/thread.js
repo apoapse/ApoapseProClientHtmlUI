@@ -15,6 +15,12 @@ $(document).on("onReady", function ()
 		htmlContent += '<div class="author globalTextColor">' + messageData.author + '</div>';
 		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
 		htmlContent += '<div class="content">' + messageData.content + '</div>';
+		htmlContent += '<div class="tag_section">';
+			htmlContent += '<div class="tags" id="tags_' + messageData.internal_id + '"></div>';
+			htmlContent += '<div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.internal_id + '"><span class="fas globalTextColor"></span>Add tag</div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.internal_id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
+		htmlContent += '</div></div>';
 		htmlContent += '</article>';
 
 		return htmlContent;
@@ -100,5 +106,41 @@ $(document).on("onReady", function ()
 
 		$("#create_thread_form").hide();
 		$("#create_thread_button").show();
+	});
+
+	/*---------------------------------------------*/
+	function AddTag(tagName, messageId)
+	{
+		$("#tags_" + messageId).append('<div class="globalTextColorHoverOnly">#' + tagName + '</div>');
+	}
+
+	$("#thread_messages").on("click", ".add_tag_button", function()
+	{
+		button = $(this);
+		button.hide();
+
+		var field = $("#add_tag_field_" + button.attr("data-id"));
+		field.show();
+		field.children("input").focus();
+
+		field.children("input").keydown(function (event)
+		{
+			if (event.keyCode == 13)
+			{
+				field.hide();
+				button.show();
+
+				var tagName = field.children("input").val();
+
+				if (tagName.length > 0)
+				{
+					AddTag(tagName, button.attr("data-id"));
+					field.children("input").val("");
+
+				}
+
+				event.preventDefault();
+			}
+		});
 	});
 });
