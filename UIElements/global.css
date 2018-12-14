@@ -117,7 +117,7 @@ table {
 }*/
 
 .globalTextColor {
-	color: #ff8989;	/* TEMP */
+	color: #ff8989 !important;	/* TEMP */
 }
 
 .globalTextColor:hover {

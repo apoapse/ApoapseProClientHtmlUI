@@ -90,3 +90,35 @@
 	transform: translate(0, -50%);
 	color: white;
 }
+
+/************************************************/
+article .attachments_desc, #search_results .attachments_desc {
+	margin-bottom: 6px;
+	font-size: 14px;
+}
+
+article .attachment_file, #search_results .attachment_file {
+	display: inline-block;
+	margin-right: 6px;
+	background: #ebebeb;
+	padding: 6px; padding-bottom: 0;
+}
+
+article .att_author, #search_results .att_author {
+	display: none;
+}
+
+article .attachment_media, #search_results .attachment_media {
+	display: inline-block;
+	margin-right: -4px;
+	margin-bottom: 9px;
+}
+
+article .attachment_media img, #search_results .attachment_media img {
+	height: 140px;
+	max-width: unset;
+}
+
+article .attachments .img_desc, #search_results .attachments .img_desc {
+	display: none;
+}

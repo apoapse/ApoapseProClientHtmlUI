@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="UIElements/speedbar.js"></script>
 	<script type="text/javascript" src="UIElements/room.js"></script>
 	<script type="text/javascript" src="UIElements/thread.js"></script>
+	<script type="text/javascript" src="UIElements/search.js"></script>
 
 </head>
 <body>
@@ -37,14 +38,19 @@
 					<div class="listed_user localUserNickname online">TODO</div>
 				</td>
 
-				<td colspan="2">
+				<td colspan="2" style="position: relative;">
 					<div class="clickable fas" id="return_previous"></div>
 					<div class="clickable fas" id="return_next"></div>
 					<div id="speedbar">
-						<span>TODO</span><span>></span><span class="current_page globalTextColor">TODO</span>
+						
+					</div>
+					<div id="searchbar" style="display: none;" class="globalTextColorBackground">
+						<input type="text">
+						<div id="search_filter_button" style="display: none;">Filters</div>
+						<span class="search_icon fas"></span>
 					</div>
 					<div class="top_icons fas">
-						<span class="globalTextColorHoverOnly"></span>
+						<span class="globalTextColorHoverOnly" id="search_bar_link"></span>
 						<span class="globalTextColor"></span>
 						<span class="globalTextColorHoverOnly"></span>
 					</div>
@@ -75,6 +81,77 @@
 						</div>
 						
 						<div id="threads_list">
+						</div>
+					</div>
+
+					<div id="search_results" style="display: none;">
+						<h2>Attachments</h2>
+						<div class="search_results_section">
+							<div class="attachment_file clickable">
+								<div class="att_icon fa4"></div>
+								<div class="att_title">Monthly Metrics.pdf</div>
+								<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
+								<span class="att_size">21 MB</span>
+							</div>
+							<div class="attachment_file clickable">
+								<div class="att_icon fa4"></div>
+								<div class="att_title">Monthly Metrics.pdf</div>
+								<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
+								<span class="att_size">21 MB</span>
+							</div>
+						</div>
+
+						<h2>Threads</h2>
+						<div class="search_results_section">
+							<div class="listed_thread clickable" id="thread_dbid_0" data-id="0"><h2 class="globalTextColor">Articles Facebook<span class="listed_thread_unread_mgs hide">0</span></h2><img src="imgs/avatar_dcforum.jpg" class="avatar_large"><div class="msg_preview">Cat snacks experiences short bursts of poo-phoria after going to the loo.</div></div>
+							<div class="listed_thread clickable" id="thread_dbid_0" data-id="0"><h2 class="globalTextColor">Articles Facebook<span class="listed_thread_unread_mgs hide">0</span></h2><img src="imgs/avatar_dcforum.jpg" class="avatar_large"><div class="msg_preview">Cat snacks experiences short bursts of poo-phoria after going to the loo.</div></div>
+						</div>
+
+						<h2>Messages</h2>
+						<div class="search_results_section">
+							<article>
+								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+								<div class="author globalTextColor">Guillaume Puyal</div>
+								<div class="datetime">Oct 28, 9:59 AM</div>
+								<div class="content">
+										Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
+								</div>
+								<div class="attachments">
+									<div class="attachments_desc globalTextColor">Attachments (4) 16 MB</div>
+									<div>
+										<div class="attachment_media clickable">
+											<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+											<img src="imgs/attachment_01.jpg">
+										</div>
+										<div class="attachment_media video clickable">
+											<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+											<img src="imgs/attachment_02.jpg">
+										</div>
+									</div>
+
+									<div class="attachment_file clickable">
+										<div class="att_icon fa4"></div>
+										<div class="att_title">Monthly Metrics.pdf</div>
+										<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
+										<span class="att_size">21 MB</span>
+									</div>
+									<div class="attachment_file clickable">
+										<div class="att_icon fa4"></div>
+										<div class="att_title">Monthly Metrics for analysis.pdf</div>
+										<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
+										<span class="att_size">4 MB</span>
+									</div>
+								</div>
+							</article>
+
+							<article>
+									<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+									<div class="author globalTextColor">Guillaume Puyal</div>
+									<div class="datetime">Oct 28, 9:59 AM</div>
+									<div class="content">
+											Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
+									</div>
+							</article>
 						</div>
 					</div>
 

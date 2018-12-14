@@ -24,37 +24,6 @@ article .attachments {
 	margin-top: 15px;
 }
 
-article .attachments_desc {
-	margin-bottom: 6px;
-	font-size: 14px;
-}
-
-article .attachments .attachment_file {
-	display: inline-block;
-	margin-right: 6px;
-	background: #ebebeb;
-	padding: 6px; padding-bottom: 0;
-}
-
-article .attachments .att_author {
-	display: none;
-}
-
-article .attachments .attachment_media {
-	display: inline-block;
-	margin-right: -4px;
-	margin-bottom: 9px;
-}
-
-article .attachments .attachment_media img {
-	height: 140px;
-	max-width: unset;
-}
-
-article .attachments .img_desc {
-	display: none;
-}
-
 article.unread {
 	background: #ececec;
 	padding: 8px;
