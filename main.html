@@ -208,35 +208,37 @@
 				</td>
 				<td id="panel_right">
 					<h2 class="globalTextColor">Attachments</h2>
-					<div class="attachment_file clickable">
+					<div id="global_listed_attachments">
+						<div class="attachment_file clickable">
+								<div class="att_icon fa4"></div>
+								<div class="att_title">Monthly Metrics.pdf</div>
+								<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
+								<span class="att_size">21 MB</span>
+						</div>
+						<div class="attachment_file clickable">
 							<div class="att_icon fa4"></div>
 							<div class="att_title">Monthly Metrics.pdf</div>
 							<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
 							<span class="att_size">21 MB</span>
-					</div>
-					<div class="attachment_file clickable">
-						<div class="att_icon fa4"></div>
-						<div class="att_title">Monthly Metrics.pdf</div>
-						<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-						<span class="att_size">21 MB</span>
-					</div>
-					<div class="attachment_media clickable">
-						<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-						<img src="imgs/attachment_01.jpg">
-					</div>
-					<div class="attachment_media video clickable">
-						<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-						<img src="imgs/attachment_02.jpg">
-					</div>
-					<div class="attachment_media clickable">
-						<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-						<img src="imgs/attachment_01.jpg">
-					</div>
-					<div class="attachment_file clickable">
-						<div class="att_icon fa4"></div>
-						<div class="att_title">Monthly Metrics.pdf</div>
-						<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-						<span class="att_size">21 MB</span>
+						</div>
+						<div class="attachment_media clickable">
+							<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+							<img src="imgs/attachment_01.jpg">
+						</div>
+						<div class="attachment_media video clickable">
+							<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+							<img src="imgs/attachment_02.jpg">
+						</div>
+						<div class="attachment_media clickable">
+							<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
+							<img src="imgs/attachment_01.jpg">
+						</div>
+						<div class="attachment_file clickable">
+							<div class="att_icon fa4"></div>
+							<div class="att_title">Monthly Metrics.pdf</div>
+							<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
+							<span class="att_size">21 MB</span>
+						</div>
 					</div>
 				</td>
 			</tr>
@@ -297,6 +299,10 @@
 		<div class="dialog" id="dialog_user_menu">
 			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">Preferences</div>
 			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">Disconnect</div>
+		</div>
+
+		<div class="center_all_axis globalTextColor fas" id="dropfile_icon" style="display: none;">
+			
 		</div>
 		
 		<div id="dialog_mask" style="display: none;"></div>

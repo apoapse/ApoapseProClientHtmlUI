@@ -16,6 +16,7 @@ $(document).on("onReady", function ()
 				if (searchText.length > 0)
 				{
 					$("#search_results").show();
+					$("#search_filter_button").show();
 					field.blur();
 
 					//Todo: add a central controler that handle switching between "pages"

@@ -242,3 +242,16 @@
 .search_results_section {
 	margin-left: 45px; margin-top: 6px; margin-bottom: 29px;
 }
+
+/************************************************/
+#dropfile_icon {
+	color: white;
+	font-size: 50px;
+	position: fixed;
+	width: 200px; height: 135px;
+	line-height: 135px;
+	text-align: center;
+	background: white;
+	border-radius: 5px;
+	z-index: 1;
+}
