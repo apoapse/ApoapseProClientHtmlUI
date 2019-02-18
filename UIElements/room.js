@@ -37,12 +37,12 @@ $(document).on("onReady", function ()
 	});
 
 	/*---------------------------------------------*/
-	$("#add_new_room").click(function ()
+	/*$("#add_new_room").click(function ()
 	{
 		$(this).hide();
 		$("#add_new_room_form").show();
 		$("#create_room_name_field").focus();
-	});
+	});*/
 
 	$(document).on("create_new_room", function (event, data)
 	{
@@ -52,8 +52,11 @@ $(document).on("onReady", function ()
 			ApoapseAPI.SendSignal("create_new_room", JSON.stringify(data));
 		}
 
-		$("#add_new_room_form").hide();
-		$("#add_new_room").show();
+		//$("#add_new_room_form").hide();
+		//$("#add_new_room").show();
+
+		$("#dialog_create_room").fadeOut(500);
+		$("#dialog_mask").hide();
 	});
 
 	/*---------------------------------------------*/

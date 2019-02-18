@@ -71,6 +71,16 @@ input[type="radio"]:checked::after {
 	font-weight: 900;
 }
 
+select {
+	font-family: 'Inter UI', sans-serif;
+	color: gray;
+	border: none;
+	margin-top: -12px; margin-left: -3px; margin-bottom: 13px;
+	background: none;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
 /************************************************/
 .switch::after {
 	content: '' !important;

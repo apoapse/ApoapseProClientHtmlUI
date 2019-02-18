@@ -62,10 +62,10 @@
 					<div id="rooms_list">
 						
 					</div>
-					<div class="listed_room add_new_room clickable globalTextColorHoverOnly" id="add_new_room"><div class="fas"></div>Add</div>
-					<div class="listed_room add_new_room clickable globalTextColorHoverOnly" id="add_new_room_form" style="display: none;"><div class="fas"></div>
+					<div class="listed_room add_new_room clickable globalTextColorHoverOnly dialog_link" id="add_new_room" data-dialog-to-open="create_room"><div class="fas"></div>Add</div>
+					<!--<div class="listed_room add_new_room clickable globalTextColorHoverOnly" id="add_new_room_form" style="display: none;"><div class="fas"></div>
 						<form data-js-event="create_new_room"><input type="text" name="name" id="create_room_name_field" class="globalTextColorBackground" placeholder="Room name"></form>
-					</div>
+					</div>-->
 
 					<h2>people</h2>
 					<div class="listed_user">Guillaume Puyal</div>
@@ -87,6 +87,7 @@
 					<div id="search_results" style="display: none;">
 						<h2>Attachments</h2>
 						<div class="search_results_section">
+
 							<div class="attachment_file clickable">
 								<div class="att_icon fa4"></div>
 								<div class="att_title">Monthly Metrics.pdf</div>
@@ -208,6 +209,10 @@
 				</td>
 				<td id="panel_right">
 					<h2 class="globalTextColor">Attachments</h2>
+					<select>
+						<option value="date">By date</option>
+						<option value="size">By size</option>
+					</select>
 					<div id="global_listed_attachments">
 						<div class="attachment_file clickable">
 								<div class="att_icon fa4"></div>
@@ -243,7 +248,7 @@
 				</td>
 			</tr>
 		</table>
-		<div class="apoapse_logo">Apoapse<span>1.0.325</span></div>
+		<div class="apoapse_logo"></div>
 
 		<div class="dialog center_all_axis" id="dialog_settings">
 			<div class="left_panel">
@@ -299,6 +304,23 @@
 		<div class="dialog" id="dialog_user_menu">
 			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">Preferences</div>
 			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">Disconnect</div>
+		</div>
+
+		<div class="dialog simple_dialog center_all_axis" id="dialog_create_room">
+			<div class="top_bar">
+				<h2>Create room</h2>
+				<input type="reset" value="Discard">
+				<span class="dialog_close_button far clickable globalTextColor"></span>
+			</div>
+
+			<form data-js-event="create_new_room">
+				<label>Room name<input type="text" name="name" id="create_room_name_field" class="globalTextColorBackground"></label>
+				<p>
+				<label><input type="radio" checked name="grp1" class="globalTextColor">Multiple threads</label>
+				<label><input type="radio" name="grp1" class="globalTextColor">Single conversation</label>
+				</p>
+				<input type="submit" value="Create" class="globalTextColorBackground" style="color: white;" />
+			</form>
 		</div>
 
 		<div class="center_all_axis globalTextColor fas" id="dropfile_icon" style="display: none;">

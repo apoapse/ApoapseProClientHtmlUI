@@ -120,13 +120,11 @@
 }
 
 .apoapse_logo {
-	text-transform: uppercase;
 	position: fixed;
-	bottom: 40px; right: 40px;
-	font-size: 26px;
-	color: #d3d3d3;
-
-	display: none;
+	bottom: 10px; right: 11px;
+	-webkit-mask: url(../imgs/apoapse_pro_logo.svg) no-repeat 50% 50%;
+	background-color: #ADAAB4;
+	width: 130px; height: 29px;
 }
 
 .apoapse_logo span {
