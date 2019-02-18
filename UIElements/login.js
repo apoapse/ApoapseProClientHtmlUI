@@ -37,8 +37,6 @@ $(document).on("OnDisconnect", function ()
 /*---------------------------------------------*/
 $(document).on("show_install", function (event, data)
 {
-	data = JSON.parse(data);
-
 	$("#login_form_container").hide();
 	$("#install_form_container").show();
 	$("#install_form_container").removeClass("hide");	$("#admin_form_username").val(data.previousUsername);
