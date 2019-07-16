@@ -141,41 +141,40 @@ $(document).on("onReady", function ()
 {
 	$("form").submit(function (event)
 	{
-		if ($(this).hasAttr("data-js-event"))
+		var data = {};
+
+		$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox], input[type=radio]").each(function ()
 		{
-			var eventName = $(this).attr("data-js-event");
-			var data = {};
+			var fieldName = $(this).attr("name");
 
-			$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox], input[type=radio]").each(function ()
-			{
-				var fieldName = $(this).attr("name");
+			data[fieldName] = $(this).val();
+		});
 
-				data[fieldName] = $(this).val();
-			});
-
-			$(document).trigger(eventName, data);
-
-			return false;
-		}
-		else if ($(this).hasAttr("data-submit-signal"))
+		if ($(this).hasAttr("data-submit-signal"))
 		{
-			var data = {};
-
-			$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox], input[type=radio]").each(function ()
-			{
-				var fieldName = $(this).attr("name");
-	
-				data[fieldName] = $(this).val();
-			});
-	
 			$(".dialog").fadeOut(500);
 			$(this)[0].reset();
 	
 			var signalName = $(this).attr("data-submit-signal");
 			ApoapseAPI.SendSignal(signalName, JSON.stringify(data));
-	
-			return false;
 		}
+		else if ($(this).hasAttr("data-send-cmd"))
+		{
+			$(this)[0].reset();
+
+			var signalName = "cmd_" +  $(this).attr("data-send-cmd");
+
+			ApoapseAPI.SendSignal(signalName, JSON.stringify(data));
+		}
+
+		if ($(this).hasAttr("data-js-event"))
+		{
+			var eventName = $(this).attr("data-js-event");
+
+			$(document).trigger(eventName, data);
+		}
+
+		return false;
 	});
 
 	$(".simple_signal_link").click(function()
