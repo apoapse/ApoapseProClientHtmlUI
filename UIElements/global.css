@@ -85,6 +85,7 @@ select {
 .switch::after {
 	content: '' !important;
 	font-size: 24px !important;
+	outline: none;
 }
 
 .switch:checked::after {

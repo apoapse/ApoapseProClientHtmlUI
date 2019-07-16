@@ -26,16 +26,15 @@
 	<script type="text/javascript" src="UIElements/room.js"></script>
 	<script type="text/javascript" src="UIElements/thread.js"></script>
 	<script type="text/javascript" src="UIElements/search.js"></script>
-
 </head>
 <body>
 	<div id="main_page" class="">
 		<table class="main_container_struct">
 			<tr class="header">
 				<td id="header_left" class="clickable dialog_link" data-dialog-to-open="user_menu">
-					<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-					<div class="company_name globalTextColor">TODO<span class="fas"></span></div>
-					<div class="listed_user localUserNickname online">TODO</div>
+					<img src="imgs/avatar_Jeremy Leon.jpg" class="avatar_large">
+					<div class="company_name globalTextColor">Apoapse, Inc.<span class="fas"></span></div>
+					<div class="listed_user localUserNickname online"></div>
 				</td>
 
 				<td colspan="2" style="position: relative;">
@@ -68,10 +67,8 @@
 					</div>-->
 
 					<h2>people</h2>
-					<div class="listed_user">Guillaume Puyal</div>
-					<div class="listed_user online">Cleo Thibert<span class="unread_msgs_count globalTextColor">(2)</span></div>
-					<div class="listed_user">Lottie Peets</div>
-					<div class="listed_user">Kristie Barrette</div>
+					<div class="listed_user online">Guillaume Puyal</div>
+					<div class="listed_user">Jeremy Leon<span class="unread_msgs_count globalTextColor">(2)</span></div>
 				</td>
 				<td>
 					<div id="room" class="">
@@ -90,36 +87,36 @@
 
 							<div class="attachment_file clickable">
 								<div class="att_icon fa4"></div>
-								<div class="att_title">Monthly Metrics.pdf</div>
-								<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-								<span class="att_size">21 MB</span>
+								<div class="att_title">Server commands list v3.pdf</div>
+								<span class="att_author">Guillaume Puyal<span class="att_datetime">Jan 25</span></span>
+								<span class="att_size">300 KB</span>
 							</div>
 							<div class="attachment_file clickable">
-								<div class="att_icon fa4"></div>
-								<div class="att_title">Monthly Metrics.pdf</div>
-								<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-								<span class="att_size">21 MB</span>
+								<div class="att_icon fa4"></div>
+								<div class="att_title">ServerCommands.cpp</div>
+								<span class="att_author">Guillaume Puyal<span class="att_datetime">Feb 5</span></span>
+								<span class="att_size">5 KB</span>
 							</div>
 						</div>
 
 						<h2>Threads</h2>
 						<div class="search_results_section">
-							<div class="listed_thread clickable" id="thread_dbid_0" data-id="0"><h2 class="globalTextColor">Articles Facebook<span class="listed_thread_unread_mgs hide">0</span></h2><img src="imgs/avatar_dcforum.jpg" class="avatar_large"><div class="msg_preview">Cat snacks experiences short bursts of poo-phoria after going to the loo.</div></div>
-							<div class="listed_thread clickable" id="thread_dbid_0" data-id="0"><h2 class="globalTextColor">Articles Facebook<span class="listed_thread_unread_mgs hide">0</span></h2><img src="imgs/avatar_dcforum.jpg" class="avatar_large"><div class="msg_preview">Cat snacks experiences short bursts of poo-phoria after going to the loo.</div></div>
+							<div class="listed_thread clickable" id="thread_dbid_0" data-id="0"><h2 class="globalTextColor">Dev serveur</h2><img src="imgs/avatar_Guillaume Puyal.jpg" class="avatar_large"><div class="msg_preview">A t-on terminé le système de "pipes" du client ? C'est primordial pour la gestion des erreurs.</div></div>
+							<div class="listed_thread clickable" id="thread_dbid_0" data-id="0"><h2 class="globalTextColor">Lecture commandes</h2><img src="imgs/avatar_Guillaume Puyal.jpg" class="avatar_large"><div class="msg_preview">J'ai ajouté la commande de confirmation du mot de passe tout à l'heure</div></div>
 						</div>
 
 						<h2>Messages</h2>
 						<div class="search_results_section">
 							<article>
-								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+								<img src="imgs/avatar_Guillaume Puyal.jpg" class="avatar_large">
 								<div class="author globalTextColor">Guillaume Puyal</div>
-								<div class="datetime">Oct 28, 9:59 AM</div>
+								<div class="datetime">Jan 28, 9:59 AM</div>
 								<div class="content">
-										Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
+									Je pense avoir terminé avec la mise en place des unit tests sur toutes les <strong>commandes</strong> existantes and sans suprises, il y a quelques erreurs mais d'un rapide coup d'oeil sa ne semble pas catastrophique. Il me faudra probablement deux jours pour rêgler tout ça cependant.<br>Pour le reste, j'ai mis à jour la doc sur les cmds et surtout j'ai fait des modifs sur l'interface principale du réseau côté serveur donc j'ai inclus ce fichier aussi.
 								</div>
 								<div class="attachments">
 									<div class="attachments_desc globalTextColor">Attachments (4) 16 MB</div>
-									<div>
+									<!--<div>
 										<div class="attachment_media clickable">
 											<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
 											<img src="imgs/attachment_01.jpg">
@@ -128,42 +125,41 @@
 											<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
 											<img src="imgs/attachment_02.jpg">
 										</div>
-									</div>
+									</div>-->
 
 									<div class="attachment_file clickable">
 										<div class="att_icon fa4"></div>
-										<div class="att_title">Monthly Metrics.pdf</div>
-										<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
-										<span class="att_size">21 MB</span>
+										<div class="att_title">Server commands list v3.pdf</div>
+										<span class="att_author">Guillaume Puyal<span class="att_datetime">Jan 28</span></span>
+										<span class="att_size">300 KB</span>
 									</div>
 									<div class="attachment_file clickable">
-										<div class="att_icon fa4"></div>
-										<div class="att_title">Monthly Metrics for analysis.pdf</div>
-										<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>	
-										<span class="att_size">4 MB</span>
+										<div class="att_icon fa4"></div>
+										<div class="att_title">ITCPServer.h</div>
+										<span class="att_author">Guillaume Puyal<span class="att_datetime">Jan 28</span></span>
+										<span class="att_size">2 KB</span>
 									</div>
 								</div>
 							</article>
 
 							<article>
-									<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-									<div class="author globalTextColor">Guillaume Puyal</div>
-									<div class="datetime">Oct 28, 9:59 AM</div>
+									<img src="imgs/avatar_Jeremy Leon.jpg" class="avatar_large">
+									<div class="author globalTextColor">Jeremy Leon</div>
+									<div class="datetime">Jan 22, 10:20 AM</div>
 									<div class="content">
-											Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
+										Je vois que tu as anvancé sur les bugs du test de l'autre jour. As-tu mis à jour le fichier qui liste les <strong>commandes</strong> ?
 									</div>
 							</article>
 						</div>
 					</div>
 
-					<div id="thread" class="">
+					<div id="thread" style="display: none;">
 						<div id="thread_messages">
-							<article>
-								<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
-								<div class="author globalTextColor">Guillaume Puyal</div>
-								<div class="datetime">Oct 28, 9:59 AM</div>
+								<img src="imgs/avatar_Jeremy Leon.jpg" class="avatar_large">
+								<div class="author globalTextColor">Jeremy Leon</div>
+								<div class="datetime">Jan 22, 10:20 AM</div>
 								<div class="content">
-										Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
+									Je vois que tu as anvancé sur les bugs du test de l'autre jour. As-tu mis à jour le fichier qui liste les <strong>commandes</strong> ?
 								</div>
 								<div class="attachments">
 									<div class="attachments_desc globalTextColor">Attachments (4) 16 MB</div>
@@ -194,7 +190,7 @@
 							</article>
 
 							<article>
-									<img src="imgs/avatar_dcforum.jpg" class="avatar_large">
+									<img src="imgs/avatar_Guillaume Puyal.jpg.jpg" class="avatar_large">
 									<div class="author globalTextColor">Guillaume Puyal</div>
 									<div class="datetime">Oct 28, 9:59 AM</div>
 									<div class="content">
@@ -215,34 +211,40 @@
 					</select>
 					<div id="global_listed_attachments">
 						<div class="attachment_file clickable">
-								<div class="att_icon fa4"></div>
-								<div class="att_title">Monthly Metrics.pdf</div>
-								<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-								<span class="att_size">21 MB</span>
+							<div class="att_icon fa4"></div>
+							<div class="att_title">Scenario Video.docx</div>
+							<span class="att_author">Jeremy Leon<span class="att_datetime">Feb 18</span></span>
+							<span class="att_size">320 KB</span>
 						</div>
+
 						<div class="attachment_file clickable">
-							<div class="att_icon fa4"></div>
-							<div class="att_title">Monthly Metrics.pdf</div>
-							<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-							<span class="att_size">21 MB</span>
+							<div class="att_icon fa4"></div>
+							<div class="att_title">login.js</div>
+							<span class="att_author">Guillaume Puyal<span class="att_datetime">Feb 16</span></span>
+							<span class="att_size">20 KB</span>
 						</div>
+
 						<div class="attachment_media clickable">
-							<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-							<img src="imgs/attachment_01.jpg">
+							<div class="img_desc"><span class="att_author">Guillaume Puyal<span class="att_datetime">Feb 16</span></span></div>
+							<img src="imgs/approprie.png">
 						</div>
 						<div class="attachment_media video clickable">
-							<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-							<img src="imgs/attachment_02.jpg">
+							<div class="img_desc"><span class="att_author">Jeremy Leon<span class="att_datetime">Feb 15</span></span></div>
+							<img src="imgs/vid_1.jpg">
 						</div>
-						<div class="attachment_media clickable">
-							<div class="img_desc"><span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span></div>
-							<img src="imgs/attachment_01.jpg">
-						</div>
+
 						<div class="attachment_file clickable">
-							<div class="att_icon fa4"></div>
-							<div class="att_title">Monthly Metrics.pdf</div>
-							<span class="att_author">Cleo Thibert<span class="att_datetime">Aug 19</span></span>
-							<span class="att_size">21 MB</span>
+							<div class="att_icon fa4"></div>
+							<div class="att_title">Investor deck Q1.pptm</div>
+							<span class="att_author">Jeremy Leon<span class="att_datetime">Feb 15</span></span>
+							<span class="att_size">632 KB</span>
+						</div>
+
+						<div class="attachment_file clickable">
+							<div class="att_icon fa4"></div>
+							<div class="att_title">Code_02-12.zip</div>
+							<span class="att_author">Guillaume Puyal<span class="att_datetime">Feb 14</span></span>
+							<span class="att_size">2 MB</span>
 						</div>
 					</div>
 				</td>
@@ -253,10 +255,10 @@
 		<div class="dialog center_all_axis" id="dialog_settings">
 			<div class="left_panel">
 				<h2>settings</h2>
-				<div class="listed_room selected globalTextColor clickable"><div></div>Customization</div>
-				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Attachments</div>
-				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Users</div>
-				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Permissions</div>
+				<div class="listed_room selected globalTextColor clickable"><div></div>Add new user</div>
+				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Usergroups</div>
+				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Server Gerneral</div>
+				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Server Performances</div>
 			</div>
 			<div class="right_panel">
 				<div class="top_bar">
@@ -270,6 +272,12 @@
 					<p>
 						<form data-js-event="validate_add_new_user" id="add_new_user_form">
 							<label>Username<input type="text" name="username" required></label>
+
+							<label>User group<select>
+								<option>Développeur</option>
+								<option>Administator</option>
+							</select></label>
+
 							<input type="submit" value="Add" class="globalColorBackgroundHoverOnly">
 						</form>
 					</p>
@@ -341,7 +349,7 @@
 		</div>
 
 		<div id="install_form_container" style="display: none;">
-			<form data-js-event="validate_install_form">
+			<form data-js-event="validate_install_form" data-send-cmd="install">
 				<h1 class="globalTextColor">Installation</h1>
 				<h2>Server</h2>
 				<label>Name<input type="text" name="server_name" class="globalTextColor" required></label>

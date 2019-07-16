@@ -1,7 +1,7 @@
 #login {
 	position: fixed;
 	top: 0; bottom: 0; left: 0; right: 0;
-	background: url("../imgs/login_background.jpg") white;
+	background: url("../imgs/background_10.jpg") white 100% 34%;
 	background-size: cover;
 }
 

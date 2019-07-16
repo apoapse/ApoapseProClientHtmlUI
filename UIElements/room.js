@@ -62,15 +62,19 @@ $(document).on("onReady", function ()
 	/*---------------------------------------------*/
 	function GenerateThreadInListHTML(threadData)
 	{
-		var unreadMsgCountClass = (threadData.unreadMessagesCount > 0) ? "" : "hide";
+		var unreadMsgCountStyle = (threadData.unreadMessagesCount > 0) ? "" : "display: none;";
 
 		var htmlContent = "";
 		htmlContent += '<div class="listed_thread clickable" id="thread_dbid_' + threadData.dbid + '" data-id=' + threadData.internal_id + '>';
-		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs ' + unreadMsgCountClass + '">' + threadData.unreadMessagesCount + '</span></h2>';
-		htmlContent += '<img src="imgs/avatar_dcforum.jpg" class="avatar_large">';
-		htmlContent += '<div class="msg_preview">' + threadData.lastMsgText + '</div>';
-		htmlContent += '</div>';
+		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs" style="' + unreadMsgCountStyle + '">' + threadData.unreadMessagesCount + '</span></h2>';
+		
+		if (threadData.lastMsgAuthor.length > 0)
+		{		
+			htmlContent += '<img src="imgs/avatar_' + threadData.lastMsgAuthor + '.jpg" class="avatar_large">';
+			htmlContent += '<div class="msg_preview">' + threadData.lastMsgText + '</div>';
+		}
 
+		htmlContent += '</div>';
 		return htmlContent;
 	}
 

@@ -11,14 +11,14 @@ $(document).on("onReady", function ()
 		}
 
 		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.internal_id + '" data-dbid="' + messageData.dbid + '" id="message_' + messageData.dbid +'">';
-		htmlContent += '<img src="imgs/avatar_dcforum.jpg" class="avatar_large">';
+		htmlContent += '<img src="imgs/avatar_' + messageData.author + '.jpg" class="avatar_large">';
 		htmlContent += '<div class="author globalTextColor">' + messageData.author + '</div>';
 		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
 		htmlContent += '<div class="content">' + messageData.content + '</div>';
 		htmlContent += '<div class="tag_section">';
 			htmlContent += '<div class="tags" id="tags_' + messageData.internal_id + '"></div>';
 			htmlContent += '<div>';
-				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.internal_id + '"><span class="fas globalTextColor"></span>Add tag</div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.internal_id + '"><span class="fas"></span>Add tag</div>';
 				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.internal_id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
 		htmlContent += '</div></div>';
 		htmlContent += '</article>';
