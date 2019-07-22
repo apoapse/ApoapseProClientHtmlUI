@@ -43,7 +43,7 @@ $(document).on("OnReceivedServerInfo", function (event, data)
 		else
 		{
 			// connected and authenticated
-			localUser = data.localUser;
+			localUser = data;
 		
 			$("#login").fadeOut(600);
 			ResetLoginScreen();
