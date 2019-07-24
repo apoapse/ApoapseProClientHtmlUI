@@ -1,6 +1,7 @@
 $(document).on("onReady", function ()
 {
-	$(document).on("listed_rooms_update", function (event, data)
+	/*-----------------ROOMS----------------------*/
+	$(document).on("rooms_update", function (event, data)
 	{
 		data = JSON.parse(data);
 		rooms = data.rooms;
@@ -10,53 +11,37 @@ $(document).on("onReady", function ()
 		$.each(data.rooms, function (key, value)
 		{
 			var classes = "";
+			var unredMsgCount = "";
 
-			if (value.isSelected)
+			if (value.is_selected)
+			{
 				classes += " globalTextColor selected";
+				selectedRoom = value;
+			}
 			else
 				classes += " globalTextColorHoverOnly";
 			
-			htmlContent += '<div class="listed_room  clickable ' + classes + '" data-id="' + value.internal_id + '" id="room_in_bar_' + value.dbid + '"><div>' + value.unreadMessagesCount + '</div>' + value.name + '</div>';
+			htmlContent += '<div class="listed_room  clickable ' + classes + '" data-id="' + value.id + '"><div>' + unredMsgCount + '</div>' + value.name + '</div>';
 		});
 
 		$("#rooms_list").html(htmlContent);
-
-		$("#rooms_list .listed_room").click(function()
-		{
-			$("#rooms_list .selected").addClass("globalTextColorHoverOnly");
-			$("#rooms_list .listed_room").removeClass("selected");
-			$("#rooms_list .listed_room").removeClass("globalTextColor");
-			$(this).addClass("selected");
-			$(this).addClass("globalTextColor");
-
-			var signalData = {};
-			signalData.internalId = $(this).attr("data-id");
-			
-			ApoapseAPI.SendSignal("loadRoomUI", JSON.stringify(signalData));
-		});
 	});
 
-	/*---------------------------------------------*/
-	/*$("#add_new_room").click(function ()
+	$(document).on('click', '.listed_room', function()
 	{
-		$(this).hide();
-		$("#add_new_room_form").show();
-		$("#create_room_name_field").focus();
-	});*/
+		var signalData = {};
+		signalData.id = $(this).attr("data-id");
 
-	$(document).on("create_new_room", function (event, data)
+		ApoapseAPI.SendSignal("loadRoomUI", JSON.stringify(signalData));
+	});
+
+	/*-----------------THREADS----------------------*/
+	$(document).on("OnOpenRoom", function (event, data)
 	{
-		if (data.name.length > 0)
-		{
-			$("#create_room_name_field").val("");
-			ApoapseAPI.SendSignal("create_new_room", JSON.stringify(data));
-		}
+		data = JSON.parse(data);
+		var htmlContent = "";
 
-		//$("#add_new_room_form").hide();
-		//$("#add_new_room").show();
-
-		$("#dialog_create_room").fadeOut(500);
-		$("#dialog_mask").hide();
+		$("#room").show();
 	});
 
 	/*---------------------------------------------*/
@@ -87,7 +72,7 @@ $(document).on("onReady", function ()
 		//$(document).trigger("OnThreadListUpdate");
 	});
 
-	$(document).on("OnOpenRoom", function (event, data)
+	/*$(document).on("OnOpenRoom", function (event, data)
 	{
 		data = JSON.parse(data);
 		var htmlContent = "";
@@ -105,7 +90,7 @@ $(document).on("onReady", function ()
 		currentPage = ViewEnum.room;
 		UpdateSpeedBar();
 	});
-
+*/
 	$(document).on("OnThreadListUpdate", function (event)
 	{
 		currentPage = ViewEnum.room;

@@ -34,7 +34,7 @@
 				<td id="header_left" class="clickable dialog_link" data-dialog-to-open="user_menu">
 					<img src="imgs/avatar_Jeremy Leon.jpg" class="avatar_large">
 					<div class="company_name globalTextColor">Apoapse, Inc.<span class="fas"></span></div>
-					<div class="listed_user localUserNickname online"></div>
+					<div class="listed_user localUserNickname online">USER NICKNAME</div>
 				</td>
 
 				<td colspan="2" style="position: relative;">
@@ -61,7 +61,7 @@
 					<div id="rooms_list">
 						
 					</div>
-					<div class="listed_room add_new_room clickable globalTextColorHoverOnly dialog_link" id="add_new_room" data-dialog-to-open="create_room"><div class="fas"></div>Add</div>
+					<div class="add_new_room clickable globalTextColorHoverOnly dialog_link" id="add_new_room" data-dialog-to-open="create_room"><div class="fas"></div>Add</div>
 					<!--<div class="listed_room add_new_room clickable globalTextColorHoverOnly" id="add_new_room_form" style="display: none;"><div class="fas"></div>
 						<form data-js-event="create_new_room"><input type="text" name="name" id="create_room_name_field" class="globalTextColorBackground" placeholder="Room name"></form>
 					</div>-->
@@ -321,11 +321,11 @@
 				<span class="dialog_close_button far clickable globalTextColor"></span>
 			</div>
 
-			<form data-js-event="create_new_room">
+			<form data-send-cmd="create_room">
 				<label>Room name<input type="text" name="name" id="create_room_name_field" class="globalTextColorBackground"></label>
 				<p>
-				<label><input type="radio" checked name="grp1" class="globalTextColor">Multiple threads</label>
-				<label><input type="radio" name="grp1" class="globalTextColor">Single conversation</label>
+				<label><input type="radio" checked name="threads_layout" value="multiple" class="globalTextColor">Multiple threads</label>
+				<label><input type="radio" name="threads_layout" value="single" class="globalTextColor">Single conversation</label>
 				</p>
 				<input type="submit" value="Create" class="globalTextColorBackground" style="color: white;" />
 			</form>

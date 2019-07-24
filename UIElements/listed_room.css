@@ -5,7 +5,7 @@
 	white-space: nowrap;
 }
 
-.listed_room div {
+.listed_room div, .add_new_room div {
 	float: left;
 	width: 19px; height: 19px;
 	background: black;
@@ -27,6 +27,7 @@
 	color: gray;
 	font-size: 12px;
 	margin-top: 2px; margin-bottom: 5px;
+	white-space: nowrap;
 }
 
 .add_new_room div {
