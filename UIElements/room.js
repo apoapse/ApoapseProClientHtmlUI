@@ -36,12 +36,48 @@ $(document).on("onReady", function ()
 	});
 
 	/*-----------------THREADS----------------------*/
+	function GenerateListedThread(threadData)
+	{
+		var htmlContent = "";
+		htmlContent += '<div class="listed_thread clickable" data-id=' + threadData.id + '>';
+		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs"' + 0 + '</span></h2>';
+		htmlContent += '</div>';
+		return htmlContent;
+	}
+
 	$(document).on("OnOpenRoom", function (event, data)
 	{
 		data = JSON.parse(data);
 		var htmlContent = "";
 
 		$("#room").show();
+
+		$.each(data.threads, function (key, value)
+		{
+			htmlContent += GenerateListedThread(value);
+		});
+
+		$("#threads_list").html(htmlContent);
+	});
+
+	$(document).on("OnNewThreadOnCurrentRoom", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		$("#threads_list").append(GenerateListedThread(data));
+	});
+
+	$("#create_thread_button").click(function ()
+	{
+		$(this).hide();
+		$("#create_thread_form").show();
+		$("#create_thread_name_field").focus();
+	});
+
+	$(document).on("create_new_thread", function (event, data)
+	{
+		$("#create_thread_form").hide();
+		$("#create_thread_button").show();
 	});
 
 	/*---------------------------------------------*/

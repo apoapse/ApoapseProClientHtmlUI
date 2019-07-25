@@ -89,26 +89,6 @@ $(document).on("onReady", function ()
 	});
 
 	/*---------------------------------------------*/
-	$("#create_thread_button").click(function ()
-	{
-		$(this).hide();
-		$("#create_thread_form").show();
-		$("#create_thread_name_field").focus();
-	});
-
-	$(document).on("create_new_thread", function (event, data)
-	{
-		if (data.name.length > 0)
-		{
-			$("#create_thread_name_field").val("");
-			ApoapseAPI.SendSignal("create_new_thread", JSON.stringify(data));
-		}
-
-		$("#create_thread_form").hide();
-		$("#create_thread_button").show();
-	});
-
-	/*---------------------------------------------*/
 	function AddTag(tagName, messageId)
 	{
 		$("#tags_" + messageId).append('<div class="globalTextColorHoverOnly">#' + tagName + '</div>');
