@@ -5,29 +5,31 @@ $(document).on("onReady", function ()
 		var htmlContent = "";
 		var additionalClasses = "";
 
-		if (!messageData.isRead)
+		/*if (!messageData.isRead)
 		{
 			additionalClasses += " unread";
-		}
+		}*/
 
-		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.internal_id + '" data-dbid="' + messageData.dbid + '" id="message_' + messageData.dbid +'">';
+		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.id + '">';
 		htmlContent += '<img src="imgs/avatar_' + messageData.author + '.jpg" class="avatar_large">';
 		htmlContent += '<div class="author globalTextColor">' + messageData.author + '</div>';
 		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
-		htmlContent += '<div class="content">' + messageData.content + '</div>';
+		htmlContent += '<div class="content">' + messageData.message + '</div>';
 		htmlContent += '<div class="tag_section">';
-			htmlContent += '<div class="tags" id="tags_' + messageData.internal_id + '"></div>';
+			htmlContent += '<div class="tags" id="tags_' + messageData.id + '"></div>';
 			htmlContent += '<div>';
-				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.internal_id + '"><span class="fas"></span>Add tag</div>';
-				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.internal_id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
 		htmlContent += '</div></div>';
 		htmlContent += '</article>';
 
 		return htmlContent;
 	}
 
-	$(document).on("open_thread", function (event, data)
+	$(document).on("OnOpenThread", function (event, data)
 	{
+		$("#thread_messages").html("");
+
 		data = JSON.parse(data);
 		var htmlContent = "";
 
@@ -39,6 +41,7 @@ $(document).on("onReady", function ()
 		$("#thread_messages").html(htmlContent);
 		$("#room").hide();
 		$("#thread").show();
+		$("#msg_editor").show();
 
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
 
@@ -47,7 +50,7 @@ $(document).on("onReady", function ()
 		UpdateSpeedBar();
 	});
 
-	$(document).on("added_new_message", function (event, data)
+	$(document).on("NewMessage", function (event, data)
 	{
 		data = JSON.parse(data);
 
@@ -71,9 +74,9 @@ $(document).on("onReady", function ()
 	function SendNewMsg()
 	{
 		var signalData = {};
-		signalData.msg_content = $("#send_msg_editor").val();
+		signalData.message = $("#send_msg_editor").val();
 
-		ApoapseAPI.SendSignal("send_new_message", JSON.stringify(signalData));
+		ApoapseAPI.SendSignal("cmd_new_message", JSON.stringify(signalData));
 		$("#send_msg_editor").val("");
 	}
 

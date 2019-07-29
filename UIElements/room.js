@@ -39,14 +39,26 @@ $(document).on("onReady", function ()
 	function GenerateListedThread(threadData)
 	{
 		var htmlContent = "";
-		htmlContent += '<div class="listed_thread clickable" data-id=' + threadData.id + '>';
+		htmlContent += '<div class="listed_thread clickable" data-id="' + threadData.id + '" id="listed_thread_' + threadData.id + '">';
 		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs"' + 0 + '</span></h2>';
+
+		if (threadData.msg_count > 0)
+		{
+			htmlContent += '<img src="imgs/avatar_' + threadData.msg_preview.author + '.jpg" class="avatar_large">';
+			htmlContent += '<div class="msg_preview">' + threadData.msg_preview.msg.substring(0, 250) + '</div>';
+		}
+
 		htmlContent += '</div>';
+		
 		return htmlContent;
 	}
 
 	$(document).on("OnOpenRoom", function (event, data)
 	{
+		$("#thread_messages").html("");
+		$("#threads_list").html("");
+		$("#msg_editor").hide();
+
 		data = JSON.parse(data);
 		var htmlContent = "";
 
@@ -67,6 +79,12 @@ $(document).on("onReady", function ()
 		$("#threads_list").append(GenerateListedThread(data));
 	});
 
+	$(document).on("UpdateThreadPreview", function (event, data)
+	{
+		data = JSON.parse(data);
+		$('#regTitle').empty().append(GenerateListedThread(data));
+	});
+
 	$("#create_thread_button").click(function ()
 	{
 		$(this).hide();
@@ -80,8 +98,16 @@ $(document).on("onReady", function ()
 		$("#create_thread_button").show();
 	});
 
+	$("#threads_list").on("click", ".listed_thread", function()
+	{
+		var signalData = {};
+		signalData.id = $(this).attr("data-id");
+
+		ApoapseAPI.SendSignal("loadThread", JSON.stringify(signalData));
+	});
+
 	/*---------------------------------------------*/
-	function GenerateThreadInListHTML(threadData)
+	/*function GenerateThreadInListHTML(threadData)
 	{
 		var unreadMsgCountStyle = (threadData.unreadMessagesCount > 0) ? "" : "display: none;";
 
@@ -98,15 +124,7 @@ $(document).on("onReady", function ()
 		htmlContent += '</div>';
 		return htmlContent;
 	}
-
-	$(document).on("on_added_new_thread", function (event, data)
-	{
-		data = JSON.parse(data);
-
-		$("#threads_list").prepend(GenerateThreadInListHTML(data));
-
-		//$(document).trigger("OnThreadListUpdate");
-	});
+*/
 
 	/*$(document).on("OnOpenRoom", function (event, data)
 	{
@@ -127,27 +145,19 @@ $(document).on("onReady", function ()
 		UpdateSpeedBar();
 	});
 */
-	$(document).on("OnThreadListUpdate", function (event)
+	/*$(document).on("OnThreadListUpdate", function (event)
 	{
 		currentPage = ViewEnum.room;
 		
 		$("#room").show();
 		$("#thread").hide();
-	});
+	});*/
 
-	$(document).on("updateThreadMsgPreview", function (event, data)
+	/*$(document).on("updateThreadMsgPreview", function (event, data)
 	{
 		data = JSON.parse(data);
 
 		//$("#thread_dbid_" + data.dbid + " strong").html(data.lastMsgAuthor);
 		//$("#thread_dbid_" + data.dbid + " .thread_msg_preview_content").html(data.lastMsgText);
-	});
-
-	$("#threads_list").on("click", ".listed_thread", function()
-	{
-		var signalData = {};
-		signalData.internalId = $(this).attr("data-id");
-
-		ApoapseAPI.SendSignal("loadThread", JSON.stringify(signalData));
-	});
+	});*/
 });
