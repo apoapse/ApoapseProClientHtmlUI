@@ -46,7 +46,7 @@ $(document).on("onReady", function ()
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
 
 		currentPage = ViewEnum.thread;
-		selectedThread = data.info;
+		selectedThread = data.thread[0];
 		UpdateSpeedBar();
 	});
 

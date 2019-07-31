@@ -61,15 +61,17 @@ $(document).on("onReady", function ()
 
 		data = JSON.parse(data);
 		var htmlContent = "";
-
 		$("#room").show();
 
 		$.each(data.threads, function (key, value)
 		{
 			htmlContent += GenerateListedThread(value);
 		});
-
 		$("#threads_list").html(htmlContent);
+
+		currentPage = ViewEnum.room;
+		selectedRoom = data.room[0];
+		UpdateSpeedBar();
 	});
 
 	$(document).on("OnNewThreadOnCurrentRoom", function (event, data)
