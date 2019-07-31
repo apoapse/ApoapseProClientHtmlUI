@@ -1,3 +1,5 @@
+var isDialogOpen = false;
+
 $(document).on("onReady", function ()
 {
 	$(".dialog_link").click(function ()
@@ -8,6 +10,7 @@ $(document).on("onReady", function ()
 		$("#dialog_mask").fadeIn(450);
 
 		$(document).trigger("on_opened_dialog_" + dialog);
+		isDialogOpen = true;
 	});
 
 	$(".close_dialog_on_click").click(function ()
@@ -20,6 +23,7 @@ $(document).on("onReady", function ()
 		$(".dialog").fadeOut(400);
 		$("#dialog_mask").fadeOut(400);
 		$(".dialog form").trigger("reset"); /* TODO: might cause performances issues */
+		isDialogOpen = false;
 
 		if (button !== undefined)
 		{
@@ -36,6 +40,14 @@ $(document).on("onReady", function ()
 
 	$("#dialog_mask").click(function(e) {
 		CloseDialog(this);
+	});
+
+	$("form").submit(function (event)
+	{
+		if (isDialogOpen)
+		{
+			CloseDialog(this);
+		}
 	});
 
 	/*---------------------------------------------*/
