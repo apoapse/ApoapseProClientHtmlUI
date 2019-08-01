@@ -2,6 +2,7 @@
 rooms = {};
 selectedRoom = {};
 selectedThread = {};
+users = {};
 
 var ViewEnum = {"room": 1, "thread": 2, "search": 3 }
 currentPage = ViewEnum.room;
@@ -37,6 +38,26 @@ $(document).on("onReady", function ()
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
+	$(document).on("OnUpdateUserList", function (event, data)
+	{
+		data = JSON.parse(data);
+		users = data.users;
+
+		var htmlContent = "";
+
+		$.each(data.users, function (key, value)
+		{
+			var addClass = "";
+
+			if (value.isOnline)
+				addClass += "online"
+
+			htmlContent += '<div class="listed_user ' + addClass + '" data-id="' + value.id + '">' + value.nickname + '</div>';
+		});
+
+		$("#users_list").html(htmlContent);
+	});
+
 	$(document).on("UpdateUnreadMessagesCount", function (event, data)
 	{
 		data = JSON.parse(data);
