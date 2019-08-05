@@ -16,7 +16,12 @@ $(document).on("onReady", function ()
 		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
 		htmlContent += '<div class="content">' + messageData.message + '</div>';
 		htmlContent += '<div class="tag_section">';
-			htmlContent += '<div class="tags" id="tags_' + messageData.id + '"></div>';
+			htmlContent += '<div class="tags" id="tags_' + messageData.id + '">';
+			$.each(messageData.tags, function (keyT, tag)
+			{
+				htmlContent += '<div class="globalTextColorHoverOnly">#' + tag + '</div>';
+			});
+			htmlContent += '</div>';
 			htmlContent += '<div>';
 				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
 				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
@@ -92,10 +97,12 @@ $(document).on("onReady", function ()
 	});
 
 	/*---------------------------------------------*/
-	function AddTag(tagName, messageId)
+	$(document).on("AddTag", function (event, data)
 	{
-		$("#tags_" + messageId).append('<div class="globalTextColorHoverOnly">#' + tagName + '</div>');
-	}
+		data = JSON.parse(data);
+
+		$("#tags_" + data.msgId).append('<div class="globalTextColorHoverOnly">#' + data.name + '</div>');
+	});
 
 	$("#thread_messages").on("click", ".add_tag_button", function()
 	{
@@ -117,9 +124,14 @@ $(document).on("onReady", function ()
 
 				if (tagName.length > 0)
 				{
-					AddTag(tagName, button.attr("data-id"));
 					field.children("input").val("");
 
+					var data = {};
+					data.name = tagName;
+					data.item_type = "msg";
+					data.msg_id = button.attr("data-id");
+
+					ApoapseAPI.SendSignal("AddTag", JSON.stringify(data));
 				}
 
 				event.preventDefault();
