@@ -84,7 +84,7 @@ $(document).on("onReady", function ()
 	$(document).on("UpdateThreadPreview", function (event, data)
 	{
 		data = JSON.parse(data);
-		$('#regTitle').empty().append(GenerateListedThread(data));
+		$("#listed_thread_" + data.id).empty().append(GenerateListedThread(data));
 	});
 
 	$("#create_thread_button").click(function ()
