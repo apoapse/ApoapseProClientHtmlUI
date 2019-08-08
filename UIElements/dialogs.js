@@ -44,13 +44,34 @@ $(document).on("onReady", function ()
 
 	$("form").submit(function (event)
 	{
-		if (isDialogOpen)
+		if (isDialogOpen && $(this).hasAttr("data-send-cmd"))
 		{
 			CloseDialog(this);
 		}
 	});
 
-	/*---------------------------------------------*/
+	/*-------------------ADMIN PANEL--------------------------*/
+	$(document).on("UpdateUserInfo", function (event, data)
+	{
+		if (HasPermission(localUser, "CREATE_USER"))
+		{
+			$("#admin_panel_add_user_tab_name").removeClass("disable");
+			$("#admin_panel_add_user_tab_name").addClass("selected");
+
+			$("#dialog_tab_add_user").show();
+
+			$.each(usergroups, function()
+			{
+				$("#usergroup_select_list").append($("<option />").val(this.name).text(this.name));
+			});
+		}
+		else
+		{
+			$("#admin_panel_add_user_tab_name").addClass("disable");
+			$("#dialog_tab_add_user").hide();
+		}
+	});
+
 	$(document).on("validate_add_new_user", function (event, data)
 	{
 		ApoapseAPI.SendSignal("register_user", JSON.stringify(data));
@@ -58,7 +79,7 @@ $(document).on("onReady", function ()
 		$("#add_new_user_form").trigger("reset");
 	});
 
-	$(document).on("OnAddedNewUser", function (event, data)
+	$(document).on("OnAddNewUserLocal", function (event, data)
 	{
 		data = JSON.parse(data);
 

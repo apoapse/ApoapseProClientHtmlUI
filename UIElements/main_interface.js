@@ -3,9 +3,25 @@ rooms = {};
 selectedRoom = {};
 selectedThread = {};
 users = {};
+usergroups = {};
 
 var ViewEnum = {"room": 1, "thread": 2, "search": 3 }
 currentPage = ViewEnum.room;
+
+/*-----------------USERS----------------------*/
+function HasPermission(user, permName)
+{
+	return user.permissions.includes(permName);
+}
+
+$(document).on("UpdateUserInfo", function (event, data)
+{
+	data = JSON.parse(data);
+	localUser = data.local_user[0];
+	usergroups = data.usergroups;
+
+	$(".localUserNickname").html(localUser.nickname);
+});
 
 /*-----------------SPEEDBAR----------------------*/
 function UpdateSpeedBar()

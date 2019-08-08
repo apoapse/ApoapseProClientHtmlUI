@@ -255,30 +255,27 @@
 		</table>
 		<div class="apoapse_logo"></div>
 
-		<div class="dialog center_all_axis" id="dialog_settings">
+		<div class="dialog center_all_axis" id="dialog_admin_panel">
 			<div class="left_panel">
 				<h2>settings</h2>
-				<div class="listed_room selected globalTextColor clickable"><div></div>Add new user</div>
-				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Usergroups</div>
-				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Server Gerneral</div>
-				<div class="listed_room clickable globalTextColorHoverOnly"><div></div>Server Performances</div>
+				<div id="admin_panel_add_user_tab_name" class="listed_room clickable disable"><div></div>Add new user</div>
+				<div class="listed_room clickable disable"><div></div>Usergroups</div>
+				<div class="listed_room clickable disable"><div></div>Server Gerneral</div>
+				<div class="listed_room clickable disable"><div></div>Server Performances</div>
 			</div>
 			<div class="right_panel">
 				<div class="top_bar">
-					<label><input type="checkbox" checked class="switch globalTextColor">Me only</label>
 					<input type="reset" value="Discard">
 					<span class="dialog_close_button far clickable globalTextColor"></span>
 				</div>
 
-				<div id="dialog_tab_users">
+				<div id="dialog_tab_add_user">
 					<h2>Add new user</h2>
 					<p>
 						<form data-js-event="validate_add_new_user" id="add_new_user_form">
 							<label>Username<input type="text" name="username" required></label>
 
-							<label>User group<select>
-								<option>Développeur</option>
-								<option>Administator</option>
+							<label>User group<select id="usergroup_select_list" name="usergroup">
 							</select></label>
 
 							<input type="submit" value="Add" class="globalColorBackgroundHoverOnly">
@@ -314,6 +311,7 @@
 
 		<div class="dialog" id="dialog_user_menu">
 			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">Preferences</div>
+			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="admin_panel">Administrator panel</div>
 			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">Disconnect</div>
 		</div>
 

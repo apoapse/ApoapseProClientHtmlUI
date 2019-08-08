@@ -43,12 +43,8 @@ $(document).on("OnReceivedServerInfo", function (event, data)
 		else
 		{
 			// connected and authenticated
-			localUser = data;
-		
 			$("#login").fadeOut(600);
 			ResetLoginScreen();
-		
-			$(".localUserNickname").html(localUser.nickname);
 		}
 	}
 });

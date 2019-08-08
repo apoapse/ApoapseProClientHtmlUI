@@ -123,9 +123,17 @@ table {
 }
 
 /************************************************/
-/*.hide {
-	display: none !important;
-}*/
+.hide {
+	display: none;
+}
+
+.disable {
+	color: lightgray;
+}
+
+.disable:hover {
+	color: lightgray !important;
+}
 
 .globalTextColor {
 	color: #ff8989 !important;	/* TEMP */
