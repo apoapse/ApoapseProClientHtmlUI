@@ -143,7 +143,7 @@ $(document).on("onReady", function ()
 	{
 		var data = {};
 
-		$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox], input[type=radio]").each(function ()
+		$(this).find("input[type=text], input[type=password], textarea, select, input[type=checkbox]:checked, input[type=radio]:checked").each(function ()
 		{
 			var fieldName = $(this).attr("name");
 
