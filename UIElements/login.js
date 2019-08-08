@@ -34,18 +34,15 @@ $(document).on("OnReceivedServerInfo", function (event, data)
 	}
 	else if (data.status == "authenticated")
 	{
-		if (data.requirePasswordChange)
-		{
-			// First connection
-			$("#login_form_container").hide();
-			$("#user_form_container").show();
-		}
-		else
-		{
-			// connected and authenticated
-			$("#login").fadeOut(600);
-			ResetLoginScreen();
-		}
+		// connected and authenticated
+		$("#login").fadeOut(600);
+		ResetLoginScreen();
+	}
+	else if (data.status == "requirePasswordChange")
+	{
+		// First connection
+		$("#login_form_container").hide();
+		$("#user_form_container").show();
 	}
 });
 
