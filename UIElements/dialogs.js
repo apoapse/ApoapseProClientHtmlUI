@@ -60,6 +60,7 @@ $(document).on("onReady", function ()
 
 			$("#dialog_tab_add_user").show();
 
+			$("#usergroup_select_list").html("");
 			$.each(usergroups, function()
 			{
 				$("#usergroup_select_list").append($("<option />").val(this.name).text(this.name));
