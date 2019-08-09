@@ -1,5 +1,7 @@
 article {
 	margin-bottom: 35px;
+	transition: all 1s;
+	padding: 8px;
 }
 
 article .author {
@@ -25,8 +27,7 @@ article .attachments {
 }
 
 article.unread {
-	background: #ececec;
-	padding: 8px;
+	background: #e7e7e7;
 }
 
 /*---------------------------------------------*/

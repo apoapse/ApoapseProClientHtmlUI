@@ -11,7 +11,9 @@ $(document).on("onReady", function ()
 		$.each(data.rooms, function (key, value)
 		{
 			var classes = "";
-			var unredMsgCount = "";
+			
+			if (value.unreadMsgCount > 0)
+				classes += " unread";
 
 			if (value.is_selected)
 			{
@@ -21,7 +23,7 @@ $(document).on("onReady", function ()
 			else
 				classes += " globalTextColorHoverOnly";
 			
-			htmlContent += '<div class="listed_room  clickable ' + classes + '" data-id="' + value.id + '"><div>' + unredMsgCount + '</div>' + value.name + '</div>';
+			htmlContent += '<div class="listed_room  clickable ' + classes + '" data-id="' + value.id + '" id="room_link_' + value.id + '">' + value.name + '</div>';
 		});
 
 		$("#rooms_list").html(htmlContent);
@@ -40,7 +42,7 @@ $(document).on("onReady", function ()
 	{
 		var htmlContent = "";
 		htmlContent += '<div class="listed_thread clickable" data-id="' + threadData.id + '" id="listed_thread_' + threadData.id + '">';
-		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs"' + 0 + '</span></h2>';
+		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs">' + threadData.unreadMsgCount + '</span></h2>';
 
 		if (threadData.msg_count > 0)
 		{
@@ -108,58 +110,25 @@ $(document).on("onReady", function ()
 		ApoapseAPI.SendSignal("loadThread", JSON.stringify(signalData));
 	});
 
-	/*---------------------------------------------*/
-	/*function GenerateThreadInListHTML(threadData)
-	{
-		var unreadMsgCountStyle = (threadData.unreadMessagesCount > 0) ? "" : "display: none;";
-
-		var htmlContent = "";
-		htmlContent += '<div class="listed_thread clickable" id="thread_dbid_' + threadData.dbid + '" data-id=' + threadData.internal_id + '>';
-		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs" style="' + unreadMsgCountStyle + '">' + threadData.unreadMessagesCount + '</span></h2>';
-		
-		if (threadData.lastMsgAuthor.length > 0)
-		{		
-			htmlContent += '<img src="imgs/avatar_' + threadData.lastMsgAuthor + '.jpg" class="avatar_large">';
-			htmlContent += '<div class="msg_preview">' + threadData.lastMsgText + '</div>';
-		}
-
-		htmlContent += '</div>';
-		return htmlContent;
-	}
-*/
-
-	/*$(document).on("OnOpenRoom", function (event, data)
+	/*-------------------UNREAD--------------------------*/
+	$(document).on("UpdateThreadUnreadMsgCount", function (event, data)
 	{
 		data = JSON.parse(data);
-		var htmlContent = "";
 
-		$.each(data.threads, function (key, value)
-		{
-			htmlContent += GenerateThreadInListHTML(value);
-		});
-
-		$("#threads_list").html(htmlContent);
-
-		$(document).trigger("OnThreadListUpdate");
-
-		selectedRoom = data.room;
-		currentPage = ViewEnum.room;
-		UpdateSpeedBar();
+		var thread = data.thread[0];
+		$("#listed_thread_" + thread.id + " .listed_thread_unread_mgs").html(thread.unreadMsgCount);
 	});
-*/
-	/*$(document).on("OnThreadListUpdate", function (event)
-	{
-		currentPage = ViewEnum.room;
-		
-		$("#room").show();
-		$("#thread").hide();
-	});*/
-
-	/*$(document).on("updateThreadMsgPreview", function (event, data)
+	/*$(document).on("UpdateUnreadMsgCount", function (event, data)
 	{
 		data = JSON.parse(data);
-
-		//$("#thread_dbid_" + data.dbid + " strong").html(data.lastMsgAuthor);
-		//$("#thread_dbid_" + data.dbid + " .thread_msg_preview_content").html(data.lastMsgText);
+		console.log(data);
+		if (data.roomUnreadMsgCount > 0)
+		{
+			$("#room_link_" + data.roomId).addClass("unread");
+		}
+		else
+		{
+			$("#room_link_" + data.roomId).removeClass("unread");
+		}	
 	});*/
 });

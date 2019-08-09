@@ -5,10 +5,10 @@ $(document).on("onReady", function ()
 		var htmlContent = "";
 		var additionalClasses = "";
 
-		/*if (!messageData.isRead)
+		if (!messageData.is_read)
 		{
 			additionalClasses += " unread";
-		}*/
+		}
 
 		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.id + '">';
 		htmlContent += '<img src="imgs/avatar_' + messageData.author + '.jpg" class="avatar_large">';
@@ -68,10 +68,11 @@ $(document).on("onReady", function ()
 	$("#thread").on("mouseenter", ".unread", function()
 	{
 		var signalData = {};
-		signalData.dbid = $(this).attr("data-dbid");
-		
-		$("#message_" + signalData.dbid).removeClass("unread");
-		
+		signalData.id = $(this).attr("data-id");
+		signalData.threadId = selectedThread.id;
+
+		$(this).removeClass("unread");
+				
 		ApoapseAPI.SendSignal("mark_message_as_read", JSON.stringify(signalData));
 	});
 
