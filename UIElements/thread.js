@@ -15,17 +15,22 @@ $(document).on("onReady", function ()
 		htmlContent += '<div class="author globalTextColor">' + messageData.author + '</div>';
 		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
 		htmlContent += '<div class="content">' + messageData.message + '</div>';
-		htmlContent += '<div class="tag_section">';
-			htmlContent += '<div class="tags" id="tags_' + messageData.id + '">';
-			$.each(messageData.tags, function (keyT, tag)
-			{
-				htmlContent += '<div class="globalTextColorHoverOnly">#' + tag + '</div>';
-			});
-			htmlContent += '</div>';
-			htmlContent += '<div>';
-				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
-				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
-		htmlContent += '</div></div>';
+
+		if (messageData.support_tags)
+		{
+			htmlContent += '<div class="tag_section">';
+				htmlContent += '<div class="tags" id="tags_' + messageData.id + '">';
+				$.each(messageData.tags, function (keyT, tag)
+				{
+					htmlContent += '<div class="globalTextColorHoverOnly">#' + tag + '</div>';
+				});
+				htmlContent += '</div>';
+				htmlContent += '<div>';
+					htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
+					htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
+			htmlContent += '</div></div>';
+		}
+		
 		htmlContent += '</article>';
 
 		return htmlContent;
@@ -82,7 +87,11 @@ $(document).on("onReady", function ()
 		var signalData = {};
 		signalData.message = $("#send_msg_editor").val();
 
-		ApoapseAPI.SendSignal("cmd_new_message", JSON.stringify(signalData));
+		if (currentPage == ViewEnum.thread)
+			ApoapseAPI.SendSignal("cmd_new_message", JSON.stringify(signalData));
+		else
+			ApoapseAPI.SendSignal("cmd_direct_message", JSON.stringify(signalData));
+
 		$("#send_msg_editor").val("");
 	}
 
@@ -138,5 +147,31 @@ $(document).on("onReady", function ()
 				event.preventDefault();
 			}
 		});
+	});
+
+	/*----------------------PRIVATE USER MESSAGES-----------------------*/
+	$(document).on("OnOpenPrivateMsgThread", function (event, data)
+	{
+		$("#thread_messages").html("");
+
+		data = JSON.parse(data);
+		var htmlContent = "";
+
+		$.each(data.messages, function (key, value)
+		{
+			htmlContent += GenerateMessageInListHTML(value);
+		});
+
+		$("#thread_messages").html(htmlContent);
+		$("#room").hide();
+		$("#thread").show();
+		$("#msg_editor").show();
+
+		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
+
+		currentPage = ViewEnum.private_thread;
+		selectedThread = {};
+		selectedRoom.name = data.user.nickname;
+		UpdateSpeedBar();
 	});
 });

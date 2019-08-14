@@ -5,7 +5,7 @@ selectedThread = {};
 users = {};
 usergroups = {};
 
-var ViewEnum = {"room": 1, "thread": 2, "search": 3 }
+var ViewEnum = {"room": 1, "thread": 2, "search": 3, "private_thread": 4 }
 currentPage = ViewEnum.room;
 
 /*-----------------USERS----------------------*/
@@ -28,7 +28,7 @@ function UpdateSpeedBar()
 {
 	var htmlContent = "";
 
-	if (currentPage == ViewEnum.room)
+	if (currentPage == ViewEnum.room || currentPage == ViewEnum.private_thread)
 	{
 		htmlContent += '<span class="current_page globalTextColor">' + selectedRoom.name + '</span>';
 	}
@@ -72,6 +72,14 @@ $(document).on("onReady", function ()
 		});
 
 		$("#users_list").html(htmlContent);
+	});
+
+	$(document).on('click', '.listed_user', function()
+	{
+		var signalData = {};
+		signalData.id = $(this).attr("data-id");
+
+		ApoapseAPI.SendSignal("LoadUserPage", JSON.stringify(signalData));
 	});
 
 	$(document).on("UpdateUnreadMessagesCount", function (event, data)
