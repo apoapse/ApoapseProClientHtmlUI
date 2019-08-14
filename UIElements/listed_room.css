@@ -23,7 +23,7 @@
 	font-weight: bold;
 }
 
-.listed_room.unread::after {
+.listed_room.unread::after, .listed_user.unread::after {
 	content: '';
 	display: inline-block;
 	width: 10px; height: 10px;

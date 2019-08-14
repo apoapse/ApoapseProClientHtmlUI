@@ -30,7 +30,7 @@ $(document).on("onReady", function ()
 					htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
 			htmlContent += '</div></div>';
 		}
-		
+
 		htmlContent += '</article>';
 
 		return htmlContent;
@@ -74,7 +74,9 @@ $(document).on("onReady", function ()
 	{
 		var signalData = {};
 		signalData.id = $(this).attr("data-id");
-		signalData.threadId = selectedThread.id;
+
+		if (currentPage == ViewEnum.thread)
+			signalData.threadId = selectedThread.id;
 
 		$(this).removeClass("unread");
 				

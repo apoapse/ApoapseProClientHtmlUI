@@ -27,3 +27,11 @@
 	margin-left: 6px;
 	font-size: 14px;
 }
+
+.listed_user.unread::after {
+	margin-bottom: 0px !important;
+}
+
+.listed_user.selected {
+	font-weight: bold;
+}
