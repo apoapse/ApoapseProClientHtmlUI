@@ -64,13 +64,13 @@ $(document).on("OnUpdateUserList", function (event, data)
 		var addClass = "";
 
 		if (value.isOnline)
-			addClass += "online";
+			addClass += "online ";
 
 		if (value.unreadMsgCount > 0)
-			addClass += "unread";
+			addClass += "unread ";
 
 		if (value.isSelected > 0)
-			addClass += "selected";
+			addClass += "selected ";
 
 		htmlContent += '<div class="listed_user ' + addClass + '" data-id="' + value.id + '">' + value.nickname + '</div>';
 	});
