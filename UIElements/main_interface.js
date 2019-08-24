@@ -136,34 +136,10 @@ $(document).on("onReady", function ()
 	dropZone.addEventListener('drop', function(e) {
 		e.stopPropagation();
 		e.preventDefault();
-		var files = e.dataTransfer.files; // Array of all files
-	
-		for (var i=0, file; file=files[i]; i++) {
-			console.log(file);
-			var htmlContent = "";
-
-			htmlContent += '<div class="attachment_file clickable"><div class="att_icon fa4"></div><div class="att_title">' + file.name + '</div><span class="att_author">' + localUser.nickname + '<span class="att_datetime">Dec 17</span></span><span class="att_size">3 MB</span></div>';
-
-			$("#global_listed_attachments").prepend(htmlContent);
-
-			/*var progress = 0;
-			setInterval(function() {
-				progress++;				
-				$("#global_listed_attachments").first().children(".att_icon").html(progress);
-			}, 60);*/
-
-			//if (file.type.match(/image.*/)) {
-			/*	var reader = new FileReader();
-	
-				reader.onload = function(e2) {
-					// finished reading file data.
-				}
-	
-				//reader.readAsDataURL(file); // start reading the file data.
-			}*/
-		}
+		//var files = e.dataTransfer.files; // Array of all files
 
 		$("#dialog_mask").hide();
 		$("#dropfile_icon").hide();
+		ApoapseAPI.SendSignal("OnFilesDropped");
 	});
 });
