@@ -1,5 +1,63 @@
 $(document).on("onReady", function ()
 {
+	$(document).on("OnDisconnect", function ()
+	{
+		$("#send_msg_editor").val("");
+		$("#editor_attachments").html("");
+	});
+
+	/*----------------------ATTACHMENTS-----------------------*/
+	function GenerateAttachment(data)
+	{
+		var htmlContent = '';
+
+		htmlContent += '<div class="attachment_file clickable" data-id="' + data.id + '" id="attachment_' + data.id +'">';
+			htmlContent += '<div class="att_icon fa4"></div>';
+			htmlContent += '<div class="att_title">' + data.fileName + '</div>';
+			//htmlContent += '<span class="att_author">Guillaume Puyal<span class="att_datetime">Feb 16</span></span>';
+			htmlContent += '<span class="att_status"></span>';
+			htmlContent += '<span class="att_size">' + data.fileSize +' KB</span>';
+		htmlContent += '</div>';
+
+		return htmlContent;
+	}
+
+	$(document).on("OnDroppedFiles", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		var htmlContent = '';
+		$.each(data.attachments, function()
+		{
+			htmlContent += GenerateAttachment(this);
+		});
+
+		$("#editor_attachments").html(htmlContent);
+	});
+
+	$(document).on("OnAttachmentUploadStart", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		$("#attachment_" + data.id + " .att_status").html("Uploading...");
+	});
+
+	$(document).on("OnAttachmentUploadEnded", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		$("#attachment_" + data.id + " .att_status").html("");
+	});
+
+	$(document).on('click', '.attachment_file', function()
+	{
+		var signalData = {};
+		signalData.id = $(this).attr("data-id");
+
+		ApoapseAPI.SendSignal("openAttachment", JSON.stringify(signalData));
+	});
+
+	/*----------------------MESSAGES-----------------------*/
 	function GenerateMessageInListHTML(messageData)
 	{
 		var htmlContent = "";
@@ -29,6 +87,19 @@ $(document).on("onReady", function ()
 					htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
 					htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
 			htmlContent += '</div></div>';
+		}
+
+		if (messageData.hasOwnProperty("attachments"))
+		{
+			htmlContent += '<div class="attachments">';
+			htmlContent += '<div class="attachments_desc globalTextColor">Attachments (' + messageData.attachments.length + ') TODO KB</div>';
+
+			$.each(messageData.attachments, function()
+			{
+				htmlContent += GenerateAttachment(this);
+			});
+
+			htmlContent += '</div>';
 		}
 
 		htmlContent += '</article>';
@@ -95,6 +166,7 @@ $(document).on("onReady", function ()
 			ApoapseAPI.SendSignal("cmd_direct_message", JSON.stringify(signalData));
 
 		$("#send_msg_editor").val("");
+		$("#editor_attachments").html("");
 	}
 
 	$("#send_msg_editor").keydown(function (event)

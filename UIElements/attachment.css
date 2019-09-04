@@ -43,6 +43,11 @@
 	font-weight: normal;
 }
 
+.att_status {
+	display: block;
+	color: green;
+}
+
 /************************************************/
 /*.attachment_media {
 	width: 190px;
@@ -121,4 +126,8 @@ article .attachment_media img, #search_results .attachment_media img {
 
 article .attachments .img_desc, #search_results .attachments .img_desc {
 	display: none;
+}
+
+#editor_attachments .attachment_file {
+	display: inline-block;
 }
