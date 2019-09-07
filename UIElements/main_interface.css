@@ -102,10 +102,10 @@
 
 /************************************************/
 #panel_right {
-	width: 219px;
-	padding-left: 80px;
+	width: 270px;
+	padding-left: 37px;
 	white-space: nowrap;
-	overflow-y: auto; height: 100%;
+	position: relative;
 }
 
 #panel_right h2 {
@@ -130,6 +130,14 @@
 .apoapse_logo span {
 	display: block;
 	font-size: 11px;
+}
+
+#global_listed_attachments {
+	height: 91%;
+    width: 90%;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 /************************************************/

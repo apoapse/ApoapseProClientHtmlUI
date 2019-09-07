@@ -14,7 +14,7 @@ $(document).on("onReady", function ()
 		htmlContent += '<div class="attachment_file clickable attachment_' + data.id +'" data-id="' + data.id + '">';
 			htmlContent += '<div class="att_icon fa4"></div>';
 			htmlContent += '<div class="att_title">' + data.fileName + '</div>';
-			//htmlContent += '<span class="att_author">Guillaume Puyal<span class="att_datetime">Feb 16</span></span>';
+			htmlContent += '<span class="att_author">' + data.author + '<span class="att_datetime">' + data.dateTime + '</span></span>';
 			htmlContent += '<span class="att_status"></span>';
 			htmlContent += '<span class="att_size">' + data.fileSize +' KB</span>';
 		htmlContent += '</div>';
@@ -48,6 +48,19 @@ $(document).on("onReady", function ()
 
 		else
 			statusElement.html("");
+	});
+
+	$(document).on("UpdateAttachments", function (event, data)
+	{
+		data = JSON.parse(data);
+
+		var htmlContent = '';
+		$.each(data.attachments, function()
+		{
+			htmlContent += GenerateAttachment(this);
+		});
+
+		$("#global_listed_attachments").html(htmlContent);
 	});
 
 
