@@ -142,4 +142,21 @@ $(document).on("onReady", function ()
 		$("#dropfile_icon").hide();
 		ApoapseAPI.SendSignal("OnFilesDropped");
 	});
+
+	$(".file_input").click(function()
+	{
+		var signalData = {};
+		signalData.name = $(this).find("input").attr("name");
+
+		ApoapseAPI.SendSignal("OpenFileDialog", JSON.stringify(signalData));
+	});
+
+	$(document).on("OnFileDialogPathSet", function (event, data)
+	{
+		console.log(data);
+		data = JSON.parse(data);
+		
+		$('.file_input input[name="' + data.name + '"]').val(data.filepath);
+	});
 });
+

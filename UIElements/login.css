@@ -22,6 +22,7 @@
 #login label {
 	display: block;
 	margin-bottom: 15px;
+	position: relative;
 }
 
 #login input {
@@ -36,6 +37,11 @@
 #login input[type=submit] {
 	color: white;
 	font-weight: bold;
+}
+
+#login input::placeholder {
+	font-style: italic;
+	font-size: 12px;
 }
 
 /************************************************/

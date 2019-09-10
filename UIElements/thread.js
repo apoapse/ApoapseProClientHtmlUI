@@ -12,7 +12,7 @@ $(document).on("onReady", function ()
 		var htmlContent = '';
 
 		htmlContent += '<div class="attachment_file clickable attachment_' + data.id +'" data-id="' + data.id + '">';
-			htmlContent += '<div class="att_icon fa4"></div>';
+			htmlContent += '<div class="att_icon fa4"></div>';
 			htmlContent += '<div class="att_title">' + data.fileName + '</div>';
 			htmlContent += '<span class="att_author">' + data.author + '<span class="att_datetime">' + data.dateTime + '</span></span>';
 			htmlContent += '<span class="att_status"></span>';

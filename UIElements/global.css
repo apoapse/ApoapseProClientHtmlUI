@@ -81,6 +81,18 @@ select {
 	font-size: 12px;
 }
 
+label.file_input::after {
+	content: "";
+	font-family: 'Font Awesome 5 Free';
+	position: absolute;
+	right: 188px; top: 3px;
+	font-size: 20px;
+}
+
+.file_input input {
+	padding-left: 30px !important;
+}
+
 /************************************************/
 .switch::after {
 	content: '' !important;
