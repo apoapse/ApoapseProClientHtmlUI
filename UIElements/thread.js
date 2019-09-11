@@ -12,7 +12,7 @@ $(document).on("onReady", function ()
 		var htmlContent = '';
 
 		htmlContent += '<div class="attachment_file clickable attachment_' + data.id +'" data-id="' + data.id + '">';
-			htmlContent += '<div class="att_icon fa4"></div>';
+			htmlContent += '<div class="att_icon fa"></div>';
 			htmlContent += '<div class="att_title">' + data.fileName + '</div>';
 			htmlContent += '<span class="att_author">' + data.author + '<span class="att_datetime">' + data.dateTime + '</span></span>';
 			htmlContent += '<span class="att_status"></span>';
@@ -84,8 +84,8 @@ $(document).on("onReady", function ()
 		}
 
 		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.id + '">';
-		htmlContent += '<img src="imgs/avatar_' + messageData.author + '.jpg" class="avatar_large">';
-		htmlContent += '<div class="author globalTextColor">' + messageData.author + '</div>';
+		htmlContent += '<img src="' + messageData.author.avatar + '" class="avatar_large">';
+		htmlContent += '<div class="author globalTextColor">' + messageData.author.name + '</div>';
 		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
 		htmlContent += '<div class="content">' + messageData.message + '</div>';
 

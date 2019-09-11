@@ -21,6 +21,7 @@ $(document).on("UpdateUserInfo", function (event, data)
 	usergroups = data.usergroups;
 
 	$(".localUserNickname").html(localUser.nickname);
+	$(".localUserAvatar").attr("src", localUser.avatar);
 });
 
 /*-----------------SPEEDBAR----------------------*/

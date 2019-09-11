@@ -46,7 +46,7 @@ $(document).on("onReady", function ()
 
 		if (threadData.msg_count > 0)
 		{
-			htmlContent += '<img src="imgs/avatar_' + threadData.msg_preview[0].author + '.jpg" class="avatar_large">';
+			htmlContent += '<img src="' + threadData.msg_preview[0].author.avatar + '" class="avatar_large">';
 			htmlContent += '<div class="msg_preview">' + threadData.msg_preview[0].message.substring(0, 250) + '</div>';
 		}
 
