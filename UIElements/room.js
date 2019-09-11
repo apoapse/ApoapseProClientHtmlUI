@@ -1,3 +1,20 @@
+function GenerateListedThread(threadData)
+{
+	var htmlContent = "";
+	htmlContent += '<div class="listed_thread clickable" data-id="' + threadData.id + '" id="listed_thread_' + threadData.id + '">';
+	htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs">' + threadData.unreadMsgCount + '</span></h2>';
+
+	if (threadData.msg_count > 0)
+	{
+		htmlContent += '<img src="' + threadData.msg_preview[0].author.avatar + '" class="avatar_large">';
+		htmlContent += '<div class="msg_preview">' + threadData.msg_preview[0].message.substring(0, 250) + '</div>';
+	}
+
+	htmlContent += '</div>';
+	
+	return htmlContent;
+}
+
 $(document).on("onReady", function ()
 {
 	/*-----------------ROOMS----------------------*/
@@ -38,40 +55,24 @@ $(document).on("onReady", function ()
 	});
 
 	/*-----------------THREADS----------------------*/
-	function GenerateListedThread(threadData)
-	{
-		var htmlContent = "";
-		htmlContent += '<div class="listed_thread clickable" data-id="' + threadData.id + '" id="listed_thread_' + threadData.id + '">';
-		htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs">' + threadData.unreadMsgCount + '</span></h2>';
-
-		if (threadData.msg_count > 0)
-		{
-			htmlContent += '<img src="' + threadData.msg_preview[0].author.avatar + '" class="avatar_large">';
-			htmlContent += '<div class="msg_preview">' + threadData.msg_preview[0].message.substring(0, 250) + '</div>';
-		}
-
-		htmlContent += '</div>';
-		
-		return htmlContent;
-	}
-
 	$(document).on("OnOpenRoom", function (event, data)
-	{
+	{	
+		SwitchView(ViewEnum.room);
 		$("#thread_messages").html("");
 		$("#threads_list").html("");
-		$("#msg_editor").hide();
+		$("#room").show();
 
 		data = JSON.parse(data);
 		var htmlContent = "";
-		$("#room").show();
 
 		$.each(data.threads, function (key, value)
 		{
 			htmlContent += GenerateListedThread(value);
 		});
+
 		$("#threads_list").html(htmlContent);
 
-		currentPage = ViewEnum.room;
+		$("#threads_list").show();
 		selectedRoom = data.room[0];
 		UpdateSpeedBar();
 	});

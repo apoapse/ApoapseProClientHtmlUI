@@ -8,6 +8,21 @@ usergroups = {};
 var ViewEnum = {"room": 1, "thread": 2, "search": 3, "private_thread": 4 }
 currentPage = ViewEnum.room;
 
+function SwitchView(newView)
+{
+	currentPage = newView;
+
+	// Reset html containers
+	$("#room").hide();
+	$("#thread").hide();
+	$("#thread_messages").html("");
+	$("#threads_list").html("");
+	$("#msg_editor").hide();
+	$("#search_results").hide();
+	$("#searchbar").hide();
+	$("#search_filter_button").hide();
+}
+
 /*-----------------USERS----------------------*/
 function HasPermission(user, permName)
 {

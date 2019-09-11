@@ -1,3 +1,67 @@
+function GenerateAttachment(data)
+{
+	var htmlContent = '';
+
+	htmlContent += '<div class="attachment_file clickable attachment_' + data.id +'" data-id="' + data.id + '">';
+		htmlContent += '<div class="att_icon fa"></div>';
+		htmlContent += '<div class="att_title">' + data.fileName + '</div>';
+		htmlContent += '<span class="att_author">' + data.author + '<span class="att_datetime">' + data.dateTime + '</span></span>';
+		htmlContent += '<span class="att_status"></span>';
+		htmlContent += '<span class="att_size">' + data.fileSize +' KB</span>';
+	htmlContent += '</div>';
+
+	return htmlContent;
+}
+
+function GenerateMessageInListHTML(messageData)
+{
+	var htmlContent = "";
+	var additionalClasses = "";
+
+	if (!messageData.is_read)
+	{
+		additionalClasses += " unread";
+	}
+
+	htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.id + '">';
+	htmlContent += '<img src="' + messageData.author.avatar + '" class="avatar_large">';
+	htmlContent += '<div class="author globalTextColor">' + messageData.author.name + '</div>';
+	htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
+	htmlContent += '<div class="content">' + messageData.message + '</div>';
+
+	if (messageData.support_tags)
+	{
+		htmlContent += '<div class="tag_section">';
+			htmlContent += '<div class="tags" id="tags_' + messageData.id + '">';
+			$.each(messageData.tags, function (keyT, tag)
+			{
+				htmlContent += '<div class="globalTextColorHoverOnly">#' + tag + '</div>';
+			});
+			htmlContent += '</div>';
+			htmlContent += '<div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
+		htmlContent += '</div></div>';
+	}
+
+	if (messageData.hasOwnProperty("attachments"))
+	{
+		htmlContent += '<div class="attachments">';
+		htmlContent += '<div class="attachments_desc globalTextColor">Attachments (' + messageData.attachments.length + ') TODO KB</div>';
+
+		$.each(messageData.attachments, function()
+		{
+			htmlContent += GenerateAttachment(this);
+		});
+
+		htmlContent += '</div>';
+	}
+
+	htmlContent += '</article>';
+
+	return htmlContent;
+}
+
 $(document).on("onReady", function ()
 {
 	$(document).on("OnDisconnect", function ()
@@ -7,21 +71,6 @@ $(document).on("onReady", function ()
 	});
 
 	/*----------------------ATTACHMENTS-----------------------*/
-	function GenerateAttachment(data)
-	{
-		var htmlContent = '';
-
-		htmlContent += '<div class="attachment_file clickable attachment_' + data.id +'" data-id="' + data.id + '">';
-			htmlContent += '<div class="att_icon fa"></div>';
-			htmlContent += '<div class="att_title">' + data.fileName + '</div>';
-			htmlContent += '<span class="att_author">' + data.author + '<span class="att_datetime">' + data.dateTime + '</span></span>';
-			htmlContent += '<span class="att_status"></span>';
-			htmlContent += '<span class="att_size">' + data.fileSize +' KB</span>';
-		htmlContent += '</div>';
-
-		return htmlContent;
-	}
-
 	$(document).on("OnDroppedFiles", function (event, data)
 	{
 		data = JSON.parse(data);
@@ -73,55 +122,6 @@ $(document).on("onReady", function ()
 	});
 
 	/*----------------------MESSAGES-----------------------*/
-	function GenerateMessageInListHTML(messageData)
-	{
-		var htmlContent = "";
-		var additionalClasses = "";
-
-		if (!messageData.is_read)
-		{
-			additionalClasses += " unread";
-		}
-
-		htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.id + '">';
-		htmlContent += '<img src="' + messageData.author.avatar + '" class="avatar_large">';
-		htmlContent += '<div class="author globalTextColor">' + messageData.author.name + '</div>';
-		htmlContent += '<div class="datetime">' + messageData.sent_time + '</div>';
-		htmlContent += '<div class="content">' + messageData.message + '</div>';
-
-		if (messageData.support_tags)
-		{
-			htmlContent += '<div class="tag_section">';
-				htmlContent += '<div class="tags" id="tags_' + messageData.id + '">';
-				$.each(messageData.tags, function (keyT, tag)
-				{
-					htmlContent += '<div class="globalTextColorHoverOnly">#' + tag + '</div>';
-				});
-				htmlContent += '</div>';
-				htmlContent += '<div>';
-					htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
-					htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
-			htmlContent += '</div></div>';
-		}
-
-		if (messageData.hasOwnProperty("attachments"))
-		{
-			htmlContent += '<div class="attachments">';
-			htmlContent += '<div class="attachments_desc globalTextColor">Attachments (' + messageData.attachments.length + ') TODO KB</div>';
-
-			$.each(messageData.attachments, function()
-			{
-				htmlContent += GenerateAttachment(this);
-			});
-
-			htmlContent += '</div>';
-		}
-
-		htmlContent += '</article>';
-
-		return htmlContent;
-	}
-
 	$(document).on("OnOpenThread", function (event, data)
 	{
 		$("#thread_messages").html("");
@@ -134,6 +134,8 @@ $(document).on("onReady", function ()
 			htmlContent += GenerateMessageInListHTML(value);
 		});
 
+		SwitchView(ViewEnum.thread);
+
 		$("#thread_messages").html(htmlContent);
 		$("#room").hide();
 		$("#thread").show();
@@ -141,7 +143,7 @@ $(document).on("onReady", function ()
 
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
 
-		currentPage = ViewEnum.thread;
+		
 		selectedThread = data.thread[0];
 		UpdateSpeedBar();
 	});
@@ -252,13 +254,12 @@ $(document).on("onReady", function ()
 		});
 
 		$("#thread_messages").html(htmlContent);
-		$("#room").hide();
 		$("#thread").show();
 		$("#msg_editor").show();
 
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
 
-		currentPage = ViewEnum.private_thread;
+		ViewEnum.thread(ViewEnum.private_thread);
 		selectedThread = {};
 		selectedRoom.name = data.user.nickname;
 		UpdateSpeedBar();

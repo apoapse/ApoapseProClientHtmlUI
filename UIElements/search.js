@@ -15,14 +15,10 @@ $(document).on("onReady", function ()
 
 				if (searchText.length > 0)
 				{
-					$("#search_results").show();
-					$("#search_filter_button").show();
-					field.blur();
+					var data = {};
+					data.query = searchText;
 
-					//Todo: add a central controler that handle switching between "pages"
-					currentPage = ViewEnum.search;
-					$("#thread").hide();
-					$("#room").hide();
+					ApoapseAPI.SendSignal("search", JSON.stringify(data));
 				}
 				else
 				{
@@ -32,5 +28,54 @@ $(document).on("onReady", function ()
 				event.preventDefault();
 			}
 		});
+	});
+
+	$(document).on("DisplaySearchResults", function (event, data)
+	{
+		data = JSON.parse(data);
+		SwitchView(ViewEnum.search);	//Todo: add a central controler that handle switching between "pages"
+		var field = $("#searchbar input");
+		var htmlContent = "";
+
+		$("#search_results").show();
+		$("#search_filter_button").show();
+		field.val(data.query);
+		field.blur();
+		$("#searchbar").show();
+
+		if (data.hasOwnProperty("attachments"))
+		{
+			htmlContent += '<h2>Attachments</h2>';
+			htmlContent += '<div class="search_results_section">';
+			$.each(data.attachments, function()
+			{
+				htmlContent += GenerateAttachment(this);
+			});
+			htmlContent += '</div>';
+		}
+
+		if (data.hasOwnProperty("threads"))
+		{
+			htmlContent += '<h2>Threads</h2>';
+			htmlContent += '<div class="search_results_section">';
+			$.each(data.threads, function()
+			{
+				htmlContent += GenerateListedThread(this);
+			});
+			htmlContent += '</div>';
+		}
+
+		if (data.hasOwnProperty("messages"))
+		{
+			htmlContent += '<h2>Messages</h2>';
+			htmlContent += '<div class="search_results_section">';
+			$.each(data.messages, function()
+			{
+				htmlContent += GenerateMessageInListHTML(this);
+			});
+			htmlContent += '</div>';
+		}
+
+		$("#search_results").html(htmlContent);
 	});
 });
