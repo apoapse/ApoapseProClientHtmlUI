@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="ApoapseAPI.js"></script>
 	<script type="text/javascript" src="UIElements/main_interface.js"></script>
 	<script type="text/javascript" src="UIElements/dialogs.js"></script>
+	<script type="text/javascript" src="UIElements/error.js"></script>
 	<script type="text/javascript" src="UIElements/login.js"></script>
 	<script type="text/javascript" src="UIElements/room.js"></script>
 	<script type="text/javascript" src="UIElements/thread.js"></script>
@@ -268,8 +269,6 @@
 		<div class="center_all_axis globalTextColor fas" id="dropfile_icon" style="display: none;">
 			
 		</div>
-		
-		<div id="dialog_mask" style="display: none;"></div>
 	</div>
 
 	<div id="login">
@@ -310,5 +309,15 @@
 			</form>
 		</div>
 	</div>
+
+	<div class="dialog simple_dialog center_all_axis" id="dialog_error">
+		<div class="top_bar">
+			<h2>Error</h2>
+			<span class="dialog_close_button far clickable globalTextColor"></span>
+		</div>
+		<div id="error_message"></div>
+	</div>
+	
+	<div id="dialog_mask" style="display: none;"></div>
 </body>
 </html>

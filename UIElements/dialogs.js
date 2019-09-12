@@ -1,16 +1,21 @@
 var isDialogOpen = false;
 
+function OpenDialog(dialogName)
+{
+	$(".dialog").fadeOut(400);
+	$("#dialog_" + dialogName).fadeIn(450);
+	$("#dialog_mask").fadeIn(450);
+
+	$(document).trigger("on_opened_dialog_" + dialog);
+	isDialogOpen = true;
+}
+
 $(document).on("onReady", function ()
 {
 	$(".dialog_link").click(function ()
 	{
-		var dialog = $(this).attr("data-dialog-to-open");
-		$(".dialog").fadeOut(400);
-		$("#dialog_" + dialog).fadeIn(450);
-		$("#dialog_mask").fadeIn(450);
-
-		$(document).trigger("on_opened_dialog_" + dialog);
-		isDialogOpen = true;
+		var dialogName = $(this).attr("data-dialog-to-open");
+		OpenDialog(dialogName);
 	});
 
 	$(".close_dialog_on_click").click(function ()
