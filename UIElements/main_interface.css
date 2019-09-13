@@ -261,3 +261,16 @@
 	border-radius: 5px;
 	z-index: 1;
 }
+
+/************************************************/
+.empty_page {
+	position: absolute;
+    top: 18%;
+    font-size: 20px;
+}
+
+.empty_page input {
+	display: block;
+	color: white;
+	padding: 5px;
+}

@@ -6,7 +6,7 @@ function OpenDialog(dialogName)
 	$("#dialog_" + dialogName).fadeIn(450);
 	$("#dialog_mask").fadeIn(450);
 
-	$(document).trigger("on_opened_dialog_" + dialog);
+	$(document).trigger("on_opened_dialog_" + dialogName);
 	isDialogOpen = true;
 }
 

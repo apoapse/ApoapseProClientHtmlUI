@@ -65,10 +65,18 @@ $(document).on("onReady", function ()
 		data = JSON.parse(data);
 		var htmlContent = "";
 
-		$.each(data.threads, function (key, value)
+		if (data.hasOwnProperty("threads"))
 		{
-			htmlContent += GenerateListedThread(value);
-		});
+			$.each(data.threads, function (key, value)
+			{
+				htmlContent += GenerateListedThread(value);
+			});
+		}
+		else
+		{
+			htmlContent += '<div class="empty_page center_horizontal" id="no_threads">Create your first thread';
+			htmlContent += '<input class="create_thread_button globalTextColorBackground" type="button" value="Create thread"></div>';
+		}
 
 		$("#threads_list").html(htmlContent);
 
@@ -81,6 +89,7 @@ $(document).on("onReady", function ()
 	{
 		data = JSON.parse(data);
 
+		$("#threads_list #no_threads").remove();
 		$("#threads_list").append(GenerateListedThread(data));
 	});
 
@@ -90,9 +99,9 @@ $(document).on("onReady", function ()
 		$("#listed_thread_" + data.id).empty().append(GenerateListedThread(data));
 	});
 
-	$("#create_thread_button").click(function ()
+	$("#room").on("click", ".create_thread_button", function()
 	{
-		$(this).hide();
+		$("#create_thread_button").hide();
 		$("#create_thread_form").show();
 		$("#create_thread_name_field").focus();
 	});
