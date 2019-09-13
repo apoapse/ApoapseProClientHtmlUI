@@ -13,6 +13,7 @@ article .author {
 article .datetime {
 	color: gray;
 	font-size: 12px;
+	display: table;
 }
 
 article .content {

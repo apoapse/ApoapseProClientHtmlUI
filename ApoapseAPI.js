@@ -92,6 +92,7 @@ var Localization =
 			let webpageContent = $("body").html();
 			webpageContent = Localization.LocalizeText(webpageContent);
 			$("body").html(webpageContent);
+			//moment.locale('fr'); //TODO
 
 			// Trigger the main ready event (outside of this API, the $(document).ready() event should never be used)
 			$(document).trigger("onReady");
@@ -123,6 +124,16 @@ var Localization =
 			}
 
 			return value;
+		},
+
+		LocalizeDateTimeRelative: function (dateTime)	// ISO 8601
+		{
+			return moment(dateTime).fromNow();
+		},
+
+		LocalizeDateTimeFull: function (dateTime)	// ISO 8601
+		{
+			return moment(dateTime).format("LLL");
 		}
 	};
 
