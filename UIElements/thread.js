@@ -171,6 +171,15 @@ $(document).on("onReady", function ()
 		ApoapseAPI.SendSignal("mark_message_as_read", JSON.stringify(signalData));
 	});
 
+	/*--------------------TAGS-------------------------*/
+	$(document).on('click', '.tag', function()
+	{
+		var data = {};
+		data.query = $(this).html();
+
+		ApoapseAPI.SendSignal("search", JSON.stringify(data));
+	});
+
 	/*---------------------------------------------*/
 	function SendNewMsg()
 	{
