@@ -30,7 +30,8 @@ $(document).on("OnReceivedServerInfo", function (event, data)
 	{	
 		$("#login_form_container").hide();
 		$("#install_form_container").show();
-		$("#install_form_container").removeClass("hide");	$("#admin_form_username").val(data.previousUsername);
+		$("#install_form_container").removeClass("hide");
+		$("#admin_form_username").val(data.previousUsername);
 	}
 	else if (data.status == "authenticated")
 	{
@@ -50,8 +51,9 @@ $(document).on("validate_install_form", function (event, data)
 {
 	$("#login_form_container").show();
 	$("#install_form_container").hide();
+	$("#install_form_container form").trigger("reset");
 
-	$("#login_form_container input").val("");
+	ResetLoginScreen();
 });
 
 /*---------------------------------------------*/
@@ -60,6 +62,7 @@ $(document).on("validate_first_login_form", function (event, data)
 	if (data.password == data.password_2)
 	{
 		ApoapseAPI.SendSignal("user_first_connection", JSON.stringify(data));
+		ResetLoginScreen();
 
 		/*$("#login_form_container").show();*/
 	}
@@ -67,6 +70,4 @@ $(document).on("validate_first_login_form", function (event, data)
 	{
 		// TODO: error passwords do not match
 	}
-
-	$("#user_form_container form").trigger("reset");
 });
