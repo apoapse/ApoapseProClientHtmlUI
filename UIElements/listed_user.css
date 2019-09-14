@@ -35,3 +35,8 @@
 .listed_user.selected {
 	font-weight: bold;
 }
+
+.listed_user.local_user {
+	font-style: italic;
+	color: gray;
+}

@@ -93,6 +93,9 @@ $(document).on("OnUpdateUserList", function (event, data)
 		if (value.unreadMsgCount > 0)
 			addClass += "unread ";
 
+		if (value.isLocalUser)
+			addClass += "local_user ";
+
 		if (value.isSelected > 0)
 			addClass += "selected ";
 
@@ -102,10 +105,11 @@ $(document).on("OnUpdateUserList", function (event, data)
 	$("#users_list").html(htmlContent);
 });
 
-$(document).on('click', '.listed_user', function()
+$(document).on('click', '.listed_user:not(.local_user)', function()
 {
 	var signalData = {};
 	signalData.id = $(this).attr("data-id");
+	$(this).addClass("selected");
 
 	ApoapseAPI.SendSignal("LoadUserPage", JSON.stringify(signalData));
 });
