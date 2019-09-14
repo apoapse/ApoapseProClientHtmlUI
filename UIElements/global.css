@@ -192,7 +192,6 @@ table {
 /*********************TOOLTIPS***************************/
 [data-tooltip] {
 	position: relative;
-	z-index: 2;
   }
 
   /* Hide the tooltip content by default */
