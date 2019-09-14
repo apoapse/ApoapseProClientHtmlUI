@@ -271,6 +271,7 @@ $(document).on("onReady", function ()
 	/*----------------------PRIVATE USER MESSAGES-----------------------*/
 	$(document).on("OnOpenPrivateMsgThread", function (event, data)
 	{
+		SwitchView(ViewEnum.private_thread);
 		$("#thread_messages").html("");
 
 		data = JSON.parse(data);
@@ -287,7 +288,6 @@ $(document).on("onReady", function ()
 
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
 
-		ViewEnum.thread(ViewEnum.private_thread);
 		selectedThread = {};
 		selectedRoom.name = data.user.nickname;
 		UpdateSpeedBar();
