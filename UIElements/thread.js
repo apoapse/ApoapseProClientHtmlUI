@@ -17,6 +17,12 @@ function GenerateAttachment(data)
 	return htmlContent;
 }
 
+function ReplaceUrlsByLinks(text)
+{
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(exp,"<a href='$1'>$1</a>"); 
+}
+
 function GenerateMessageInListHTML(messageData)
 {
 	var htmlContent = "";
@@ -31,7 +37,7 @@ function GenerateMessageInListHTML(messageData)
 	htmlContent += '<img src="' + messageData.author.avatar + '" class="avatar_large">';
 	htmlContent += '<div class="author globalTextColor">' + messageData.author.name + '</div>';
 	htmlContent += '<div class="datetime" data-tooltip="' + Localization.LocalizeDateTimeFull(messageData.sent_time) + '">' + Localization.LocalizeDateTimeRelative(messageData.sent_time) + '</div>';
-	htmlContent += '<div class="content">' + messageData.message + '</div>';
+	htmlContent += '<div class="content">' + ReplaceUrlsByLinks(messageData.message) + '</div>';
 
 	if (messageData.support_tags)
 	{
@@ -159,6 +165,15 @@ $(document).on("onReady", function ()
 		$("#thread_messages").append(GenerateMessageInListHTML(data));
 
 		$("#thread").animate({ scrollTop: $('#thread').prop("scrollHeight")}, 1000);
+	});
+
+	$(document).on('click', 'article .content a', function()
+	{
+		var signalData = {};
+		signalData.url = $(this).attr("href");
+		ApoapseAPI.SendSignal("openURL", JSON.stringify(signalData));
+
+		preventDefault();
 	});
 
 	/*---------------------------------------------*/
