@@ -39,6 +39,14 @@ $(document).on("UpdateUserInfo", function (event, data)
 	$(".localUserAvatar").attr("src", localUser.avatar);
 });
 
+/*-----------------SETTINGS----------------------*/
+$(document).on("OnUpdatedServerSettings", function (event, data)
+{
+	data = JSON.parse(data);
+
+	$(".company_name").html(data.server_name.substring(0, 22));
+});
+
 /*-----------------SPEEDBAR----------------------*/
 function UpdateSpeedBar()
 {
