@@ -47,6 +47,12 @@ $(document).on("OnUpdatedServerSettings", function (event, data)
 	$(".company_name").html(data.server_name.substring(0, 22));
 });
 
+$(document).on("SetClientGlobalSettings", function (event, data)
+{
+	data = JSON.parse(data);
+	$("#login_form_container input[name=server]").val(data.default_server);
+});
+
 /*-----------------SPEEDBAR----------------------*/
 function UpdateSpeedBar()
 {
@@ -117,6 +123,8 @@ $(document).on('click', '.listed_user:not(.local_user)', function()
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
+	ApoapseAPI.SendSignal("OnUIReady", "{}");
+
 	var dropZone = document.getElementsByTagName("BODY")[0];
 
 	dropZone.addEventListener('dragover', function(e) {
