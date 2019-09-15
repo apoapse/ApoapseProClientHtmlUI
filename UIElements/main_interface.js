@@ -2,6 +2,7 @@
 rooms = {};
 selectedRoom = {};
 selectedThread = {};
+selectedUserPage = {};
 users = {};
 usergroups = {};
 
@@ -12,13 +13,20 @@ function SwitchView(newView)
 {
 	// Save unread messages
 	var unsentMsgContent = $("#send_msg_editor").val();
-	if (currentPage == ViewEnum.thread && unsentMsgContent.length > 0)
+	if (currentPage == ViewEnum.thread || currentPage == ViewEnum.private_thread)
 	{
 		var signalData = {};
-		signalData.roomId = selectedRoom.id;
-		signalData.threadId = selectedThread.id;
-		signalData.msgContent = unsentMsgContent;
+		if (currentPage == ViewEnum.thread)
+		{
+			signalData.roomId = selectedRoom.id;
+			signalData.threadId = selectedThread.id;
+		}
+		else
+		{
+			signalData.userId = selectedUserPage.user.id;
+		}
 
+		signalData.msgContent = unsentMsgContent;
 		ApoapseAPI.SendSignal("SaveUnsentMessage", JSON.stringify(signalData));
 	}
 

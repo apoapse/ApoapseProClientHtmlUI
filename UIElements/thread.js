@@ -219,7 +219,9 @@ $(document).on("onReady", function ()
 
 		if (enterSendMsg && event.keyCode == 13 && !event.shiftKey)
 		{
-			SendNewMsg();
+			if ($("#send_msg_editor").val().length > 0)
+				SendNewMsg();
+				
 			event.preventDefault();
 		}
 	});
@@ -274,6 +276,7 @@ $(document).on("onReady", function ()
 		$("#thread_messages").html("");
 
 		data = JSON.parse(data);
+		selectedUserPage = data;
 		var htmlContent = "";
 
 		$.each(data.messages, function (key, value)
@@ -283,6 +286,8 @@ $(document).on("onReady", function ()
 
 		$("#thread_messages").html(htmlContent);
 		$("#thread").show();
+
+		$("#send_msg_editor").val(data.unsentMessage);
 		$("#msg_editor").show();
 
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
