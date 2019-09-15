@@ -10,6 +10,19 @@ currentPage = ViewEnum.room;
 
 function SwitchView(newView)
 {
+	// Save unread messages
+	var unsentMsgContent = $("#send_msg_editor").val();
+	if (currentPage == ViewEnum.thread && unsentMsgContent.length > 0)
+	{
+		var signalData = {};
+		signalData.roomId = selectedRoom.id;
+		signalData.threadId = selectedThread.id;
+		signalData.msgContent = unsentMsgContent;
+
+		ApoapseAPI.SendSignal("SaveUnsentMessage", JSON.stringify(signalData));
+	}
+
+	// Set current page
 	currentPage = newView;
 
 	// Reset html containers
@@ -21,6 +34,7 @@ function SwitchView(newView)
 	$("#search_results").hide();
 	$("#searchbar").hide();
 	$("#search_filter_button").hide();
+	$("#send_msg_editor").val("");
 }
 
 /*-----------------USERS----------------------*/

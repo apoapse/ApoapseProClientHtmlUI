@@ -147,13 +147,12 @@ $(document).on("onReady", function ()
 		SwitchView(ViewEnum.thread);
 
 		$("#thread_messages").html(htmlContent);
-		$("#room").hide();
 		$("#thread").show();
+		$("#send_msg_editor").val(data.thread[0].unsentMessage);
 		$("#msg_editor").show();
 
 		$("#thread").scrollTop($("#thread").prop("scrollHeight"));	// Scoll to botton at load
 
-		
 		selectedThread = data.thread[0];
 		UpdateSpeedBar();
 	});
