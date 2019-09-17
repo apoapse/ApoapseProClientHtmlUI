@@ -75,13 +75,13 @@ var Localization =
 
 		Initialize: function (locale)
 		{
-			if (locale === "en-us")
+			if (locale === "en")
 			{
 				this.ReadLocalizationFile("en", false);
 			}
 			else
 			{
-				this.ReadLocalizationFile("en", true);
+				this.ReadLocalizationFile("en", true);	// Load the default locale first
 				this.ReadLocalizationFile(locale, false);
 			}
 		},
@@ -92,7 +92,7 @@ var Localization =
 			let webpageContent = $("body").html();
 			webpageContent = Localization.LocalizeText(webpageContent);
 			$("body").html(webpageContent);
-			moment.locale(preferredLocale);
+			moment.locale(preferredLocale);	// Set the locale for the dates
 
 			// Trigger the main ready event (outside of this API, the $(document).ready() event should never be used)
 			$(document).trigger("onReady");
@@ -139,7 +139,7 @@ var Localization =
 
 $(document).ready(function ()
 {
-	Localization.Initialize("en");	// #TODO get the locale from user preferences
+	Localization.Initialize(g_locale);
 });
 
 // Check if attribute exist/is present
