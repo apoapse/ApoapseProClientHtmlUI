@@ -77,11 +77,11 @@ var Localization =
 		{
 			if (locale === "en-us")
 			{
-				this.ReadLocalizationFile("en-us", false);
+				this.ReadLocalizationFile("en", false);
 			}
 			else
 			{
-				this.ReadLocalizationFile("en-us", true);
+				this.ReadLocalizationFile("en", true);
 				this.ReadLocalizationFile(locale, false);
 			}
 		},
@@ -92,7 +92,7 @@ var Localization =
 			let webpageContent = $("body").html();
 			webpageContent = Localization.LocalizeText(webpageContent);
 			$("body").html(webpageContent);
-			//moment.locale('fr'); //TODO
+			moment.locale(preferredLocale);
 
 			// Trigger the main ready event (outside of this API, the $(document).ready() event should never be used)
 			$(document).trigger("onReady");
@@ -139,7 +139,7 @@ var Localization =
 
 $(document).ready(function ()
 {
-	Localization.Initialize("en-us");	// #TODO get the locale from user preferences
+	Localization.Initialize("en");	// #TODO get the locale from user preferences
 });
 
 // Check if attribute exist/is present

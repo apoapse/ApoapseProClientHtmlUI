@@ -45,7 +45,7 @@ $(document).on("onReady", function ()
 
 		if (data.hasOwnProperty("attachments"))
 		{
-			htmlContent += '<h2>Attachments</h2>';
+			htmlContent += '<h2>' + Localization.LocalizeString("@attachments") + '</h2>';
 			htmlContent += '<div class="search_results_section">';
 			$.each(data.attachments, function()
 			{
@@ -56,7 +56,7 @@ $(document).on("onReady", function ()
 
 		if (data.hasOwnProperty("threads"))
 		{
-			htmlContent += '<h2>Threads</h2>';
+			htmlContent += '<h2>' + Localization.LocalizeString("@threads") + '</h2>';
 			htmlContent += '<div class="search_results_section">';
 			$.each(data.threads, function()
 			{
@@ -67,7 +67,7 @@ $(document).on("onReady", function ()
 
 		if (data.hasOwnProperty("messages"))
 		{
-			htmlContent += '<h2>Messages</h2>';
+			htmlContent += '<h2>' + Localization.LocalizeString("@messages") + '</h2>';
 			htmlContent += '<div class="search_results_section">';
 			$.each(data.messages, function()
 			{

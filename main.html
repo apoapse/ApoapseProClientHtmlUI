@@ -57,13 +57,13 @@
 			</tr>
 			<tr>
 				<td id="panel_left">
-					<h2>rooms</h2>
+					<h2>@rooms</h2>
 					<div id="rooms_list">
 						
 					</div>
 					<div class="add_new_room clickable globalTextColorHoverOnly dialog_link" id="add_new_room" data-dialog-to-open="create_room"><div class="fas"></div>Add</div>
 
-					<h2>people</h2>
+					<h2>@people</h2>
 					<div id="users_list">
 						<div class="listed_user online">TODO</div>
 						<div class="listed_user">TODO<span class="unread_msgs_count globalTextColor">(2)</span></div>
@@ -71,13 +71,13 @@
 				</td>
 				<td>
 					<div id="room" class="">
-						<div id="create_thread_button" class="create_thread_button clickable"><span class="fas"></span>Create thread</div>
+						<div id="create_thread_button" class="create_thread_button clickable"><span class="fas"></span>@create_thread</div>
 						<div id="create_thread_form" class="create_thread_button clickable" style="display: none;"><span class="fas"></span>
-							<form data-send-cmd="create_thread" data-js-event="create_new_thread"><input type="text" name="name" id="create_thread_name_field" class="globalTextColorBackground" placeholder="Thread name"></form>						
+							<form data-send-cmd="create_thread" data-js-event="create_new_thread"><input type="text" name="name" id="create_thread_name_field" class="globalTextColorBackground" placeholder="@thread_name"></form>						
 						</div>
 						
 						<div id="threads_list">
-							<div class="empty_page center_horizontal">Create your first room<input class="dialog_link globalTextColorBackground" type="button" value="Create room" data-dialog-to-open="create_room"></div>
+							<div class="empty_page center_horizontal">@empty_create_room<input class="dialog_link globalTextColorBackground" type="button" value="@create_room" data-dialog-to-open="create_room"></div>
 						</div>
 					</div>
 
@@ -138,10 +138,10 @@
 					</div>
 				</td>
 				<td id="panel_right">
-					<h2 class="globalTextColor">Attachments</h2>
+					<h2 class="globalTextColor">@attachments</h2>
 					<select>
-						<option value="date">By date</option>
-						<option value="size">By size</option>
+						<option value="date">@sort_by_date</option>
+						<option value="size">@sort_by_size</option>
 					</select>
 					<div id="global_listed_attachments">
 						<!--<div class="attachment_file clickable">
@@ -189,35 +189,35 @@
 
 		<div class="dialog center_all_axis" id="dialog_admin_panel">
 			<div class="left_panel">
-				<h2>settings</h2>
-				<div id="admin_panel_add_user_tab_name" class="listed_room clickable disable"><div></div>Add new user</div>
-				<div class="listed_room clickable disable"><div></div>Usergroups</div>
-				<div class="listed_room clickable disable"><div></div>Server Gerneral</div>
-				<div class="listed_room clickable disable"><div></div>Server Performances</div>
+				<h2>@settings</h2>
+				<div id="admin_panel_add_user_tab_name" class="listed_room clickable disable"><div></div>@add_new_user</div>
+				<div class="listed_room clickable disable"><div></div>@usergroups</div>
+				<div class="listed_room clickable disable"><div></div>@server_general</div>
+				<div class="listed_room clickable disable"><div></div>@server_performances</div>
 			</div>
 			<div class="right_panel">
 				<div class="top_bar">
-					<input type="reset" value="Discard">
+					<input type="reset" value="@discard">
 					<span class="dialog_close_button far clickable globalTextColor"></span>
 				</div>
 
 				<div id="dialog_tab_add_user">
-					<h2>Add new user</h2>
+					<h2>@add_new_user</h2>
 					<p>
 						<form data-js-event="validate_add_new_user" id="add_new_user_form">
-							<label>Username<input type="text" name="username" required></label>
+							<label>@username<input type="text" name="username" required></label>
 
-							<label>User group<select id="usergroup_select_list" name="usergroup">
+							<label>@usergroup<select id="usergroup_select_list" name="usergroup">
 							</select></label>
 
 							<input type="submit" value="Add" class="globalColorBackgroundHoverOnly">
 						</form>
 					</p>
 					<div style="display: none;" id="new_user_info_form">
-						<h2>New user temporary credentials</h2>
+						<h2>@new_user_temp_login</h2>
 						<form><p>
-							<label>Username<input type="text" disabled id="add_new_user_tempUsernamefield"></label>
-							<label>Temporary password<input type="text" disabled id="add_new_user_temppasswordfield"></label>
+							<label>@username<input type="text" disabled id="add_new_user_tempUsernamefield"></label>
+							<label>@temp_password<input type="text" disabled id="add_new_user_temppasswordfield"></label>
 						</p></form>
 					</div>
 				</div>
@@ -242,23 +242,23 @@
 		</div>
 
 		<div class="dialog" id="dialog_user_menu">
-			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">Preferences</div>
-			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="admin_panel">Administrator panel</div>
-			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">Disconnect</div>
+			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">@preferences</div>
+			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="admin_panel">@admin_panel</div>
+			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">@disconnect</div>
 		</div>
 
 		<div class="dialog simple_dialog center_all_axis" id="dialog_create_room">
 			<div class="top_bar">
-				<h2>Create room</h2>
+				<h2>@create_room</h2>
 				<input type="reset" value="Discard">
 				<span class="dialog_close_button far clickable globalTextColor"></span>
 			</div>
 
 			<form data-send-cmd="create_room">
-				<label>Room name<input type="text" name="name" required id="create_room_name_field" class="globalTextColorBackground"></label>
+				<label>@room_name<input type="text" name="name" required id="create_room_name_field" class="globalTextColorBackground"></label>
 				<p>
-				<label><input type="radio" checked name="threads_layout" value="multiple" class="globalTextColor">Multiple threads</label>
-				<label><input type="radio" name="threads_layout" value="single" class="globalTextColor">Single conversation</label>
+				<label><input type="radio" checked name="threads_layout" value="multiple" class="globalTextColor">@room_multi_threads</label>
+				<label><input type="radio" name="threads_layout" value="single" class="globalTextColor">@room_single_conv</label>
 				</p>
 				<input type="submit" value="Create" class="globalTextColorBackground" style="color: white;" />
 			</form>
@@ -272,44 +272,44 @@
 	<div id="login">
 		<div id="login_form_container">
 			<form data-js-event="login" class="center_vertical">
-				<label>Server<input type="text" name="server" value="127.0.0.1" class="globalTextColor" required></label>
-				<label>Username<input type="text" name="username" class="globalTextColor" required value="Guillaume"></label>
-				<label>Password<input type="password" name="password" class="globalTextColor" id="login_form_password" required value="test"></label>
-				<input type="submit" value="Connect" id="login_connect_button" class="globalTextColorBackground">
+				<label>@server<input type="text" name="server" value="127.0.0.1" class="globalTextColor" required></label>
+				<label>@username<input type="text" name="username" class="globalTextColor" required value="Guillaume"></label>
+				<label>@password<input type="password" name="password" class="globalTextColor" id="login_form_password" required value="test"></label>
+				<input type="submit" value="@connect" id="login_connect_button" class="globalTextColorBackground">
 			</form>
 		</div>
 
 		<div id="install_form_container" style="display: none;">
 			<form data-js-event="validate_install_form" data-send-cmd="install">
-				<h1 class="globalTextColor">Installation</h1>
-				<h2>Server</h2>
-				<label>Name<input type="text" name="server_name" class="globalTextColor" required></label>
+				<h1 class="globalTextColor">@installation</h1>
+				<h2>@server</h2>
+				<label>@server_name<input type="text" name="server_name" class="globalTextColor" required></label>
 
-				<h2>Administrator account</h2>
-				<label>Username<input type="text" name="admin_username" class="globalTextColor" id="admin_form_username" required></label>
-				<label>Password<input type="password" name="admin_password" class="globalTextColor" required></label>
+				<h2>@admin_account</h2>
+				<label>@username<input type="text" name="admin_username" class="globalTextColor" id="admin_form_username" required></label>
+				<label>@password<input type="password" name="admin_password" class="globalTextColor" required></label>
 
-				<input type="submit" value="Validate" class="globalTextColorBackground">
+				<input type="submit" value="@validate" class="globalTextColorBackground">
 			</form>
 		</div>
 
 		<div id="user_form_container" style="display: none;">
 			<form data-js-event="validate_first_login_form">
-				<h1 class="globalTextColor">First connection</h1>
-				<h2>Account details</h2>
-				<label>Full name<input type="text" name="nickname" class="globalTextColor" required></label>
-				<label>Password<input type="password" name="password" class="globalTextColor" required></label>
-				<label>Confirm password<input type="password" name="password_2" class="globalTextColor" required></label>
-				<label class="file_input">Avatar<input type="text" placeholder="No file selected" disabled name="avatar_path"></label>
+				<h1 class="globalTextColor">@first_connection</h1>
+				<h2>@account_details</h2>
+				<label>@fullname<input type="text" name="nickname" class="globalTextColor" required></label>
+				<label>@password<input type="password" name="password" class="globalTextColor" required></label>
+				<label>@confirm_password<input type="password" name="password_2" class="globalTextColor" required></label>
+				<label class="file_input">@avatar<input type="text" placeholder="@no_file_selected" disabled name="avatar_path"></label>
 
-				<input type="submit" value="Validate" class="globalTextColorBackground">
+				<input type="submit" value="@validate" class="globalTextColorBackground">
 			</form>
 		</div>
 	</div>
 
 	<div class="dialog simple_dialog center_all_axis" id="dialog_error">
 		<div class="top_bar">
-			<h2>Error</h2>
+			<h2>@error</h2>
 			<span class="dialog_close_button far clickable globalTextColor"></span>
 		</div>
 		<div id="error_message"></div>
