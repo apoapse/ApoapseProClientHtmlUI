@@ -62,7 +62,7 @@ var Localization =
 
 					if (!isDefaultLoc)	// The non-default locale is always the last to be loaded
 					{
-						Localization.OnLocalesLoaded();
+						Localization.OnLocalesLoaded(locale);
 						localeStr = locale;
 					}
 				},
@@ -92,6 +92,7 @@ var Localization =
 			let webpageContent = $("body").html();
 			webpageContent = Localization.LocalizeText(webpageContent);
 			$("body").html(webpageContent);
+
 			moment.locale(preferredLocale);	// Set the locale for the dates
 
 			// Trigger the main ready event (outside of this API, the $(document).ready() event should never be used)
