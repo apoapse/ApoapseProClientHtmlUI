@@ -58,7 +58,9 @@ $(document).on("UpdateUserInfo", function (event, data)
 	usergroups = data.usergroups;
 
 	$(".localUserNickname").html(localUser.nickname);
-	$(".localUserAvatar").attr("src", localUser.avatar);
+
+	if (localUser.avatar.length > 0)
+		$(".localUserAvatar").attr("src", localUser.avatar);
 });
 
 /*-----------------SETTINGS----------------------*/
