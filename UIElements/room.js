@@ -2,7 +2,13 @@ function GenerateListedThread(threadData)
 {
 	var htmlContent = "";
 	htmlContent += '<div class="listed_thread clickable" data-id="' + threadData.id + '" id="listed_thread_' + threadData.id + '">';
-	htmlContent += '<h2 class="globalTextColor">' + threadData.name + '<span class="listed_thread_unread_mgs">' + threadData.unreadMsgCount + '</span></h2>';
+	htmlContent += '<h2 class="globalTextColor">' + threadData.name;
+
+	if (threadData.unreadMsgCount > 0)
+	{
+		htmlContent += '<span class="listed_thread_unread_mgs globalTextColorBackground">' + threadData.unreadMsgCount + '</span>';
+	}
+	htmlContent += '</h2>';
 
 	if (threadData.msg_count > 0)
 	{
