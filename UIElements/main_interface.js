@@ -135,7 +135,7 @@ $(document).on("OnUpdateUserList", function (event, data)
 	$("#users_list").html(htmlContent);
 });
 
-$(document).on('click', '.listed_user:not(.local_user)', function()
+$(document).on('click', '#users_list .listed_user:not(.local_user)', function()
 {
 	var signalData = {};
 	signalData.id = $(this).attr("data-id");
