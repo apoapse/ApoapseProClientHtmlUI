@@ -247,7 +247,7 @@ $(document).on("onReady", function ()
 		ApoapseAPI.SendSignal("search", JSON.stringify(data));
 	});
 
-	/*---------------------------------------------*/
+	/*--------------------EDITOR-------------------------*/
 	function SendNewMsg()
 	{
 		var signalData = {};
@@ -268,7 +268,8 @@ $(document).on("onReady", function ()
 
 		if (enterSendMsg && event.keyCode == 13 && !event.shiftKey)
 		{
-			if ($("#send_msg_editor").val().length > 0)
+			const unsentAttachmentsCount = $(".attachment_file.temporary").length;
+			if ($("#send_msg_editor").val().length > 0 || unsentAttachmentsCount > 0)
 				SendNewMsg();
 				
 			event.preventDefault();
