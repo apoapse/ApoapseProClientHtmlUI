@@ -96,7 +96,7 @@ $(document).on("onReady", function ()
 		data = JSON.parse(data);
 
 		$("#threads_list #no_threads").remove();
-		$("#threads_list").append(GenerateListedThread(data));
+		$("#threads_list").prepend(GenerateListedThread(data));
 	});
 
 	$(document).on("UpdateThreadPreview", function (event, data)
