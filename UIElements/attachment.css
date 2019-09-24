@@ -4,6 +4,10 @@
 	font-size: 12px;
 	margin-bottom: 9px;
 	white-space: nowrap;
+	display: inline-block;
+	margin-right: 6px;
+	background: #ebebeb;
+	padding: 6px; padding-bottom: 0;
 }
 
 .attachment_file:hover .att_title {
@@ -98,16 +102,15 @@
 }
 
 /************************************************/
+#panel_right .attachment_file {
+	display: block;
+	background: none;
+}
+
+/************************************************/
 article .attachments_desc, #search_results .attachments_desc {
 	margin-bottom: 6px;
 	font-size: 14px;
-}
-
-article .attachment_file, #search_results .attachment_file {
-	display: inline-block;
-	margin-right: 6px;
-	background: #ebebeb;
-	padding: 6px; padding-bottom: 0;
 }
 
 article .att_author, #search_results .att_author {
@@ -131,4 +134,18 @@ article .attachments .img_desc, #search_results .attachments .img_desc {
 
 #editor_attachments .attachment_file {
 	display: inline-block;
+}
+
+#editor_attachments .attachment_file:hover::after {
+    /* background: #ff4040; */
+    content: '';
+    color: #ff4040;
+    font-family: 'Font Awesome 5 Free';
+    float: right;
+    height: 87%;
+    width: 32px;
+    margin-top: -42px;
+    font-size: 27px;
+    text-align: center;
+    line-height: 41px;
 }

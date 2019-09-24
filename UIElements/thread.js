@@ -1,8 +1,12 @@
-function GenerateAttachment(data)
+function GenerateAttachment(data, isTemporary)
 {
 	var htmlContent = '';
+	var additionalClasses = '';
 
-	htmlContent += '<div class="attachment_file clickable attachment_' + data.id +'" data-id="' + data.id + '">';
+	if (isTemporary)
+		additionalClasses += 'temporary';
+
+	htmlContent += '<div class="attachment_file clickable attachment_' + data.id + ' ' + additionalClasses + '" data-id="' + data.id + '">';
 		htmlContent += '<div class="att_icon fa"></div>';
 		htmlContent += '<div class="att_title">' + data.fileName + '</div>';
 
@@ -88,7 +92,7 @@ $(document).on("onReady", function ()
 		var htmlContent = '';
 		$.each(data.attachments, function()
 		{
-			htmlContent += GenerateAttachment(this);
+			htmlContent += GenerateAttachment(this, true);
 		});
 
 		$("#editor_attachments").html(htmlContent);
@@ -123,12 +127,21 @@ $(document).on("onReady", function ()
 	});
 
 
-	$(document).on('click', '.attachment_file', function()
+	$(document).on('click', '.attachment_file:not(.temporary)', function()
 	{
 		var signalData = {};
 		signalData.id = $(this).attr("data-id");
 
 		ApoapseAPI.SendSignal("openAttachment", JSON.stringify(signalData));
+	});
+
+	$(document).on('click', '.attachment_file.temporary', function()
+	{
+		$(this).remove();
+		var signalData = {};
+		signalData.id = $(this).attr("data-id");
+
+		ApoapseAPI.SendSignal("removeTempAttachment", JSON.stringify(signalData));
 	});
 
 	/*----------------------MESSAGES-----------------------*/
