@@ -45,5 +45,6 @@
 	"error_unknown_cmd": "",
 	"error_protocol_version_not_supported": "The Apoapse server is using a different version than your client. Apoapse Pro on your computer probably need to be updated.",
 	"error_unable_to_register_user": "Unable to register the user",
-	"error_unable_to_authenticate_user": "Wrong username or password"
+	"error_unable_to_authenticate_user": "Wrong username or password",
+	"load_more_attachments": "Load more"
 }

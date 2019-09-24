@@ -1,3 +1,7 @@
+var rightPanelAttachments = {};
+var rightPanelAttaChunkSize = 14;
+var attachmentsLoaded = 0;
+
 function GenerateAttachment(data, isTemporary)
 {
 	var htmlContent = '';
@@ -113,19 +117,51 @@ $(document).on("onReady", function ()
 			statusElement.html("");
 	});
 
-	$(document).on("UpdateAttachments", function (event, data)
+	function DisplayLeftPanelAttachments()
 	{
-		data = JSON.parse(data);
-
 		var htmlContent = '';
-		$.each(data.attachments, function()
+		var i = 0;
+		var attLoadedCount = 0;
+		$.each(rightPanelAttachments, function()
 		{
-			htmlContent += GenerateAttachment(this);
+			if (i >= attachmentsLoaded && attLoadedCount < rightPanelAttaChunkSize)
+			{
+				htmlContent += GenerateAttachment(this);
+				attLoadedCount++;
+				attachmentsLoaded ++;
+			}
+
+			i++;
 		});
 
-		$("#global_listed_attachments").html(htmlContent);
+		$("#global_listed_attachments").append(htmlContent);
+
+		$(".load_more_attachments").remove();
+		if (attachmentsLoaded < rightPanelAttachments.length)
+		{
+			$("#global_listed_attachments").append('<div class="load_more_attachments">' + Localization.LocalizeString("@load_more_attachments") + '</div>');
+		}
+	}
+
+	$(document).on("UpdateAttachments", function (event, data)
+	{
+		attachmentsLoaded = 0;
+		rightPanelAttachments = JSON.parse(data).attachments;
+		$("#global_listed_attachments").html("");
+		DisplayLeftPanelAttachments();
 	});
 
+	function LoadMoreAttachments()
+	{
+		if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 1)
+		{
+			DisplayLeftPanelAttachments()
+		}
+	}
+
+	$(window).resize(LoadMoreAttachments);
+	$("#global_listed_attachments").on('scroll', LoadMoreAttachments);
+	$(document).on('click', ".load_more_attachments", DisplayLeftPanelAttachments);
 
 	$(document).on('click', '.attachment_file:not(.temporary)', function()
 	{

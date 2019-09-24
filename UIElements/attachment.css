@@ -107,6 +107,14 @@
 	background: none;
 }
 
+.load_more_attachments {
+    background: #e0e0e0;
+    text-align: center;
+    padding: 9px;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
 /************************************************/
 article .attachments_desc, #search_results .attachments_desc {
 	margin-bottom: 6px;
