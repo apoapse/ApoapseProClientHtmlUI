@@ -146,7 +146,13 @@ $(document).on("onReady", function ()
 	$(document).on("UpdateAttachments", function (event, data)
 	{
 		attachmentsLoaded = 0;
-		rightPanelAttachments = JSON.parse(data).attachments;
+		var data = JSON.parse(data)
+		rightPanelAttachments = data.attachments;
+
+		$(".sort_options .selected").removeClass("selected");
+		$(".sort_options [data-dir='" + data.sorting.order + "']").addClass("selected");
+		$("#attachments_sort_by").val(data.sorting.sortBy);
+		
 		$("#global_listed_attachments").html("");
 		DisplayLeftPanelAttachments();
 	});

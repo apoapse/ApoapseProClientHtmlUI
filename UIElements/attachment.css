@@ -157,3 +157,26 @@ article .attachments .img_desc, #search_results .attachments .img_desc {
     text-align: center;
     line-height: 41px;
 }
+
+/************************************************/
+.sort_options {
+	font-family: 'Font Awesome 5 Free';
+    color: #bfbfbf;
+    font-weight: bold;
+    font-size: 14px;
+    float: right;
+    margin-top: -13px;
+}
+
+.sort_options div {
+	display: inline-block;
+}
+
+.sort_options div:hover {
+	display: inline-block;
+	color: black;
+}
+
+.sort_options .selected {
+	color: black;
+}

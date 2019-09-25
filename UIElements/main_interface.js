@@ -187,3 +187,25 @@ $(document).on("onReady", function ()
 	});
 });
 
+/*-----------------ATTACHMENTS----------------------*/
+function SortAttachments()
+{
+	var obj = {};
+	obj.sortBy = $("#attachments_sort_by").val();
+	obj.order = $(".sort_options .selected").attr("data-dir");
+
+	ApoapseAPI.SendSignal("SortAttachments", JSON.stringify(obj));
+}
+
+$(document).on('change', '#attachments_sort_by', function()
+{
+	SortAttachments()
+});
+
+$(document).on('click', '.sort_options div', function()
+{
+	$(".sort_options .selected").removeClass("selected");
+	$(this).addClass("selected");
+
+	SortAttachments();
+});

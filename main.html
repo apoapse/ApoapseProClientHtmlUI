@@ -139,10 +139,14 @@
 				</td>
 				<td id="panel_right">
 					<h2 class="globalTextColor">@attachments</h2>
-					<select>
+					<select id="attachments_sort_by">
 						<option value="date">@sort_by_date</option>
 						<option value="size">@sort_by_size</option>
 					</select>
+					<div class="sort_options">
+						<div class="selected" data-dir="desc"></div>
+						<div data-dir="asc"></div>
+					</div>
 					<div id="global_listed_attachments">
 						<!--<div class="attachment_file clickable">
 							<div class="att_icon fa4"></div>
