@@ -68,6 +68,10 @@
 	padding: 5px;
 }
 
+.top_icons .disabled {
+	color: lightgray;
+}
+
 /************************************************/
 #panel_left h2 {
 	padding: 0; margin: 0;
