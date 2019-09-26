@@ -276,13 +276,13 @@ $(document).on("onReady", function ()
 		LoadMoreMessages();
 	});
 	
-	//$(window).resize(OnMessagesTopScroll);
-	$("#thread").on('scroll', OnMessagesTopScroll);
+	//$("#thread").on('scroll', OnMessagesTopScroll);
 
 	$(document).on("OnMessagesChunkLoaded", function (event, data)
 	{
-		$(".load_more_messages").fadeOut(600).remove();
-		var currentTopElement = $('#thread article:first');
+		$(".load_more_messages").fadeOut(1000);
+		//$(".load_more_messages").delay(1001).remove();
+		var currentTopElement = $('#thread .load_more_messages:first');
 
 		data = JSON.parse(data);
 		var htmlContent = "";
@@ -300,7 +300,7 @@ $(document).on("onReady", function ()
 
 		$("#thread_messages").prepend(htmlContent);
 
-		$('#thread').scrollTop(currentTopElement.position().top - 35);
+		$('#thread').scrollTop(currentTopElement.position().top - 120);
 	});
 
 	/*--------------------TAGS-------------------------*/
