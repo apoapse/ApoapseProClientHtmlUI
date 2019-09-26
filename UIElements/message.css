@@ -63,3 +63,13 @@ article .tag_section .add_tag_field input {
 article .tag_section .add_tag_field input:focus {
 	background: none;
 }
+
+/*---------------------------------------------*/
+.load_more_messages {
+	background: #e8e8e8;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 17px;
+}

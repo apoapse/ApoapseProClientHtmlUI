@@ -1,6 +1,7 @@
 var rightPanelAttachments = {};
 var rightPanelAttaChunkSize = 14;
 var attachmentsLoaded = 0;
+var loadedMessagesCount = 0;
 
 function GenerateAttachment(data, isTemporary)
 {
@@ -165,7 +166,7 @@ $(document).on("onReady", function ()
 		}
 	}
 
-	$(window).resize(LoadMoreAttachments);
+	//$(window).resize(LoadMoreAttachments);
 	$("#global_listed_attachments").on('scroll', LoadMoreAttachments);
 	$(document).on('click', ".load_more_attachments", DisplayLeftPanelAttachments);
 
@@ -189,10 +190,19 @@ $(document).on("onReady", function ()
 	/*----------------------MESSAGES-----------------------*/
 	$(document).on("OnOpenThread", function (event, data)
 	{
+		loadedMessagesCount = 0;
 		$("#thread_messages").html("");
 
 		data = JSON.parse(data);
 		var htmlContent = "";
+
+		if (data.hasOwnProperty("messages"))
+			loadedMessagesCount = data.messages.length;
+			
+		if (loadedMessagesCount < data.totalMsgCount)
+		{
+			htmlContent += '<div class="load_more_messages">' + Localization.LocalizeString("@load_more_messages") + '</div>';
+		}
 
 		$.each(data.messages, function (key, value)
 		{
@@ -216,6 +226,7 @@ $(document).on("onReady", function ()
 	{
 		data = JSON.parse(data);
 
+		loadedMessagesCount++;
 		$("#thread_messages").append(GenerateMessageInListHTML(data));
 
 		$("#thread").animate({ scrollTop: $('#thread').prop("scrollHeight")}, 1000);
@@ -242,6 +253,54 @@ $(document).on("onReady", function ()
 		$(this).removeClass("unread");
 				
 		ApoapseAPI.SendSignal("mark_message_as_read", JSON.stringify(signalData));
+	});
+
+	/*---------------------------------------------*/
+	function OnMessagesTopScroll()
+	{
+		if ($(this).scrollTop() == 0)
+		{
+			LoadMoreMessages()
+		}
+	}
+
+	function LoadMoreMessages()
+	{
+		var signalData = {};
+		signalData.loadedMsgCount = loadedMessagesCount;
+		ApoapseAPI.SendSignal("loadNextMessagesChunk", JSON.stringify(signalData));
+	}
+	
+	$("#thread").on("click", ".load_more_messages", function()
+	{
+		LoadMoreMessages();
+	});
+	
+	//$(window).resize(OnMessagesTopScroll);
+	$("#thread").on('scroll', OnMessagesTopScroll);
+
+	$(document).on("OnMessagesChunkLoaded", function (event, data)
+	{
+		$(".load_more_messages").fadeOut(600).remove();
+		var currentTopElement = $('#thread article:first');
+
+		data = JSON.parse(data);
+		var htmlContent = "";
+
+		loadedMessagesCount += data.messages.length;
+		if (loadedMessagesCount < data.totalMsgCount)
+		{
+			htmlContent += '<div class="load_more_messages">' + Localization.LocalizeString("@load_more_messages") + '</div>';
+		}
+
+		$.each(data.messages, function (key, value)
+		{
+			htmlContent += GenerateMessageInListHTML(value);
+		});
+
+		$("#thread_messages").prepend(htmlContent);
+
+		$('#thread').scrollTop(currentTopElement.position().top - 35);
 	});
 
 	/*--------------------TAGS-------------------------*/
