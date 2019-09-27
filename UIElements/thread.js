@@ -188,17 +188,10 @@ $(document).on("onReady", function ()
 	});
 
 	/*----------------------MESSAGES-----------------------*/
-	$(document).on("OnOpenThread", function (event, data)
+	function FillThread(data)
 	{
-		loadedMessagesCount = 0;
-		$("#thread_messages").html("");
-
-		data = JSON.parse(data);
 		var htmlContent = "";
 
-		if (data.hasOwnProperty("messages"))
-			loadedMessagesCount = data.messages.length;
-			
 		if (loadedMessagesCount < data.totalMsgCount)
 		{
 			htmlContent += '<div class="load_more_messages">' + Localization.LocalizeString("@load_more_messages") + '</div>';
@@ -209,9 +202,22 @@ $(document).on("onReady", function ()
 			htmlContent += GenerateMessageInListHTML(value);
 		});
 
-		SwitchView(ViewEnum.thread);
+		return htmlContent;
+	}
 
-		$("#thread_messages").html(htmlContent);
+	$(document).on("OnOpenThread", function (event, data)
+	{
+		SwitchView(ViewEnum.thread);
+		data = JSON.parse(data);
+
+		if (data.hasOwnProperty("messages"))
+			loadedMessagesCount = data.messages.length;
+		else
+			loadedMessagesCount = 0;
+
+		var content = FillThread(data);
+		$("#thread_messages").html(content);
+		
 		$("#thread").show();
 		$("#send_msg_editor").val(data.thread[0].unsentMessage);
 		$("#msg_editor").show();
@@ -285,20 +291,8 @@ $(document).on("onReady", function ()
 		var currentTopElement = $('#thread .load_more_messages:first');
 
 		data = JSON.parse(data);
-		var htmlContent = "";
-
 		loadedMessagesCount += data.messages.length;
-		if (loadedMessagesCount < data.totalMsgCount)
-		{
-			htmlContent += '<div class="load_more_messages">' + Localization.LocalizeString("@load_more_messages") + '</div>';
-		}
-
-		$.each(data.messages, function (key, value)
-		{
-			htmlContent += GenerateMessageInListHTML(value);
-		});
-
-		$("#thread_messages").prepend(htmlContent);
+		$("#thread_messages").prepend(FillThread(data));
 
 		$('#thread').scrollTop(currentTopElement.position().top - 120);
 	});
@@ -312,36 +306,6 @@ $(document).on("onReady", function ()
 		ApoapseAPI.SendSignal("search", JSON.stringify(data));
 	});
 
-	/*--------------------EDITOR-------------------------*/
-	function SendNewMsg()
-	{
-		var signalData = {};
-		signalData.message = $("#send_msg_editor").val();
-
-		if (currentPage == ViewEnum.thread)
-			ApoapseAPI.SendSignal("cmd_new_message", JSON.stringify(signalData));
-		else
-			ApoapseAPI.SendSignal("cmd_direct_message", JSON.stringify(signalData));
-
-		$("#send_msg_editor").val("");
-		$("#editor_attachments").html("");
-	}
-
-	$("#send_msg_editor").keydown(function (event)
-	{
-		var enterSendMsg = $("#press_enter_to_send_checkbox").prop('checked');
-
-		if (enterSendMsg && event.keyCode == 13 && !event.shiftKey)
-		{
-			const unsentAttachmentsCount = $(".attachment_file.temporary").length;
-			if ($("#send_msg_editor").val().length > 0 || unsentAttachmentsCount > 0)
-				SendNewMsg();
-				
-			event.preventDefault();
-		}
-	});
-
-	/*---------------------------------------------*/
 	$(document).on("AddTag", function (event, data)
 	{
 		data = JSON.parse(data);
@@ -384,22 +348,54 @@ $(document).on("onReady", function ()
 		});
 	});
 
+	/*--------------------EDITOR-------------------------*/
+	function SendNewMsg()
+	{
+		var signalData = {};
+		signalData.message = $("#send_msg_editor").val();
+
+		if (currentPage == ViewEnum.thread)
+			ApoapseAPI.SendSignal("cmd_new_message", JSON.stringify(signalData));
+		else
+			ApoapseAPI.SendSignal("cmd_direct_message", JSON.stringify(signalData));
+
+		$("#send_msg_editor").val("");
+		$("#editor_attachments").html("");
+	}
+
+	$("#send_msg_editor").keydown(function (event)
+	{
+		var enterSendMsg = $("#press_enter_to_send_checkbox").prop('checked');
+
+		if (enterSendMsg && event.keyCode == 13 && !event.shiftKey)
+		{
+			const unsentAttachmentsCount = $(".attachment_file.temporary").length;
+			if ($("#send_msg_editor").val().length > 0 || unsentAttachmentsCount > 0)
+				SendNewMsg();
+				
+			event.preventDefault();
+		}
+	});
+
 	/*----------------------PRIVATE USER MESSAGES-----------------------*/
 	$(document).on("OnOpenPrivateMsgThread", function (event, data)
 	{
 		SwitchView(ViewEnum.private_thread);
+
 		$("#thread_messages").html("");
 
 		data = JSON.parse(data);
+
+		if (data.hasOwnProperty("messages"))
+			loadedMessagesCount = data.messages.length;
+		else
+			loadedMessagesCount = 0;
+
 		selectedUserPage = data;
-		var htmlContent = "";
 
-		$.each(data.messages, function (key, value)
-		{
-			htmlContent += GenerateMessageInListHTML(value);
-		});
-
-		$("#thread_messages").html(htmlContent);
+		var content = FillThread(data);
+		$("#thread_messages").html(content);
+		
 		$("#thread").show();
 
 		$("#send_msg_editor").val(data.unsentMessage);
