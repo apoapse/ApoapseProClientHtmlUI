@@ -46,6 +46,8 @@
 	"error_protocol_version_not_supported": "Le serveur Apoapse utilise une version différente de celle de votre client. Apoapse Pro sur votre ordinateur a probablement besoin d'être mis à jour.",
 	"error_unable_to_register_user": "Impossible d'enregistrer l'utilisateur",
 	"error_unable_to_authenticate_user": "Nom d'utilisateur ou mot de passe incorrect",
+	"error_access_denied": "Accès refusé",
 	"load_more_attachments": "Charger plus de pièces jointes",
-	"load_more_messages": "Charger plus de messages"
+	"load_more_messages": "Charger plus de messages",
+	"attachment_not_available": "Non disponible"
 }
