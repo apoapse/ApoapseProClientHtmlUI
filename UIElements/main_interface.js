@@ -151,7 +151,8 @@ $(document).on("onReady", function ()
 
 	var dropZone = document.getElementsByTagName("BODY")[0];
 
-	dropZone.addEventListener('dragover', function(e) {
+	dropZone.addEventListener('dragover', function(e)
+	{
 		e.stopPropagation();
 		e.preventDefault();
 		e.dataTransfer.dropEffect = 'copy';
@@ -160,16 +161,39 @@ $(document).on("onReady", function ()
 		$("#dropfile_icon").fadeIn(450);
 	});
 	
-	dropZone.addEventListener('drop', function(e) {
+	dropZone.addEventListener('drop', function(e)
+	{
 		e.stopPropagation();
 		e.preventDefault();
-		//var files = e.dataTransfer.files; // Array of all files
-
+		
 		$("#dialog_mask").hide();
 		$("#dropfile_icon").hide();
 		ApoapseAPI.SendSignal("OnFilesDropped");
 	});
 
+	dropZone.addEventListener('dragend ', function(e)
+	{
+		e.stopPropagation();
+		e.preventDefault();
+
+		$("#dialog_mask").hide();
+		$("#dropfile_icon").hide();
+	});
+
+	dropZone.addEventListener('dragleave ', function(e)
+	{
+		e.stopPropagation();
+		e.preventDefault();
+
+		$("#dialog_mask").hide();
+		$("#dropfile_icon").hide();
+	});
+
+	$("#dialog_mask").click(function(e) {
+		$("#dropfile_icon").hide();
+	});
+
+	/*---------------------------------------------*/
 	$(".file_input").click(function()
 	{
 		var signalData = {};
