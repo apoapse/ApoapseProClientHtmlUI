@@ -8,6 +8,7 @@
 	margin-right: 6px;
 	background: #ebebeb;
 	padding: 6px; padding-bottom: 0;
+	position: relative;
 }
 
 .attachment_file:hover .att_title {
@@ -42,15 +43,30 @@
 	display: block;
 }
 
-.att_datetime {
+.att_date {
 	font-size: 11px;
 	margin-left: 7px;
 	font-weight: normal;
 }
 
 .att_status {
-	display: block;
 	color: green;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: white;
+    padding: 1px;
+}
+
+#panel_right .att_status {
+    background: transparent;
+    left: 50px;
+    top: 20px;
+    bottom: unset;
+}
+
+#panel_right .att_author {
+    margin-top: 3px;
 }
 
 /************************************************/

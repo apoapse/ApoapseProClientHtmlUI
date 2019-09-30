@@ -17,9 +17,18 @@ function GenerateAttachment(data, isTemporary)
 
 		if (data.hasOwnProperty("author") && data.hasOwnProperty("dateTime"))
 		{
-			htmlContent += '<span class="att_author">' + data.author + '<span class="att_datetime" data-tooltip="' + Localization.LocalizeDateTimeFull(data.dateTime) + '">' + Localization.LocalizeDateTimeRelative(data.dateTime) + '</span></span>';
+			htmlContent += '<span class="att_author">' + data.author + '<span class="att_date" data-tooltip="' + Localization.LocalizeDateTimeFull(data.dateTime) + '">' + Localization.LocalizeDateTimeRelative(data.dateTime) + '</span></span>';
 		}
-		htmlContent += '<span class="att_status"></span>';
+
+		if (!data.isAvailable && !isTemporary)
+		{
+			htmlContent += '<span class="att_status">' + Localization.LocalizeString("@attachment_not_available") + '</span>';
+		}
+		else
+		{
+			htmlContent += '<span class="att_status" style="display: none"></span>';
+		}
+
 		htmlContent += '<span class="att_size">' + data.fileSize +' KB</span>';
 	htmlContent += '</div>';
 
@@ -109,13 +118,17 @@ $(document).on("onReady", function ()
 		var statusElement = $(".attachment_" + data.id + " .att_status");
 
 		if (data.status == "uploading")
+		{
 			statusElement.html("Uploading...");
-
+			statusElement.show();
+		}
 		else if (data.status == "downloading")
+		{
 			statusElement.html("Downloading...");
-
+			statusElement.show();
+		}
 		else
-			statusElement.html("");
+			statusElement.hide();
 	});
 
 	function DisplayLeftPanelAttachments()
