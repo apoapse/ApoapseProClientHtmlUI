@@ -14,6 +14,18 @@ function GenerateListedThread(threadData)
 	{
 		htmlContent += '<img src="' + threadData.msg_preview[0].author.avatar + '" class="avatar_large">';
 		htmlContent += '<div class="msg_preview">' + threadData.msg_preview[0].message.substring(0, 250) + '</div>';
+
+		if (threadData.msg_preview[0].hasOwnProperty("attachments"))
+		{
+			htmlContent += '<div class="att_preview">';
+
+			$.each(threadData.msg_preview[0].attachments, function()
+			{
+				htmlContent += GenerateAttachment(this);
+			});
+
+			htmlContent += '</div>';
+		}
 	}
 
 	htmlContent += '</div>';
@@ -118,12 +130,23 @@ $(document).on("onReady", function ()
 		$("#create_thread_button").show();
 	});
 
+	/*-------------------OPEN THREAD--------------------------*/
 	$("#threads_list").on("click", ".listed_thread", function()
 	{
 		var signalData = {};
 		signalData.id = $(this).attr("data-id");
 
 		ApoapseAPI.SendSignal("loadThread", JSON.stringify(signalData));
+	});
+
+	$("#threads_list ").on("click", ".listed_thread .attachment_file", function(e)
+	{
+		e.stopPropagation();
+
+		var signalData = {};
+		signalData.id = $(this).attr("data-id");
+
+		ApoapseAPI.SendSignal("openAttachment", JSON.stringify(signalData));
 	});
 
 	/*-------------------UNREAD--------------------------*/

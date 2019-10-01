@@ -5,11 +5,11 @@
 
 .listed_thread {
 	min-height: 48px;
+	margin-bottom: 26px;
 }
 
 .listed_thread .msg_preview {
 	font-size: 12px;
-	margin-bottom: 26px;
 	text-align: justify;
 }
 
@@ -49,4 +49,22 @@
 
 .listed_thread:hover .msg_preview {
 	color: black;
+}
+
+.listed_thread .attachment_file {
+	display: inline-block;
+	height: 24px;
+    max-width: 200px; min-width: auto;
+}
+
+.listed_thread .attachment_file .att_icon {
+	font-size: 16px;
+}
+
+.listed_thread .attachment_file .att_author {
+	display: none;
+}
+
+.listed_thread .attachment_file .att_size {
+	display: none;
 }
