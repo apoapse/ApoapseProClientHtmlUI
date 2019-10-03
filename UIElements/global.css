@@ -79,6 +79,7 @@ select {
 	background: none;
 	text-transform: uppercase;
 	font-size: 12px;
+	outline: none;
 }
 
 label.file_input::after {

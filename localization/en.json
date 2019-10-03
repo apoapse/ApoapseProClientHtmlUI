@@ -25,6 +25,8 @@
 	"attachments": "Attachments",
 	"sort_by_date": "By date",
 	"sort_by_size": "By size",
+	"sort_by_name": "By name",
+	"sort_by_type": "By type",
 	"settings": "settings",
 	"add_new_user": "Add new user",
 	"usergroups": "Usergroups",

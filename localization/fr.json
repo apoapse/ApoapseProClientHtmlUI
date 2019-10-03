@@ -25,6 +25,8 @@
 	"attachments": "Pièces jointes",
 	"sort_by_date": "Par date",
 	"sort_by_size": "Par taille",
+	"sort_by_name": "Par nom",
+	"sort_by_type": "By type",
 	"settings": "paramètres",
 	"add_new_user": "Ajouter un nouvel utilisateur",
 	"usergroups": "Groupes utilisateurs",
