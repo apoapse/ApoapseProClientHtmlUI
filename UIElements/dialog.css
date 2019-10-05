@@ -106,7 +106,7 @@
 	margin-top: 6px;
 }
 
-.dialog input:focus {
+.dialog input:focus[type=text], .dialog input:focus[type=submit] {
 	background: #ff8989;
 	color: white;
 }
