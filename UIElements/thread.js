@@ -161,14 +161,17 @@ $(document).on("onReady", function ()
 	{
 		attachmentsLoaded = 0;
 		var data = JSON.parse(data)
-		rightPanelAttachments = data.attachments;
-
-		$(".sort_options .selected").removeClass("selected");
-		$(".sort_options [data-dir='" + data.sorting.order + "']").addClass("selected");
-		$("#attachments_sort_by").val(data.sorting.sortBy);
-		
-		$("#global_listed_attachments").html("");
-		DisplayLeftPanelAttachments();
+		if (data.hasOwnProperty("attachments"))
+		{
+			rightPanelAttachments = data.attachments;
+			
+			$(".sort_options .selected").removeClass("selected");
+			$(".sort_options [data-dir='" + data.sorting.order + "']").addClass("selected");
+			$("#attachments_sort_by").val(data.sorting.sortBy);
+			
+			$("#global_listed_attachments").html("");
+			DisplayLeftPanelAttachments();
+		}
 	});
 
 	function LoadMoreAttachments()
