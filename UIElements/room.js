@@ -92,8 +92,8 @@ $(document).on("onReady", function ()
 		}
 		else
 		{
-			htmlContent += '<div class="empty_page center_horizontal" id="no_threads">Create your first thread';
-			htmlContent += '<input class="create_thread_button globalTextColorBackground" type="button" value="Create thread"></div>';
+			htmlContent += '<div class="empty_page center_horizontal" id="no_threads">' + Localization.LocalizeString("@empty_create_thread");
+			htmlContent += '<input class="create_thread_button globalTextColorBackground" type="button" value="' + Localization.LocalizeString("@create_thread") + '"></div>';
 		}
 
 		$("#threads_list").html(htmlContent);

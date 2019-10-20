@@ -22,6 +22,7 @@
 	"create_room": "Créer un salon",
 	"room_name": "Nom du salon",
 	"empty_create_room": "Créez votre premier salon",
+	"empty_create_thread": "Créez votre premier sujet",
 	"attachments": "Pièces jointes",
 	"sort_by_date": "Par date",
 	"sort_by_size": "Par taille",

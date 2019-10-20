@@ -22,6 +22,7 @@
 	"create_room": "Create room",
 	"room_name": "Room name",
 	"empty_create_room": "Create your first room",
+	"empty_create_thread": "Create your first thread",
 	"attachments": "Attachments",
 	"sort_by_date": "By date",
 	"sort_by_size": "By size",
