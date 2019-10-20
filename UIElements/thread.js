@@ -67,7 +67,7 @@ function GenerateMessageInListHTML(messageData)
 			});
 			htmlContent += '</div>';
 			htmlContent += '<div>';
-				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>Add tag</div>';
+				htmlContent += '<div class="globalTextColorHoverOnly add_tag_button" data-id="' + messageData.id + '"><span class="fas"></span>' + Localization.LocalizeString("@add_new_tag") + '</div>';
 				htmlContent += '<div class="globalTextColorHoverOnly add_tag_field" id="add_tag_field_' + messageData.id + '" style="display: none;"><span class="fas globalTextColor"></span><input type="text"></div>';
 		htmlContent += '</div></div>';
 	}

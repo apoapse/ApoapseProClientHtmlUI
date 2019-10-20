@@ -52,5 +52,6 @@
 	"error_access_denied": "Accès refusé",
 	"load_more_attachments": "Charger plus de pièces jointes",
 	"load_more_messages": "Charger plus de messages",
-	"attachment_not_available": "Non disponible"
+	"attachment_not_available": "Non disponible",
+	"add_new_tag": "Ajouter un tag personel"
 }

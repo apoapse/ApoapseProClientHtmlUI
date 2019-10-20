@@ -52,5 +52,6 @@
 	"error_access_denied": "Access denied",
 	"load_more_attachments": "Load more",
 	"load_more_messages": "Load more",
-	"attachment_not_available": "Not available"
+	"attachment_not_available": "Not available",
+	"add_new_tag": "Add personal tag"
 }
