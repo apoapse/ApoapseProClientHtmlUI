@@ -68,7 +68,7 @@ $(document).on("OnUpdatedServerSettings", function (event, data)
 {
 	data = JSON.parse(data);
 
-	$(".company_name").html(data.server_name.substring(0, 22));
+	$(".company_name").html(data.server_name.substring(0, 22) + '<span class="fas"></span>');
 });
 
 $(document).on("SetClientGlobalSettings", function (event, data)
