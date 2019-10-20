@@ -75,7 +75,7 @@ function GenerateMessageInListHTML(messageData)
 	if (messageData.hasOwnProperty("attachments"))
 	{
 		htmlContent += '<div class="attachments">';
-		htmlContent += '<div class="attachments_desc globalTextColor">Attachments (' + messageData.attachments.length + ') TODO KB</div>';
+		htmlContent += '<div class="attachments_desc globalTextColor">Attachments (' + messageData.attachments.length + ') ' + messageData.attachments_totalSize + ' KB</div>';
 
 		$.each(messageData.attachments, function()
 		{
