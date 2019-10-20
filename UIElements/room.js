@@ -79,6 +79,7 @@ $(document).on("onReady", function ()
 		$("#thread_messages").html("");
 		$("#threads_list").html("");
 		$("#room").show();
+		$("#create_thread_button").show();
 
 		data = JSON.parse(data);
 		var htmlContent = "";
