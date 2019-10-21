@@ -74,7 +74,9 @@ $(document).on("OnUpdatedServerSettings", function (event, data)
 $(document).on("SetClientGlobalSettings", function (event, data)
 {
 	data = JSON.parse(data);
+
 	$("#login_form_container input[name=server]").val(data.default_server);
+	$("#login_form_container input[name=username]").val(data.default_username);
 });
 
 /*-----------------SPEEDBAR----------------------*/
