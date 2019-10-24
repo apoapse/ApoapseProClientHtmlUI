@@ -133,8 +133,17 @@ $(document).on("onReady", function ()
 
 	$(document).on("create_new_thread", function (event, data)
 	{
+		if (data.name.length > 0)
+		{
+			var signalData = {};
+			signalData.name = data.name;
+
+			ApoapseAPI.SendSignal("cmd_create_thread", JSON.stringify(signalData));
+		}
+
 		$("#create_thread_form").hide();
 		$("#create_thread_button").show();
+		$("#create_thread_name_field").val("");
 	});
 
 	/*-------------------OPEN THREAD--------------------------*/
