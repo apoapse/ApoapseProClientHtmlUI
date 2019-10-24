@@ -223,6 +223,7 @@ $(document).on("onReady", function ()
 
 	$(document).on("OnOpenThread", function (event, data)
 	{
+		console.log("OnOpenThread");
 		SwitchView(ViewEnum.thread);
 		data = JSON.parse(data);
 
@@ -396,6 +397,7 @@ $(document).on("onReady", function ()
 	/*----------------------PRIVATE USER MESSAGES-----------------------*/
 	$(document).on("OnOpenPrivateMsgThread", function (event, data)
 	{
+		console.log("OnOpenPrivateMsgThread");
 		SwitchView(ViewEnum.private_thread);
 
 		$("#thread_messages").html("");

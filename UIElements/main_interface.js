@@ -90,7 +90,10 @@ function UpdateSpeedBar()
 	}
 	else if (currentPage == ViewEnum.thread)
 	{
-		htmlContent += '<span id="speedbar_room_link" class="globalTextColorHoverOnly">' + selectedRoom.name + '</span><span>></span><span class="current_page globalTextColor">' + selectedThread.name + '</span>';
+		if (selectedRoom.threadsLayout == "multiple")
+			htmlContent += '<span id="speedbar_room_link" class="globalTextColorHoverOnly">' + selectedRoom.name + '</span><span>></span><span class="current_page globalTextColor">' + selectedThread.name + '</span>';
+		else
+			htmlContent += '<span class="current_page globalTextColor">' + selectedRoom.name + '</span>';
 	}
 
 	$("#speedbar").html(htmlContent);

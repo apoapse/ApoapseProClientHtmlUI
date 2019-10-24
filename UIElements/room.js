@@ -75,13 +75,20 @@ $(document).on("onReady", function ()
 	/*-----------------THREADS----------------------*/
 	$(document).on("OnOpenRoom", function (event, data)
 	{	
+		console.log("OnOpenRoom");
+		data = JSON.parse(data);
+
 		SwitchView(ViewEnum.room);
+		selectedRoom = data.room[0];
+
+		if (selectedRoom.threadsLayout == "single")
+			return;
+
 		$("#thread_messages").html("");
 		$("#threads_list").html("");
 		$("#room").show();
 		$("#create_thread_button").show();
 
-		data = JSON.parse(data);
 		var htmlContent = "";
 
 		if (data.hasOwnProperty("threads"))
@@ -100,7 +107,6 @@ $(document).on("onReady", function ()
 		$("#threads_list").html(htmlContent);
 
 		$("#threads_list").show();
-		selectedRoom = data.room[0];
 		UpdateSpeedBar();
 	});
 
