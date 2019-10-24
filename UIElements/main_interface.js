@@ -43,6 +43,9 @@ function SwitchView(newView)
 	$("#searchbar").hide();
 	$("#search_filter_button").hide();
 	$("#send_msg_editor").val("");
+
+	$("#create_thread_form").hide();
+	$("#create_thread_name_field").val("");
 }
 
 /*-----------------USERS----------------------*/
