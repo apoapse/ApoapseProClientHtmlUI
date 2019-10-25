@@ -152,6 +152,29 @@ $(document).on('click', '#users_list .listed_user:not(.local_user)', function()
 	ApoapseAPI.SendSignal("LoadUserPage", JSON.stringify(signalData));
 });
 
+/*-----------------CMD SYNC----------------------*/
+function UpdateSyncProgress(data)
+{
+	$("#sync_progress_display").html(data.itemsSynced + ' of ' + data.toSyncTotal);
+}
+
+$(document).on("UpdateCmdSync", function (event, data)
+{
+	UpdateSyncProgress(JSON.parse(data));
+});
+
+$(document).on("OnCmdSyncStart", function (event, data)
+{
+	UpdateSyncProgress(JSON.parse(data));
+	OpenDialog("sync_progress");
+});
+
+$(document).on("OnCmdSyncEnd", function (event, data)
+{
+	UpdateSyncProgress(JSON.parse(data));
+	CloseDialog();
+});
+
 /*---------------------------------------------*/
 $(document).on("onReady", function ()
 {
@@ -240,4 +263,48 @@ $(document).on('click', '.sort_options div', function()
 	$(this).addClass("selected");
 
 	SortAttachments();
+});
+
+/*-------------------ADMIN PANEL--------------------------*/
+$(document).on("UpdateUserInfo", function (event, data)
+{
+	if (HasPermission(localUser, "CREATE_USER"))
+	{
+		$("#admin_panel_add_user_tab_name").removeClass("disable");
+		$("#admin_panel_add_user_tab_name").addClass("selected");
+
+		$("#dialog_tab_add_user").show();
+
+		$("#usergroup_select_list").html("");
+		$.each(usergroups, function()
+		{
+			$("#usergroup_select_list").append($("<option />").val(this.name).text(this.name));
+		});
+	}
+	else
+	{
+		$("#admin_panel_add_user_tab_name").addClass("disable");
+		$("#dialog_tab_add_user").hide();
+	}
+});
+
+$(document).on("validate_add_new_user", function (event, data)
+{
+	ApoapseAPI.SendSignal("register_user", JSON.stringify(data));
+
+	$("#add_new_user_form").trigger("reset");
+});
+
+$(document).on("OnAddNewUserLocal", function (event, data)
+{
+	data = JSON.parse(data);
+
+	$("#add_new_user_tempUsernamefield").val(data.username);
+	$("#add_new_user_temppasswordfield").val(data.temp_password);
+	$("#new_user_info_form").show();
+});
+
+$(document).on("on_closed_dialog_settings", function (event, data)
+{
+	$("#new_user_info_form").hide();
 });

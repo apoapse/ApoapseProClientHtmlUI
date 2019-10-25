@@ -200,6 +200,12 @@
 }
 
 /************************************************/
+#dialog_sync_progress {
+	width: 400px; height: 100px;
+	box-sizing: border-box;
+}
+
+/************************************************/
 #searchbar {
 	position: absolute;
 	border-radius: 3px;

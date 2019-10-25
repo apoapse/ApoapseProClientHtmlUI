@@ -19,8 +19,8 @@
 
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="ApoapseAPI.js"></script>
-	<script type="text/javascript" src="UIElements/main_interface.js"></script>
 	<script type="text/javascript" src="UIElements/dialogs.js"></script>
+	<script type="text/javascript" src="UIElements/main_interface.js"></script>
 	<script type="text/javascript" src="UIElements/error.js"></script>
 	<script type="text/javascript" src="UIElements/login.js"></script>
 	<script type="text/javascript" src="UIElements/thread.js"></script>
@@ -86,7 +86,7 @@
 
 					<div id="thread" style="display: none;">
 						<div id="thread_messages">
-								<img src="imgs/avatar_Jeremy Leon.jpg" class="avatar_large">
+						<!--		<img src="imgs/avatar_Jeremy Leon.jpg" class="avatar_large">
 								<div class="author globalTextColor">Jeremy Leon</div>
 								<div class="datetime">Jan 22, 10:20 AM</div>
 								<div class="content">
@@ -127,7 +127,7 @@
 									<div class="content">
 											Slap kitten brother with paw. Lick arm hair really likes hummus. Allways wanting food pet me pet me don't pet me. Chase laser. Pelt around the house and up and down stairs chasing phantoms always hungry for claws in your leg mice. Meow all night bird bird bird bird bird bird human why take bird out i could have eaten that for scratch the postman wake up lick paw wake up owner meow meow, annoy kitten brother with poking vommit food and eat it again. Relentlessly pursues moth a nice warm laptop for me to sit on for fall over dead (not really but gets sypathy) i like big cats and i can not lie lick sellotape yet attempt to leap between furniture but woefully miscalibrate and bellyflop onto the floor; what's your problem?
 									</div>
-							</article>
+							</article>-->
 						</div>
 
 						<div id="msg_editor">
@@ -251,6 +251,13 @@
 			<!--<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="settings">@preferences</div>-->
 			<div class="clickable_item globalTextColorHoverOnly dialog_link" data-dialog-to-open="admin_panel">@admin_panel</div>
 			<div class="clickable_item globalTextColorHoverOnly simple_signal_link close_dialog_on_click" data-signal-to-call="disconnect">@disconnect</div>
+		</div>
+
+		<div class="dialog simple_dialog center_all_axis" id="dialog_sync_progress">
+			<div class="top_bar">
+				<h2>Sync in progresss</h2>
+			</div>
+			<div id="sync_progress_display">5 of 25</div>
 		</div>
 
 		<div class="dialog simple_dialog center_all_axis" id="dialog_create_room">
