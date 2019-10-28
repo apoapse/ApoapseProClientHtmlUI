@@ -151,6 +151,17 @@ $.fn.hasAttr = function (name)
 
 $(document).on("onReady", function ()
 {
+	// Update the relative date times
+	window.setInterval(function()
+	{
+		$("[data-date-raw]").each(function()
+		{
+			var date = $(this).attr("data-date-raw");
+			$(this).html(Localization.LocalizeDateTimeRelative(date));
+		});
+	}, 1000 * 60);
+
+	// Forms
 	$("form").submit(function (event)
 	{
 		var data = {};
