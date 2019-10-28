@@ -371,6 +371,13 @@ $(document).on("onReady", function ()
 		});
 	});
 
+	/*---------------------------------------------*/
+	$(document).on("mark_msg_as_read", function (event, data)
+	{
+		data = JSON.parse(data);
+		$('article[data-id="' + data.msgId + '"]').removeClass("unread");
+	});
+
 	/*--------------------EDITOR-------------------------*/
 	function SendNewMsg()
 	{
