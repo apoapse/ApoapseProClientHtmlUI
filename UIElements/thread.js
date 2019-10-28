@@ -45,14 +45,20 @@ function GenerateMessageInListHTML(messageData)
 {
 	var htmlContent = "";
 	var additionalClasses = "";
+	var avatar = "";
 
 	if (!messageData.is_read)
 	{
 		additionalClasses += " unread";
 	}
 
+	if (messageData.author.avatar.length > 0)
+		avatar = messageData.author.avatar;
+	else
+		avatar = "imgs/default_avatar.png";
+
 	htmlContent += '<article class="' + additionalClasses + '" data-id="' + messageData.id + '">';
-	htmlContent += '<img src="' + messageData.author.avatar + '" class="avatar_large">';
+	htmlContent += '<img src="' + avatar + '" class="avatar_large">';
 	htmlContent += '<div class="author globalTextColor">' + messageData.author.name + '</div>';
 	htmlContent += '<div class="datetime" data-date-raw="' + messageData.sent_time + '" data-tooltip="' + Localization.LocalizeDateTimeFull(messageData.sent_time) + '">' + Localization.LocalizeDateTimeRelative(messageData.sent_time) + '</div>';
 	htmlContent += '<div class="content">' + ReplaceUrlsByLinks(messageData.message) + '</div>';

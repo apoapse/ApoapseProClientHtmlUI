@@ -64,6 +64,8 @@ $(document).on("UpdateUserInfo", function (event, data)
 
 	if (localUser.avatar.length > 0)
 		$(".localUserAvatar").attr("src", localUser.avatar);
+	else
+		$(".localUserAvatar").attr("src", "imgs/default_avatar.png");
 });
 
 /*-----------------SETTINGS----------------------*/
