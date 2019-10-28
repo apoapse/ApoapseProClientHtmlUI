@@ -19,6 +19,8 @@ $(document).on("OnDisconnect", function ()
 	$("#login_form_container").show();
 	$("#install_form_container").hide();
 	$("#user_form_container").hide();
+
+	$(document).trigger("reset");
 });
 
 /*---------------------------------------------*/

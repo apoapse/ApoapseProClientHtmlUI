@@ -258,7 +258,10 @@ $(document).on("onReady", function ()
 		loadedMessagesCount++;
 		$("#thread_messages").append(GenerateMessageInListHTML(data));
 
-		$("#thread").animate({ scrollTop: $('#thread').prop("scrollHeight")}, 1000);
+		if (!isSyncing)
+			$("#thread").animate({ scrollTop: $('#thread').prop("scrollHeight")}, 1000);
+		else
+			$("#thread").scrollTop($('#thread').prop("scrollHeight"));
 	});
 
 	$(document).on('click', 'article .content a', function()

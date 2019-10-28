@@ -5,9 +5,15 @@ selectedThread = {};
 selectedUserPage = {};
 users = {};
 usergroups = {};
+isSyncing = false;
 
 var ViewEnum = {"room": 1, "thread": 2, "search": 3, "private_thread": 4 }
 currentPage = ViewEnum.room;
+
+$(document).on("reset", function (event, data)
+{
+	isSyncing = false;
+});
 
 function SwitchView(newView)
 {
@@ -167,12 +173,14 @@ $(document).on("UpdateCmdSync", function (event, data)
 
 $(document).on("OnCmdSyncStart", function (event, data)
 {
+	isSyncing = true;
 	UpdateSyncProgress(JSON.parse(data));
 	OpenDialog("sync_progress");
 });
 
 $(document).on("OnCmdSyncEnd", function (event, data)
 {
+	isSyncing = false;
 	UpdateSyncProgress(JSON.parse(data));
 	CloseDialog();
 });
