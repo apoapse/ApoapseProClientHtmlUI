@@ -125,12 +125,12 @@ $(document).on("onReady", function ()
 
 		if (data.status == "uploading")
 		{
-			statusElement.html("Uploading...");
+			statusElement.html(Localization.LocalizeString("@attachment_uploading"));
 			statusElement.show();
 		}
 		else if (data.status == "downloading")
 		{
-			statusElement.html("Downloading...");
+			statusElement.html(Localization.LocalizeString("@attachment_downloading"));
 			statusElement.show();
 		}
 		else

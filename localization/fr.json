@@ -53,5 +53,7 @@
 	"load_more_attachments": "Charger plus de pièces jointes",
 	"load_more_messages": "Charger plus de messages",
 	"attachment_not_available": "Non disponible",
+	"attachment_uploading": "Envoi...",
+	"attachment_downloading": "Téléchargement...",
 	"add_new_tag": "Ajouter un tag personel"
 }

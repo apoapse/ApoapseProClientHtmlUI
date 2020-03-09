@@ -53,5 +53,7 @@
 	"load_more_attachments": "Load more",
 	"load_more_messages": "Load more",
 	"attachment_not_available": "Not available",
+	"attachment_uploading": "Uploading...",
+	"attachment_downloading": "Downloading...",
 	"add_new_tag": "Add personal tag"
 }
