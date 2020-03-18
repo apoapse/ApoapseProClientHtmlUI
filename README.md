@@ -1,6 +1,8 @@
 # Apoapse Pro Client HTML UI
 The UI of the Apoapse Pro Client is made using web technologies relying on the Chromium Embedded Framework for rendering. For the client software, see the [Apoapse Pro Client repository](https://github.com/apoapse/ApoapseProClient).
 
+[🚀 Find out more about Apoapse](https://apoapse.space/) | [📥 Receive all news and updates directly to your inbox](https://apoapse.space/newsletter-opt-in/)
+
 ![Apoapse Pro User Interface](https://apoapse.space/wp-content/uploads/2019/10/3_min.png)
 
 ## How to use
